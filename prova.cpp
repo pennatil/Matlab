@@ -44,6 +44,7 @@ int main() {
 	}
 	else {
 		cout << "please choose a value bigger than 0";
+        cout << "please fuck off";
 	}
 	
 	}while (input<0);
