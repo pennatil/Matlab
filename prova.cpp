@@ -49,6 +49,7 @@ int main() {
 	
 	}while (input<0);
 	
+    cout << "Lucas told me to do this";
 	cout << "Stuuupidi";
 	return 0;
 }
