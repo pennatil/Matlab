@@ -27,6 +27,9 @@ N = input(sprintf('size\n',N));
    end
 A;
 imshow(A,'InitialMagnification','fit')
+
+%Taken from this website:
+%http://blogs.mathworks.com/steve/2011/02/17/pixel-grid/
 h = findobj(gcf,'type','image');
 xdata = get(h, 'XData');
 ydata = get(h, 'YData');
