@@ -5,7 +5,13 @@ width = input(sprintf('width:',width));
 height=0;
 height = input(sprintf('height:',height));
 Y=ones(height,width);
+limit=0;
+limit = input(sprintf('how many black cells??',limit));
+for blackcells=0:1:limit
+    Y(floor((rand(1)*100)+1),floor((rand(1)*100)+1))=0;
+end
 imshow(Y,'InitialMagnification','fit')
+
 
 %Taken from this website:
 %http://blogs.mathworks.com/steve/2011/02/17/pixel-grid/
