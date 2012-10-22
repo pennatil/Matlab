@@ -1,5 +1,5 @@
 hold on
-disp('Figure 1 is a graduated one')
+disp('Figure 1 is a graduated one')§
 figure(1)
 A=[0:0.1:1];
 C=[0:0.1:1];
@@ -12,7 +12,7 @@ D=[1:-0.1:0];
 F=[1:-0.1:0];
 H=[1:-0.1:0];
 J=[1:-0.1:0];
-griglia=[A;B;C;D;E;F;G;H;I;J];
+griglia=[A;B;C;D;E;F;G;H;I;J]
 imshow(griglia,'InitialMagnification','fit')
 hold off
 
