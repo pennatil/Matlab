@@ -1,15 +1,15 @@
 clear all
 clc
 
-function []=prova(width,height,limit)
-% width=0;
-% width = input(sprintf('width:',width));
-% height=0;
-% height = input(sprintf('height:',height));
+
+width=0;
+width = input(sprintf('width:',width));
+height=0;
+height = input(sprintf('height:',height));
 Y=ones(height,width);
 
-% limit=0;
-% limit = input(sprintf('how many black cells??',limit));
+limit=0;
+limit = input(sprintf('how many black cells??',limit));
 
 if (limit>1)
 for blackcells=0:1:limit-1
@@ -186,4 +186,3 @@ line('Parent', ax, 'XData', xv, 'YData', yv, ...
 line('Parent', ax, 'XData', xv, 'YData', yv, ...
     'Color', light, 'LineStyle', '--', 'Clipping', 'off');
 end 
-end
