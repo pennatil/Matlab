@@ -18,6 +18,6 @@ car(i).car_id = num2str(i);
 car(i).color = RGB;
 car(i).pos_x = num2str(rand_x);
 car(i).pos_y = num2str(rand_y);
-Provadrawcar(1,1,1,1,RGB,i)
+Provadrawcar_rz(1,1,1,1,RGB,i)
 end
 
