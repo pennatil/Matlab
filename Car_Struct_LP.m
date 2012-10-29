@@ -10,8 +10,7 @@ clear all
 
 A=0;
 A = input(sprintf('How many cars?:',A));
-%initialize struct RZ
-car = struct ('car_id',1, 'color',  'b', 'pos_x', .5, 'pos_y', .5);
+
 for i=1:1:A
 %color array LP
 C_temp=['y';'m';'c';'r';'g';'b';'w'];
@@ -28,6 +27,5 @@ car(i).car_id = num2str(i);
 car(i).color = C;
 car(i).pos_x = num2str(rand_x);
 car(i).pos_y = num2str(rand_y);
-
 end
 
