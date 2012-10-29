@@ -1,5 +1,5 @@
 
-function Provadrawcar(x0, y0, w, h,RGB,fig)
+function Provadrawcar_rz(x0, y0, w, h,RGB,fig)
 % This function is drawing a car
 % INPUT: 
 %   x0, y0: Central point of the car
