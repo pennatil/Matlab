@@ -1,0 +1,6 @@
+%creating structs car
+for i=1:1:100
+rand_x=floor(rand(1)*100);
+rand_y=floor(rand(1)*100);
+car_struct= struct ('car_id', num2str(i), 'colour_code',  000, 'pos_x', num2str(rand_x), 'pos_y', num2str(rand_y));
+end
