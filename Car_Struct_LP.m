@@ -13,4 +13,6 @@ rand_x=floor(rand(1)*A);
 rand_y=floor(rand(1)*A);
 %create struct LP
 car_struct = struct ('car_id', num2str(i), 'colour_code',  000, 'pos_x', num2str(rand_x), 'pos_y', num2str(rand_y))
+%str=[car_struct,num2str(i)];
+%disp(str)
 end
