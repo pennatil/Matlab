@@ -3,8 +3,8 @@
 %in the workspace. to recall the properties of a certain car, use car(n),
 %where n is the number of the car for which you are looking at the
 %properties. never go under 0, or over your initial input!!
-
 %Created by RZ & LP
+
 clc
 clear all
 
