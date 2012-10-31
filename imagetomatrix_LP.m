@@ -1,6 +1,6 @@
 clear all
 clc
-T=imread('rolfmapnl.tif');
+T=imread('rzF_map.tif');
 A=single(T(:,:,4));
 clear T;
 S=size(A);
