@@ -1,11 +1,5 @@
 %this is the main movement code. the way it works is it keeps an index of
-%where the cars are, and only updates the index and not the entire matrix.
-%Also, the car now only checks the blocks around it and not the entire
-%matrix like it did before. In order to avoid going back on its own steps,
-%it keeps the direction it went represented by the numbers 2,4,6 and 8. 2
-%is south, 4 is west, 6 is east, and 8 is north.¨Most of the lines are
-%explained, for the rest ask me directly.
-%Created by LP
+%where the cars are, and only u
 close all
 clc
 clear all
