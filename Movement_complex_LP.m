@@ -137,6 +137,6 @@ for i=2:1:nIter
             end
         end
         imshow(A,'InitialMagnification','fit')
-        pause(0.00000001)
+        pause(0.1)
     end
 end
