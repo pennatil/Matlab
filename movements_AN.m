@@ -106,7 +106,8 @@ for i=2:1:nIter
             %control for another car
         if (A(B(j,1)+1,B(j,2))==0.5)
             movement(i,j)=2;
-            %casual crossing
+            %casual crossing (only working in a 4-ways crossing. to improve
+            %for a more general situation
         elseif (A(B(j,1)+1,B(j,2))==1 && A(B(j,1),B(j,2)+1)==1 && A(B(j,1),B(j,2)-1)==1)
             rdn=rand(1);
             if (rdn<=0.4)
