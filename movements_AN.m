@@ -13,7 +13,7 @@ clear all
 nIter=0;
 %input for map
 inp=0;
-inp= input(sprintf('1:top to bottom, 30x3     2:bottom to top,30X3    3:twist & turns 30x30    4:two cars    5:simple crossing',inp));
+inp= input(sprintf('1:top to bottom, 30x3   \n2:bottom to top,30X3   \n3:twist & turns 30x30   \n4:two cars   \n5:two cars simple crossing   \n6:casual crossing   \n',inp));
 %if-else statement for map
 if (inp==1)
     %creating the matrix
@@ -79,7 +79,19 @@ elseif (inp==5)
     nCars=2;
     movement(1,1)=2;
     movement(1,2)=6;
-
+elseif (inp==6)
+    A=-1*zeros(30,30);
+    A(:,15)=1;
+    A(15,:)=1;
+    A(1,:)=-1;
+    A(:,1)=-1;
+    A(30,:)=-1;
+    A(:,30)=-1;
+    B=[1 15];
+    A(B(1,1),B(1,2))=0.5;
+    nIter=30;
+    nCars=1;
+    movement(1,1)=2;
 end
 %show first image
 imshow(A,'InitialMagnification','fit')
@@ -94,6 +106,25 @@ for i=2:1:nIter
             %control for another car
         if (A(B(j,1)+1,B(j,2))==0.5)
             movement(i,j)=2;
+            %casual crossing
+        elseif (A(B(j,1)+1,B(j,2))==1 && A(B(j,1),B(j,2)+1)==1 && A(B(j,1),B(j,2)-1)==1)
+            rdn=rand(1);
+            if (rdn<=0.4)
+                A(B(j,1)+1,B(j,2))=0.5;
+                A(B(j,1),B(j,2))=1;
+                B(j,1)=B(j,1)+1;
+                movement(i,j)=2;
+            elseif (rdn>0.4 && rdn<=0.8)
+                A(B(j,1),B(j,2)+1)=0.5;
+                A(B(j,1),B(j,2))=1;
+                B(j,2)=B(j,2)+1;
+                movement(i,j)=6;
+            else 
+                A(B(j,1),B(j,2)-1)=0.5;
+                A(B(j,1),B(j,2))=1;
+                B(j,2)=B(j,2)-1;
+                movement(i,j)=4;
+            end
             %south
         elseif (A(B(j,1)+1,B(j,2))==1)
             A(B(j,1)+1,B(j,2))=0.5;
@@ -197,5 +228,5 @@ for i=2:1:nIter
     end
     end
     imshow(A,'InitialMagnification','fit')
-    pause(0.00000001)
+    pause(0.01)
 end
