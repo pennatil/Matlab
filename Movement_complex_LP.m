@@ -19,6 +19,9 @@ inp= input(sprintf('1:top to bottom, 30x3\n2:bottom to top,30X3\n3:twist & turns
 nCars=0;
 nCars= input(sprintf('how many cars??',nCars));
 
+%initialize the index
+B=zeros(nCars,2);
+
 %creating the matrix
 A=-1*zeros(30,3);
 %setting the free road
@@ -30,7 +33,7 @@ A(B(1,1),B(1,2))=0.3;
 %number of iterations for the specified map
 nIter=30;
 %previous movement is set by the program depending in the sirtuation
-movement(1)=2;
+movement(1,1)=2;
 
 
 
@@ -42,39 +45,41 @@ aviobj = avifile('example.avi','compression','None');
 fig=figure;
 end
 
-
-
 %show first image
 imshow(A,'InitialMagnification','fit','Colormap',hot)
+
+
 if (video==1)
 F = getframe(fig);
 aviobj = addframe(aviobj,F);
 end
+
+
 %break
 pause(1)
 %loop for movements
 for i=2:1:nIter
     for nc=1:1:nCars
-        if (movement(i-1)==2)%if the previous movement was south, next one cannot be north
+        if (movement(nc,i-1)==2)%if the previous movement was south, next one cannot be north
                %south
             if (A(B(nc,1)+1,B(nc,2))==1)
                 A(B(nc,1)+1,B(nc,2))=0.3;
                 A(B(nc,1),B(nc,2))=1;
                 B(nc,1)=B(nc,1)+1;
-                movement(i)=2;
+                movement(nc,i)=2;
                
                  %east
             elseif (A(B(nc,1),B(nc,2)+1)==1)
                 A(B(nc,1),B(nc,2)+1)=0.3;
                 A(B(nc,1),B(nc,2))=1;
                 B(nc,2)=B(nc,2)+1;
-                movement(i)=6;
+                movement(nc,i)=6;
                 %west
             elseif (A(B(nc,1),B(nc,2)-1)==1)
                 A(B(nc,1),B(nc,2)-1)=0.3;
                 A(B(nc,1),B(nc,2))=1;
                 B(nc,2)=B(nc,2)-1;
-                movement(i)=4;
+                movement(nc,i)=4;
             end
         elseif(movement(i-1)==8)%if the previous movement was north, next one cannot be south
             %north
@@ -82,19 +87,19 @@ for i=2:1:nIter
                 A(B(nc,1)-1,B(nc,2))=0.3;
                 A(B(nc,1),B(nc,2))=1;
                 B(nc,1)=B(nc,1)-1; 
-                movement(i)=8;
+                movement(nc,i)=8;
             %east
             elseif (A(B(nc,1),B(nc,2)+1)==1)
                 A(B(nc,1),B(nc,2)+1)=0.3;
                 A(B(nc,1),B(nc,2))=1;
                 B(nc,2)=B(nc,2)+1;
-                movement(i)=6;
+                movement(nc,i)=6;
                 %west
             elseif (A(B(nc,1),B(nc,2)-1)==1)
                 A(B(nc,1),B(nc,2)-1)=0.3;
                 A(B(nc,1),B(nc,2))=1;
                 B(nc,2)=B(nc,2)-1;
-                movement(i)=4;
+                movement(nc,i)=4;
 
             end
        elseif(movement(i-1)==6)%if the previous movement was east, next one cannot be west
@@ -103,19 +108,19 @@ for i=2:1:nIter
                 A(B(nc,1)-1,B(nc,2))=0.3;
                 A(B(nc,1),B(nc,2))=1;
                 B(nc,1)=B(nc,1)-1; 
-                movement(i)=8;    
+                movement(nc,i)=8;    
            %south
            elseif (A(B(nc,1)+1,B(nc,2))==1)
                 A(B(nc,1)+1,B(nc,2))=0.3;
                 A(B(nc,1),B(nc,2))=1;
                 B(nc,1)=B(nc,1)+1;
-                movement(i)=2;
+                movement(nc,i)=2;
                  %east
             elseif (A(B(nc,1),B(nc,2)+1)==1)
                 A(B(nc,1),B(nc,2)+1)=0.3;
                 A(B(nc,1),B(nc,2))=1;
                 B(nc,2)=B(nc,2)+1;
-                movement(i)=6;
+                movement(nc,i)=6;
 
             end
          elseif(movement(i-1)==4)%if the previous movement was west, next one cannot be east
@@ -124,28 +129,40 @@ for i=2:1:nIter
                 A(B(nc,1)+1,B(nc,2))=0.3;
                 A(B(nc,1),B(nc,2))=1;
                 B(nc,1)=B(nc,1)+1;
-                movement(i)=2;
+                movement(nc,i)=2;
                 %west
             elseif (A(B(nc,1),B(nc,2)-1)==1)
                 A(B(nc,1),B(nc,2)-1)=0.3;
                 A(B(nc,1),B(nc,2))=1;
                 B(nc,2)=B(nc,2)-1;
-                movement(i)=4;
+                movement(nc,i)=4;
                 %north
             elseif (A(B(nc,1)-1,B(nc,2))==1)
                 A(B(nc,1)-1,B(nc,2))=0.3;
                 A(B(nc,1),B(nc,2))=1;
                 B(nc,1)=B(nc,1)-1; 
-                movement(i)=8;
+                movement(nc,i)=8;
             end
         end
-        imshow(A,'InitialMagnification','fit','Colormap',hot)
-        if (video==1)
-        F = getframe(fig);
-    aviobj = addframe(aviobj,F);
-        end
-        pause(0.1)
     end
+    
+    imshow(A,'InitialMagnification','fit','Colormap',hot)
+    pause(0.1)
+    if (video==1)
+        F = getframe(fig);
+        aviobj = addframe(aviobj,F);
+    end
+    %generate a car
+    probCar=rand(1);
+    if (probCar<0.7)
+    B(i,1)=1;
+    B(i,2)=2;
+    A(B(i,1),B(i,2))=0.3;
+    movement(nc,i)
+    nCars=nCars+1;
+    end
+    
+    
 end
 if (video==1)
 close(fig);
