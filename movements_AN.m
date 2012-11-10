@@ -5,7 +5,12 @@
 %it keeps the direction it went represented by the numbers 2,4,6 and 8. 2
 %is south, 4 is west, 6 is east, and 8 is north.¨Most of the lines are
 %explained, for the rest ask me directly.
-%Created by LP
+%
+%North=8
+%South=2
+%East=6
+%West=4
+%
 close all
 clc
 clear all
@@ -54,7 +59,7 @@ elseif (inp==3)
     A(20,10:29)=1;
     B=[1,3];
     A(B(1,1),B(1,2))=0.5;
-    nIter=104;
+    nIter=200;
     nCars=1;
     movement(1,1)=2;
 elseif (inp==4)
@@ -87,14 +92,26 @@ elseif (inp==6)
     A(:,1)=-1;
     A(30,:)=-1;
     A(:,30)=-1;
+    A(15,15)=2;
     B=[1 15];
     A(B(1,1),B(1,2))=0.5;
     nIter=30;
     nCars=1;
     movement(1,1)=2;
+elseif (inp==7)
+    A=-1*zeros(300,300);
+    A(:,2)=1;
+    A(:,4)=1;
+    B=[300 2;1 4];
+    A(B(1,1),B(1,2))=0.5;
+    A(B(2,1),B(2,2))=0.5;
+    nIter=300;
+    nCars=2;
+    movement(1,1)=8;
+    movement(1,2)=2;    
 end
 %show first image
-imshow(A,'InitialMagnification','fit')
+imshow(A,'InitialMagnification','fit','colormap',hot)
 %break
 pause(1)
 %loop for movements
@@ -108,42 +125,18 @@ for i=2:1:nIter
             movement(i,j)=2;
             %casual crossing (only working in a 4-ways crossing. to improve
             %for a more general situation
-        elseif (A(B(j,1)+1,B(j,2))==1 && A(B(j,1),B(j,2)+1)==1 && A(B(j,1),B(j,2)-1)==1)
-            rdn=rand(1);
-            if (rdn<=0.4)
-                A(B(j,1)+1,B(j,2))=0.5;
-                A(B(j,1),B(j,2))=1;
-                B(j,1)=B(j,1)+1;
-                movement(i,j)=2;
-            elseif (rdn>0.4 && rdn<=0.8)
-                A(B(j,1),B(j,2)+1)=0.5;
-                A(B(j,1),B(j,2))=1;
-                B(j,2)=B(j,2)+1;
-                movement(i,j)=6;
-            else 
-                A(B(j,1),B(j,2)-1)=0.5;
-                A(B(j,1),B(j,2))=1;
-                B(j,2)=B(j,2)-1;
-                movement(i,j)=4;
-            end
-            %south
+        %elseif (A(B(j,1)+1,B(j,2))==1 && A(B(j,1),B(j,2)+1)==1 && A(B(j,1),B(j,2)-1)==1)
+        elseif (A(B(j,1)+1,B(j,2))==2)
+             [A,B,movement,i,j]=crossing(A,B,i,j,movement,2);
+             %south
         elseif (A(B(j,1)+1,B(j,2))==1)
-            A(B(j,1)+1,B(j,2))=0.5;
-            A(B(j,1),B(j,2))=1;
-            B(j,1)=B(j,1)+1;
-            movement(i,j)=2;
+             [A,B,movement]=move(A,B,i,j,movement,2);
              %east
         elseif (A(B(j,1),B(j,2)+1)==1)
-            A(B(j,1),B(j,2)+1)=0.5;
-            A(B(j,1),B(j,2))=1;
-            B(j,2)=B(j,2)+1;
-            movement(i,j)=6;
+             [A,B,movement]=move(A,B,i,j,movement,6);
             %west
         elseif (A(B(j,1),B(j,2)-1)==1)
-            A(B(j,1),B(j,2)-1)=0.5;
-            A(B(j,1),B(j,2))=1;
-            B(j,2)=B(j,2)-1;
-            movement(i,j)=4;
+             [A,B,movement]=move(A,B,i,j,movement,4);
             %dead-end streets control: it just deletes the car
         else A(B(j,1),B(j,2))=1;
             movement(i,j)=0;
@@ -154,22 +147,13 @@ for i=2:1:nIter
             movement(i,j)=8;
             %north
         elseif (A(B(j,1)-1,B(j,2))==1)
-            A(B(j,1)-1,B(j,2))=0.5;
-            A(B(j,1),B(j,2))=1;
-            B(j,1)=B(j,1)-1; 
-            movement(i,j)=8;
+            [A,B,movement]=move(A,B,i,j,movement,8);
             %east
         elseif (A(B(j,1),B(j,2)+1)==1)
-            A(B(j,1),B(j,2)+1)=0.5;
-            A(B(j,1),B(j,2))=1;
-            B(j,2)=B(j,2)+1;
-            movement(i,j)=6;
+            [A,B,movement]=move(A,B,i,j,movement,6);
             %west
         elseif (A(B(j,1),B(j,2)-1)==1)
-            A(B(j,1),B(j,2)-1)=0.5;
-            A(B(j,1),B(j,2))=1;
-            B(j,2)=B(j,2)-1;
-            movement(i,j)=4;
+            [A,B,movement]=move(A,B,i,j,movement,4);
             %dead-end streets control: it just deletes the car
         else A(B(j,1),B(j,2))=1;
             movement(i,j)=0;
@@ -180,22 +164,13 @@ for i=2:1:nIter
             movement(i,j)=6;
             %east
         elseif (A(B(j,1),B(j,2)+1)==1)
-            A(B(j,1),B(j,2)+1)=0.5;
-            A(B(j,1),B(j,2))=1;
-            B(j,2)=B(j,2)+1;
-            movement(i,j)=6;
+            [A,B,movement]=move(A,B,i,j,movement,6);
             %north
         elseif (A(B(j,1)-1,B(j,2))==1)
-            A(B(j,1)-1,B(j,2))=0.5;
-            A(B(j,1),B(j,2))=1;
-            B(j,1)=B(j,1)-1; 
-            movement(i,j)=8;    
+            [A,B,movement]=move(A,B,i,j,movement,8);    
             %south
         elseif (A(B(j,1)+1,B(j,2))==1)
-            A(B(j,1)+1,B(j,2))=0.5;
-            A(B(j,1),B(j,2))=1;
-            B(j,1)=B(j,1)+1;
-            movement(i,j)=2;
+            [A,B,movement]=move(A,B,i,j,movement,2);
             %dead-end streets control: it just deletes the car
         else A(B(j,1),B(j,2))=1;
             movement(i,j)=0;
@@ -206,28 +181,19 @@ for i=2:1:nIter
             movement(i,j)=4;
             %west
         elseif (A(B(j,1),B(j,2)-1)==1)
-            A(B(j,1),B(j,2)-1)=0.5;
-            A(B(j,1),B(j,2))=1;
-            B(j,2)=B(j,2)-1;
-            movement(i,j)=4;
+            [A,B,movement]=move(A,B,i,j,movement,4);
             %south
         elseif (A(B(j,1)+1,B(j,2))==1)
-            A(B(j,1)+1,B(j,2))=0.5;
-            A(B(j,1),B(j,2))=1;
-            B(j,1)=B(j,1)+1;
-            movement(i,j)=2;
+            [A,B,movement]=move(A,B,i,j,movement,2);
             %north
         elseif (A(B(j,1)-1,B(j,2))==1)
-            A(B(j,1)-1,B(j,2))=0.5;
-            A(B(j,1),B(j,2))=1;
-            B(j,1)=B(j,1)-1; 
-            movement(i,j)=8;
+            [A,B,movement]=move(A,B,i,j,movement,8);
             %dead-end streets control: it just deletes the car
         else A(B(j,1),B(j,2))=1;
             movement(i,j)=0;
         end
     end
     end
-    imshow(A,'InitialMagnification','fit')
+    imshow(A,'InitialMagnification','fit','colormap',hot)
     pause(0.01)
 end
