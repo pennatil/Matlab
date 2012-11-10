@@ -59,7 +59,7 @@ elseif (inp==3)
     A(20,10:29)=1;
     B=[1,3];
     A(B(1,1),B(1,2))=0.3;
-    nIter=200;
+    nIter=300;
     nCars=1;
     movement(1,1)=2;
 elseif (inp==4)
@@ -78,9 +78,11 @@ elseif (inp==5)
     A(:,15)=1;
     A(15,:)=1;
     B=[1 15;15 1];
+    A(15,30)=-1;
+    A(30,15)=-1;
     A(B(1,1),B(1,2))=0.3;
     A(B(2,1),B(2,2))=0.3;
-    nIter=30;
+    nIter=300;
     nCars=2;
     movement(1,1)=2;
     movement(1,2)=6;
@@ -145,4 +147,33 @@ for i=2:1:nIter
     end
     imshow(A,'InitialMagnification','fit','colormap',hot)
     pause(0.01)
+%
+%random generation car for model 5
+%     random=rand(1);
+%     if random<=0.8
+%         nCars=nCars+1;
+%         B(nCars,1)=1;
+%         B(nCars,2)=15;
+%         A(B(nCars,1),B(nCars,2))=0.3;
+%         movement(i,nCars)=2;
+%     end
+%     if random>=0.2
+%         nCars=nCars+1;
+%         B(nCars,1)=15;
+%         B(nCars,2)=1;
+%         A(B(nCars,1),B(nCars,2))=0.3;
+%         movement(i,nCars)=6;
+%     end
+%
+%
+%random generation car for model 1
+%     random=rand(1);
+%     if random<=0.3
+%         nCars=nCars+1;
+%         B(nCars,1)=1;
+%         B(nCars,2)=2;
+%         A(B(nCars,1),B(nCars,2))=0.3;
+%         movement(i,nCars)=2;
+%     end
+%
 end
