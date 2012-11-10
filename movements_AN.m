@@ -25,12 +25,13 @@ if (inp==1)
     A=-1*zeros(30,3);
     %setting the free road
     A(:,2)=1;
+    A(30,2)=-1;
     %index for the car
     B=[1,2];
     %starting position
     A(B(1,1),B(1,2))=0.3;
     %number of iterations for the specified map
-    nIter=30;
+    nIter=300;
     %number of cars for the specified map
     nCars=1;
     %previous movement is set by the program depending in the sirtuation
@@ -147,9 +148,9 @@ for i=2:1:nIter
     end
     imshow(A,'InitialMagnification','fit','colormap',hot)
     pause(0.01)
+    random=rand(1);
 %
-%random generation car for model 5
-%     random=rand(1);
+% %random generation car for model 5
 %     if random<=0.8
 %         nCars=nCars+1;
 %         B(nCars,1)=1;
@@ -166,12 +167,21 @@ for i=2:1:nIter
 %     end
 %
 %
-%random generation car for model 1
-%     random=rand(1);
+% %random generation car for model 1
 %     if random<=0.3
 %         nCars=nCars+1;
 %         B(nCars,1)=1;
 %         B(nCars,2)=2;
+%         A(B(nCars,1),B(nCars,2))=0.3;
+%         movement(i,nCars)=2;
+%     end
+%
+%
+% %random generation car for model 3
+%     if random<=0.3
+%         nCars=nCars+1;
+%         B(nCars,1)=1;
+%         B(nCars,2)=3;
 %         A(B(nCars,1),B(nCars,2))=0.3;
 %         movement(i,nCars)=2;
 %     end
