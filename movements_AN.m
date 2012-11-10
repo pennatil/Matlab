@@ -28,7 +28,7 @@ if (inp==1)
     %index for the car
     B=[1,2];
     %starting position
-    A(B(1,1),B(1,2))=0.5;
+    A(B(1,1),B(1,2))=0.3;
     %number of iterations for the specified map
     nIter=30;
     %number of cars for the specified map
@@ -42,7 +42,7 @@ elseif (inp==2)
     A(:,2)=1;
     A(15,2)=-1;
     B=[30,2];
-    A(B(1,1),B(1,2))=0.5;
+    A(B(1,1),B(1,2))=0.3;
     nIter=30;
     nCars=1;
     movement(1,1)=8;
@@ -58,7 +58,7 @@ elseif (inp==3)
     A(20:25,10)=1;
     A(20,10:29)=1;
     B=[1,3];
-    A(B(1,1),B(1,2))=0.5;
+    A(B(1,1),B(1,2))=0.3;
     nIter=200;
     nCars=1;
     movement(1,1)=2;
@@ -67,8 +67,8 @@ elseif (inp==4)
     A(:,2)=1;
     A(:,4)=1;
     B=[30 2;1 4];
-    A(B(1,1),B(1,2))=0.5;
-    A(B(2,1),B(2,2))=0.5;
+    A(B(1,1),B(1,2))=0.3;
+    A(B(2,1),B(2,2))=0.3;
     nIter=30;
     nCars=2;
     movement(1,1)=8;
@@ -78,8 +78,8 @@ elseif (inp==5)
     A(:,15)=1;
     A(15,:)=1;
     B=[1 15;15 1];
-    A(B(1,1),B(1,2))=0.5;
-    A(B(2,1),B(2,2))=0.5;
+    A(B(1,1),B(1,2))=0.3;
+    A(B(2,1),B(2,2))=0.3;
     nIter=30;
     nCars=2;
     movement(1,1)=2;
@@ -94,7 +94,7 @@ elseif (inp==6)
     A(:,30)=-1;
     A(15,15)=2;
     B=[1 15];
-    A(B(1,1),B(1,2))=0.5;
+    A(B(1,1),B(1,2))=0.3;
     nIter=30;
     nCars=1;
     movement(1,1)=2;
@@ -103,8 +103,8 @@ elseif (inp==7)
     A(:,2)=1;
     A(:,4)=1;
     B=[300 2;1 4];
-    A(B(1,1),B(1,2))=0.5;
-    A(B(2,1),B(2,2))=0.5;
+    A(B(1,1),B(1,2))=0.3;
+    A(B(2,1),B(2,2))=0.3;
     nIter=300;
     nCars=2;
     movement(1,1)=8;
@@ -117,82 +117,7 @@ pause(1)
 %loop for movements
 for i=2:1:nIter
     for j=1:1:nCars %loop for each car on the map
-    if (movement(i-1,j)==0)
-        movement(i,j)=0;
-    elseif (movement(i-1,j)==2)%if the previous movement was south, next one cannot be north
-            %control for another car
-        if (A(B(j,1)+1,B(j,2))==0.5)
-            movement(i,j)=2;
-            %casual crossing (only working in a 4-ways crossing. to improve
-            %for a more general situation
-        %elseif (A(B(j,1)+1,B(j,2))==1 && A(B(j,1),B(j,2)+1)==1 && A(B(j,1),B(j,2)-1)==1)
-        elseif (A(B(j,1)+1,B(j,2))==2)
-             [A,B,movement,i,j]=crossing(A,B,i,j,movement,2);
-             %south
-        elseif (A(B(j,1)+1,B(j,2))==1)
-             [A,B,movement]=move(A,B,i,j,movement,2);
-             %east
-        elseif (A(B(j,1),B(j,2)+1)==1)
-             [A,B,movement]=move(A,B,i,j,movement,6);
-            %west
-        elseif (A(B(j,1),B(j,2)-1)==1)
-             [A,B,movement]=move(A,B,i,j,movement,4);
-            %dead-end streets control: it just deletes the car
-        else A(B(j,1),B(j,2))=1;
-            movement(i,j)=0;
-        end
-    elseif(movement(i-1,j)==8)%if the previous movement was north, next one cannot be south
-            %control for another car
-        if (A(B(j,1)-1,B(j,2))==0.5)
-            movement(i,j)=8;
-            %north
-        elseif (A(B(j,1)-1,B(j,2))==1)
-            [A,B,movement]=move(A,B,i,j,movement,8);
-            %east
-        elseif (A(B(j,1),B(j,2)+1)==1)
-            [A,B,movement]=move(A,B,i,j,movement,6);
-            %west
-        elseif (A(B(j,1),B(j,2)-1)==1)
-            [A,B,movement]=move(A,B,i,j,movement,4);
-            %dead-end streets control: it just deletes the car
-        else A(B(j,1),B(j,2))=1;
-            movement(i,j)=0;
-        end
-   elseif(movement(i-1,j)==6)%if the previous movement was east, next one cannot be west
-            %control for another car
-        if (A(B(j,1),B(j,2)+1)==0.5)
-            movement(i,j)=6;
-            %east
-        elseif (A(B(j,1),B(j,2)+1)==1)
-            [A,B,movement]=move(A,B,i,j,movement,6);
-            %north
-        elseif (A(B(j,1)-1,B(j,2))==1)
-            [A,B,movement]=move(A,B,i,j,movement,8);    
-            %south
-        elseif (A(B(j,1)+1,B(j,2))==1)
-            [A,B,movement]=move(A,B,i,j,movement,2);
-            %dead-end streets control: it just deletes the car
-        else A(B(j,1),B(j,2))=1;
-            movement(i,j)=0;
-        end
-     elseif(movement(i-1,j)==4)%if the previous movement was west, next one cannot be east
-            %control for another car
-        if (A(B(j,1),B(j,2)-1)==0.5)
-            movement(i,j)=4;
-            %west
-        elseif (A(B(j,1),B(j,2)-1)==1)
-            [A,B,movement]=move(A,B,i,j,movement,4);
-            %south
-        elseif (A(B(j,1)+1,B(j,2))==1)
-            [A,B,movement]=move(A,B,i,j,movement,2);
-            %north
-        elseif (A(B(j,1)-1,B(j,2))==1)
-            [A,B,movement]=move(A,B,i,j,movement,8);
-            %dead-end streets control: it just deletes the car
-        else A(B(j,1),B(j,2))=1;
-            movement(i,j)=0;
-        end
-    end
+    [A,B,movement,i,j] = prevmove(A,B,movement,i,j);
     end
     imshow(A,'InitialMagnification','fit','colormap',hot)
     pause(0.01)
