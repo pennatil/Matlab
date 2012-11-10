@@ -18,7 +18,7 @@ clear all
 nIter=0;
 %input for map
 inp=0;
-inp= input(sprintf('1:top to bottom, 30x3   \n2:bottom to top,30X3   \n3:twist & turns 30x30   \n4:two cars   \n5:two cars simple crossing   \n6:casual crossing   \n',inp));
+inp= input(sprintf('1:top to bottom, 30x3   \n2:bottom to top,30X3   \n3:twist & turns 30x30   \n4:two cars   \n5:two cars simple crossing   \n6:casual crossing   \n7;300x300 many cars  \n',inp));
 %if-else statement for map
 if (inp==1)
     %creating the matrix
@@ -102,13 +102,37 @@ elseif (inp==7)
     A=-1*zeros(300,300);
     A(:,2)=1;
     A(:,4)=1;
-    B=[300 2;1 4];
+    A(:,6)=1;
+    A(:,8)=1;
+    A(:,10)=1;
+    A(:,12)=1;
+    A(:,14)=1;
+    A(:,16)=1;
+    A(:,18)=1;
+    A(:,20)=1;
+    B=[300 2;1 4;300 6;1 8;300 10;1 12;300 14;1 16;300 18;1 20];
     A(B(1,1),B(1,2))=0.3;
     A(B(2,1),B(2,2))=0.3;
+    A(B(3,1),B(3,2))=0.3;
+    A(B(4,1),B(4,2))=0.3;
+    A(B(5,1),B(5,2))=0.3;
+    A(B(6,1),B(6,2))=0.3;
+    A(B(7,1),B(7,2))=0.3;
+    A(B(8,1),B(8,2))=0.3;
+    A(B(9,1),B(9,2))=0.3;
+    A(B(10,1),B(10,2))=0.3;
     nIter=300;
-    nCars=2;
+    nCars=10;
     movement(1,1)=8;
-    movement(1,2)=2;    
+    movement(1,2)=2;
+    movement(1,3)=8;
+    movement(1,4)=2;
+    movement(1,5)=8;
+    movement(1,6)=2;
+    movement(1,7)=8;
+    movement(1,8)=2;
+    movement(1,9)=8;
+    movement(1,10)=2;
 end
 %show first image
 imshow(A,'InitialMagnification','fit','colormap',hot)
