@@ -29,9 +29,9 @@ if (inp==1)
     A(:,2)=1;
     A(30,2)=-1;
     %index for the car
-    B=[1,2];
+    B=[1 2 rand(1)];
     %starting position
-    A(B(1,1),B(1,2))=0.3;
+    A(B(1,1),B(1,2))=B(1,3);
     %number of iterations for the specified map
     nIter=300;
     %number of cars for the specified map
@@ -44,8 +44,8 @@ elseif (inp==2)
     A=-1*zeros(30,3);
     A(:,2)=1;
     A(15,2)=-1;
-    B=[30,2];
-    A(B(1,1),B(1,2))=0.3;
+    B=[30,2,rand(1)];
+    A(B(1,1),B(1,2))=B(1,3);
     nIter=30;
     nCars=1;
     movement(1,1)=8;
@@ -60,8 +60,8 @@ elseif (inp==3)
     A(25,2:10)=1;
     A(20:25,10)=1;
     A(20,10:29)=1;
-    B=[1,3];
-    A(B(1,1),B(1,2))=0.3;
+    B=[1,3,rand(1)];
+    A(B(1,1),B(1,2))=B(1,3);
     nIter=300;
     nCars=1;
     movement(1,1)=2;
@@ -69,9 +69,9 @@ elseif (inp==4)
     A=-1*zeros(30,5);
     A(:,2)=1;
     A(:,4)=1;
-    B=[30 2;1 4];
-    A(B(1,1),B(1,2))=0.3;
-    A(B(2,1),B(2,2))=0.3;
+    B=[30 2 rand(1);1 4 rand(1)];
+    A(B(1,1),B(1,2))=B(1,3);
+    A(B(2,1),B(2,2))=B(2,3);
     nIter=30;
     nCars=2;
     movement(1,1)=8;
@@ -80,11 +80,11 @@ elseif (inp==5)
     A=-1*zeros(30,30);
     A(:,15)=1;
     A(15,:)=1;
-    B=[1 15;15 1];
+    B=[1 15 rand(1);15 1 rand(1)];
     A(15,30)=-1;
     A(30,15)=-1;
-    A(B(1,1),B(1,2))=0.3;
-    A(B(2,1),B(2,2))=0.3;
+    A(B(1,1),B(1,2))=B(1,3);
+    A(B(2,1),B(2,2))=B(2,3);
     nIter=300;
     nCars=2;
     movement(1,1)=2;
@@ -98,8 +98,8 @@ elseif (inp==6)
     A(30,:)=-1;
     A(:,30)=-1;
     A(15,15)=2;
-    B=[1 15];
-    A(B(1,1),B(1,2))=0.3;
+    B=[1 15 rand(1)];
+    A(B(1,1),B(1,2))=B(1,3);
     nIter=300;
     nCars=1;
     movement(1,1)=2;
@@ -115,17 +115,17 @@ elseif (inp==7)
     A(:,16)=1;
     A(:,18)=1;
     A(:,20)=1;
-    B=[300 2;1 4;300 6;1 8;300 10;1 12;300 14;1 16;300 18;1 20];
-    A(B(1,1),B(1,2))=0.3;
-    A(B(2,1),B(2,2))=0.3;
-    A(B(3,1),B(3,2))=0.3;
-    A(B(4,1),B(4,2))=0.3;
-    A(B(5,1),B(5,2))=0.3;
-    A(B(6,1),B(6,2))=0.3;
-    A(B(7,1),B(7,2))=0.3;
-    A(B(8,1),B(8,2))=0.3;
-    A(B(9,1),B(9,2))=0.3;
-    A(B(10,1),B(10,2))=0.3;
+    B=[300 2 rand(1);1 4 rand(1);300 6 rand(1);1 8 rand(1);300 10 rand(1);1 12 rand(1);300 14 rand(1);1 16 rand(1);300 18 rand(1);1 20 rand(1)];
+    A(B(1,1),B(1,2))=B(1,3);
+    A(B(2,1),B(2,2))=B(2,3);
+    A(B(3,1),B(3,2))=B(3,3);
+    A(B(4,1),B(4,2))=B(4,3);
+    A(B(5,1),B(5,2))=B(5,3);
+    A(B(6,1),B(6,2))=B(6,3);
+    A(B(7,1),B(7,2))=B(7,3);
+    A(B(8,1),B(8,2))=B(8,3);
+    A(B(9,1),B(9,2))=B(9,3);
+    A(B(10,1),B(10,2))=B(10,3);
     nIter=300;
     nCars=10;
     movement(1,1)=8;
@@ -149,7 +149,7 @@ for i=2:1:nIter
         [A,B,movement,i,j] = prevmove(A,B,movement,i,j);
     end
     imshow(A,'InitialMagnification','fit','colormap',hot)
-    pause(0.01)
+    pause(0.1)
     random=rand(1);
     
     %random generation car for model 5
@@ -158,14 +158,16 @@ for i=2:1:nIter
             nCars=nCars+1;
             B(nCars,1)=1;
             B(nCars,2)=15;
-            A(B(nCars,1),B(nCars,2))=0.3;
+            B(nCars,3)=rand(1);
+            A(B(nCars,1),B(nCars,2))=B(nCars,3);
             movement(i,nCars)=2;
         end
         if random>=0.2
             nCars=nCars+1;
             B(nCars,1)=15;
             B(nCars,2)=1;
-            A(B(nCars,1),B(nCars,2))=0.3;
+            B(nCars,3)=rand(1);
+            A(B(nCars,1),B(nCars,2))=B(nCars,3);
             movement(i,nCars)=6;
         end
     end
@@ -177,7 +179,8 @@ for i=2:1:nIter
             nCars=nCars+1;
             B(nCars,1)=1;
             B(nCars,2)=2;
-            A(B(nCars,1),B(nCars,2))=0.3;
+            B(nCars,3)=rand(1);
+            A(B(nCars,1),B(nCars,2))=B(nCars,3);
             movement(i,nCars)=2;
         end
     end
@@ -189,7 +192,8 @@ for i=2:1:nIter
             nCars=nCars+1;
             B(nCars,1)=1;
             B(nCars,2)=3;
-            A(B(nCars,1),B(nCars,2))=0.3;
+            B(nCars,3)=rand(1);
+            A(B(nCars,1),B(nCars,2))=B(nCars,3);
             movement(i,nCars)=2;
         end
     end
@@ -202,14 +206,16 @@ for i=2:1:nIter
                 nCars=nCars+1;
                 B(nCars,1)=300;
                 B(nCars,2)=n;
-                A(B(nCars,1),B(nCars,2))=0.3;
+                B(nCars,3)=rand(1);
+                A(B(nCars,1),B(nCars,2))=B(nCars,3);
                 movement(i,nCars)=8;
             end
             for n=4:4:20
                 nCars=nCars+1;
                 B(nCars,1)=1;
                 B(nCars,2)=n;
-                A(B(nCars,1),B(nCars,2))=0.3;
+                B(nCars,3)=rand(1);
+                A(B(nCars,1),B(nCars,2))=B(nCars,3);
                 movement(i,nCars)=2;
             end
         end
@@ -221,7 +227,8 @@ for i=2:1:nIter
             nCars=nCars+1;
             B(nCars,1)=1;
             B(nCars,2)=15;
-            A(B(nCars,1),B(nCars,2))=0.3;
+            B(nCars,3)=rand(1);
+            A(B(nCars,1),B(nCars,2))=B(nCars,3);
             movement(i,nCars)=2;
         end
     end
