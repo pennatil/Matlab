@@ -14,6 +14,8 @@
 close all
 clc
 clear all
+%cluster
+%matlabpool open 2
 %init number of times the movement is repeated
 nIter=0;
 %input for map
@@ -98,7 +100,7 @@ elseif (inp==6)
     A(15,15)=2;
     B=[1 15];
     A(B(1,1),B(1,2))=0.3;
-    nIter=30;
+    nIter=300;
     nCars=1;
     movement(1,1)=2;
 elseif (inp==7)
@@ -144,46 +146,84 @@ pause(1)
 %loop for movements
 for i=2:1:nIter
     for j=1:1:nCars %loop for each car on the map
-    [A,B,movement,i,j] = prevmove(A,B,movement,i,j);
+        [A,B,movement,i,j] = prevmove(A,B,movement,i,j);
     end
     imshow(A,'InitialMagnification','fit','colormap',hot)
     pause(0.01)
     random=rand(1);
-%
-% %random generation car for model 5
-%     if random<=0.8
-%         nCars=nCars+1;
-%         B(nCars,1)=1;
-%         B(nCars,2)=15;
-%         A(B(nCars,1),B(nCars,2))=0.3;
-%         movement(i,nCars)=2;
-%     end
-%     if random>=0.2
-%         nCars=nCars+1;
-%         B(nCars,1)=15;
-%         B(nCars,2)=1;
-%         A(B(nCars,1),B(nCars,2))=0.3;
-%         movement(i,nCars)=6;
-%     end
-%
-%
-% %random generation car for model 1
-%     if random<=0.3
-%         nCars=nCars+1;
-%         B(nCars,1)=1;
-%         B(nCars,2)=2;
-%         A(B(nCars,1),B(nCars,2))=0.3;
-%         movement(i,nCars)=2;
-%     end
-%
-%
-% %random generation car for model 3
-%     if random<=0.3
-%         nCars=nCars+1;
-%         B(nCars,1)=1;
-%         B(nCars,2)=3;
-%         A(B(nCars,1),B(nCars,2))=0.3;
-%         movement(i,nCars)=2;
-%     end
-%
+    
+    %random generation car for model 5
+    if inp==5
+        if random<=0.8
+            nCars=nCars+1;
+            B(nCars,1)=1;
+            B(nCars,2)=15;
+            A(B(nCars,1),B(nCars,2))=0.3;
+            movement(i,nCars)=2;
+        end
+        if random>=0.2
+            nCars=nCars+1;
+            B(nCars,1)=15;
+            B(nCars,2)=1;
+            A(B(nCars,1),B(nCars,2))=0.3;
+            movement(i,nCars)=6;
+        end
+    end
+    
+    
+    %random generation car for model 1
+    if inp==1
+        if random<=0.3
+            nCars=nCars+1;
+            B(nCars,1)=1;
+            B(nCars,2)=2;
+            A(B(nCars,1),B(nCars,2))=0.3;
+            movement(i,nCars)=2;
+        end
+    end
+    
+    
+    %random generation car for model 3
+    if inp==3
+        if random<=0.3
+            nCars=nCars+1;
+            B(nCars,1)=1;
+            B(nCars,2)=3;
+            A(B(nCars,1),B(nCars,2))=0.3;
+            movement(i,nCars)=2;
+        end
+    end
+    
+    
+    %random generation car for model 7
+    if inp==7
+        if random<=0.3
+            for n=2:4:18
+                nCars=nCars+1;
+                B(nCars,1)=300;
+                B(nCars,2)=n;
+                A(B(nCars,1),B(nCars,2))=0.3;
+                movement(i,nCars)=8;
+            end
+            for n=4:4:20
+                nCars=nCars+1;
+                B(nCars,1)=1;
+                B(nCars,2)=n;
+                A(B(nCars,1),B(nCars,2))=0.3;
+                movement(i,nCars)=2;
+            end
+        end
+    end
+    
+    %random generation car for model 1
+    if inp==6
+        if random<=0.3
+            nCars=nCars+1;
+            B(nCars,1)=1;
+            B(nCars,2)=15;
+            A(B(nCars,1),B(nCars,2))=0.3;
+            movement(i,nCars)=2;
+        end
+    end
+    
 end
