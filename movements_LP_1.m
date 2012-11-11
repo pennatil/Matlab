@@ -139,6 +139,9 @@ elseif (inp==7)
     movement(1,9)=8;
     movement(1,10)=2;
 end
+inpNCars=0;
+inpNCars=input(sprintf('how many cars: ',inpNCars));
+nIter=nIter+inpNCars
 %show first image
 imshow(A,'InitialMagnification','fit','colormap',hot)
 %break
@@ -150,6 +153,7 @@ for i=2:1:nIter
     end
     imshow(A,'InitialMagnification','fit','colormap',hot)
     pause(0.1)
+    
     random=rand(1);
     
     %random generation car for model 5
@@ -201,9 +205,10 @@ for i=2:1:nIter
     
     %random generation car for model 7
     if inp==7
+        if (nCars<inpNCars)
         if random<=0.3
             for n=2:4:18
-                nCars=nCars+1
+                nCars=nCars+1;
                 B(nCars,1)=300;
                 B(nCars,2)=n;
                 B(nCars,3)=rand(1);
@@ -211,13 +216,14 @@ for i=2:1:nIter
                 movement(i,nCars)=8;
             end
             for n=4:4:20
-                nCars=nCars+1
+                nCars=nCars+1;
                 B(nCars,1)=1;
                 B(nCars,2)=n;
                 B(nCars,3)=rand(1);
                 A(B(nCars,1),B(nCars,2))=B(nCars,3);
                 movement(i,nCars)=2;
             end
+        end
         end
     end
     
