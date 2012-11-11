@@ -152,6 +152,7 @@ for i=2:1:nIter
         [A,B,movement,i,j] = prevmove(A,B,movement,i,j);
     end
     imshow(A,'InitialMagnification','fit','colormap',hot)
+    grid on;
     pause(0.1)
     
     random=rand(1);
