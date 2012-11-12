@@ -30,5 +30,8 @@ if cros==2
         movement(i,j)=4;
     end
 end
+elseif cros==3
+    
+    
 end
 

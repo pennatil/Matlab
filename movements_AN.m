@@ -14,7 +14,7 @@
 close all
 clc
 clear all
-%cluster
+%cluster --- set the number of maximum core you have!
 %matlabpool open 2
 %init number of times the movement is repeated
 nIter=0;
@@ -23,6 +23,7 @@ inp=0;
 inp= input(sprintf('1:top to bottom, 30x3   \n2:bottom to top,30X3   \n3:twist & turns 30x30   \n4:two cars   \n5:two cars simple crossing   \n6:casual crossing   \n7;300x300 many cars  \n',inp));
 %if-else statement for map
 if (inp==1)
+    tic
     %creating the matrix
     A=-1*zeros(30,3);
     %setting the free road
@@ -41,6 +42,7 @@ if (inp==1)
     movement(1,1)=2;
     %SAME AS ABOVE
 elseif (inp==2)
+    tic
     A=-1*zeros(30,3);
     A(:,2)=1;
     A(15,2)=-1;
@@ -51,6 +53,7 @@ elseif (inp==2)
     movement(1,1)=8;
     %SAME AS ABOVE
 elseif (inp==3)
+    tic
     A=-1*ones(30,30);
     A(1:10,3)=1;
     A(10,3:25)=1;
@@ -66,6 +69,7 @@ elseif (inp==3)
     nCars=1;
     movement(1,1)=2;
 elseif (inp==4)
+    tic
     A=-1*zeros(30,5);
     A(:,2)=1;
     A(:,4)=1;
@@ -77,6 +81,7 @@ elseif (inp==4)
     movement(1,1)=8;
     movement(1,2)=2;
 elseif (inp==5)
+    tic
     A=-1*zeros(30,30);
     A(:,15)=1;
     A(15,:)=1;
@@ -90,6 +95,7 @@ elseif (inp==5)
     movement(1,1)=2;
     movement(1,2)=6;
 elseif (inp==6)
+    tic
     A=-1*zeros(30,30);
     A(:,15)=1;
     A(15,:)=1;
@@ -104,6 +110,7 @@ elseif (inp==6)
     nCars=1;
     movement(1,1)=2;
 elseif (inp==7)
+    tic
     A=-1*zeros(300,300);
     A(:,2)=1;
     A(:,4)=1;
@@ -138,6 +145,19 @@ elseif (inp==7)
     movement(1,8)=2;
     movement(1,9)=8;
     movement(1,10)=2;
+elseif (inp==8)
+    tic
+    A=-1*zeros(9,9);
+    A(:,4)=1;
+    A(:,6)=1;
+    A(4,:)=1;
+    A(6,:)=1;
+    A(4:2:6,4:6)=0.5;
+    B=[1,4,rand(1)];
+    A(B(1,1),B(1,2))=B(1,3);
+    nIter=9;
+    nCars=1;
+    movement(1,1)=2;
 end
 %show first image
 imshow(A,'InitialMagnification','fit','colormap',hot)
@@ -149,7 +169,7 @@ for i=2:1:nIter
         [A,B,movement,i,j] = prevmove(A,B,movement,i,j);
     end
     imshow(A,'InitialMagnification','fit','colormap',hot)
-    pause(0.1)
+    pause(0.5)
     random=rand(1);
     
     %random generation car for model 5
@@ -234,3 +254,5 @@ for i=2:1:nIter
     end
     
 end
+toc
+%matlabpool close
