@@ -9,9 +9,9 @@ sy=S(1,2);
 for row=1:1:sx
     for column=1:1:sy
         if (A(row,column)==0)
-            A(row,column)=1;
-        else
             A(row,column)=0;
+        else
+            A(row,column)=1;
         end
     end
 end

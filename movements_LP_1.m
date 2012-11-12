@@ -20,7 +20,7 @@ clear all
 nIter=0;
 %input for map
 inp=0;
-inp= input(sprintf('1:top to bottom, 30x3   \n2:bottom to top,30X3   \n3:twist & turns 30x30   \n4:two cars   \n5:two cars simple crossing   \n6:casual crossing   \n7;300x300 many cars  \n',inp));
+inp= input(sprintf('1:top to bottom, 30x3   \n2:bottom to top,30X3   \n3:twist & turns 30x30   \n4:two cars   \n5:two cars simple crossing   \n6:casual crossing   \n7:300x300 many cars  \n8:300x300 crossings  \n',inp));
 %if-else statement for map
 if (inp==1)
     %creating the matrix
@@ -105,16 +105,10 @@ elseif (inp==6)
     movement(1,1)=2;
 elseif (inp==7)
     A=-1*zeros(300,300);
-    A(:,2)=1;
-    A(:,4)=1;
-    A(:,6)=1;
-    A(:,8)=1;
-    A(:,10)=1;
-    A(:,12)=1;
-    A(:,14)=1;
-    A(:,16)=1;
-    A(:,18)=1;
-    A(:,20)=1;
+    for coln=2:2:300
+        A(:,coln)=1;
+    end
+    
     B=[300 2 rand(1);1 4 rand(1);300 6 rand(1);1 8 rand(1);300 10 rand(1);1 12 rand(1);300 14 rand(1);1 16 rand(1);300 18 rand(1);1 20 rand(1)];
     A(B(1,1),B(1,2))=B(1,3);
     A(B(2,1),B(2,2))=B(2,3);
@@ -138,12 +132,34 @@ elseif (inp==7)
     movement(1,8)=2;
     movement(1,9)=8;
     movement(1,10)=2;
+elseif (inp==8)
+    A=-1*ones(300,300);
+    for n=4:4:300
+        A(n,:)=1;
+        A(:,n)=1;
+    end
+    rand_map_8=rand(1);
+    A_pos_X=[4 8 12 16 20 24 28 32 36 40 44 48 52 56 60 64 68 72 76 80 84 88 92 96 100 104 108 112 116 120 124 128 132 136 140 144 148 152 156 160 164 168 172 176 180 184 188 192 196 200 204 208 212 216 220 224 228 232 236 240 244 248 252 256 260 264 268 272 276 280 284 288 292 296 300];
+    A_pos_Y=[4 8 12 16 20 24 28 32 36 40 44 48 52 56 60 64 68 72 76 80 84 88 92 96 100 104 108 112 116 120 124 128 132 136 140 144 148 152 156 160 164 168 172 176 180 184 188 192 196 200 204 208 212 216 220 224 228 232 236 240 244 248 252 256 260 264 268 272 276 280 284 288 292 296 300];
+    B(1,1)=4;
+    B(1,2)=1;
+
 end
 inpNCars=0;
 inpNCars=input(sprintf('how many cars: ',inpNCars));
-nIter=nIter+inpNCars
+%nIter=nIter+inpNCars
+
+%video
+video=0;
+video = input(sprintf('videofile?? 1 for yes, 2 for no',video));
+if (video==1)
+aviobj = avifile('example.avi','compression','None');
+fig=figure;
+end
+
+
 %show first image
-imshow(A,'InitialMagnification','fit','colormap',hot)
+imshow(A,'InitialMagnification',200,'colormap',hot)
 %break
 pause(1)
 %loop for movements
@@ -151,9 +167,15 @@ for i=2:1:nIter
     for j=1:1:nCars %loop for each car on the map
         [A,B,movement,i,j] = prevmove(A,B,movement,i,j);
     end
-    imshow(A,'InitialMagnification','fit','colormap',hot)
+    imshow(A,'InitialMagnification',200,'colormap',hot)
     grid on;
     pause(0.1)
+    
+    if (video==1)
+        F = getframe(fig);
+        aviobj = addframe(aviobj,F);
+        %pause(0.01)
+    end
     
     random=rand(1);
     
@@ -208,7 +230,7 @@ for i=2:1:nIter
     if inp==7
         if (nCars<inpNCars)
         if random<=0.3
-            for n=2:4:18
+            for n=2:4:300
                 nCars=nCars+1;
                 B(nCars,1)=300;
                 B(nCars,2)=n;
@@ -216,7 +238,7 @@ for i=2:1:nIter
                 A(B(nCars,1),B(nCars,2))=B(nCars,3);
                 movement(i,nCars)=8;
             end
-            for n=4:4:20
+            for n=4:4:300
                 nCars=nCars+1;
                 B(nCars,1)=1;
                 B(nCars,2)=n;
@@ -240,4 +262,22 @@ for i=2:1:nIter
         end
     end
     
+    if inp==8
+        if nCars<inpNCars
+          for z=1:1:10
+              B(nCars,1)=A_pos_X(1,floor(rand(1)*300)+1);
+              B(nCars,2)=z;
+              B(nCars,3)=rand(1);
+              A(B(nCars,1),B(nCars,2))=B(nCars,3);
+              movement(i,nCars)=6;
+              
+        end
+        end
+    end
+    
+end
+
+if (video==1)
+close(fig);
+aviobj = close(aviobj);
 end
