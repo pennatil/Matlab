@@ -148,7 +148,7 @@ end
 inpNCars=0;
 inpNCars=input(sprintf('how many cars: ',inpNCars));
 %nIter=nIter+inpNCars
-
+ B=zeros(inpNCars,2);
 %video
 video=0;
 video = input(sprintf('videofile?? 1 for yes, 2 for no',video));
@@ -168,7 +168,7 @@ for i=2:1:nIter
         [A,B,movement,i,j] = prevmove(A,B,movement,i,j);
     end
     imshow(A,'InitialMagnification',200,'colormap',hot)
-    grid on;
+    %grid on;
     pause(0.1)
     
     if (video==1)

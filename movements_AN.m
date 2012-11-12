@@ -169,7 +169,7 @@ for i=2:1:nIter
         [A,B,movement,i,j] = prevmove(A,B,movement,i,j);
     end
     imshow(A,'InitialMagnification','fit','colormap',hot)
-    pause(0.5)
+    pause(0.1)
     random=rand(1);
     
     %random generation car for model 5
@@ -223,7 +223,7 @@ for i=2:1:nIter
     if inp==7
         if random<=0.3
             for n=2:4:18
-                nCars=nCars+1
+                nCars=nCars+1;
                 B(nCars,1)=300;
                 B(nCars,2)=n;
                 B(nCars,3)=rand(1);
@@ -231,7 +231,7 @@ for i=2:1:nIter
                 movement(i,nCars)=8;
             end
             for n=4:4:20
-                nCars=nCars+1
+                nCars=nCars+1;
                 B(nCars,1)=1;
                 B(nCars,2)=n;
                 B(nCars,3)=rand(1);
