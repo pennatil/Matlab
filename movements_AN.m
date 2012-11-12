@@ -20,7 +20,7 @@ clear all
 nIter=0;
 %input for map
 inp=0;
-inp= input(sprintf('1:top to bottom, 30x3   \n2:bottom to top,30X3   \n3:twist & turns 30x30   \n4:two cars   \n5:two cars simple crossing   \n6:casual crossing   \n7;300x300 many cars  \n',inp));
+inp= input(sprintf('1:top to bottom, 30x3   \n2:bottom to top,30X3   \n3:twist & turns 30x30   \n4:two cars   \n5:two cars simple crossing   \n6:casual crossing   \n7:300x300 many cars  \n8:4-ways crossing \n',inp));
 %if-else statement for map
 if (inp==1)
     tic
@@ -122,6 +122,7 @@ elseif (inp==7)
     A(:,16)=1;
     A(:,18)=1;
     A(:,20)=1;
+    B=zeros(1000,3);
     B=[300 2 rand(1);1 4 rand(1);300 6 rand(1);1 8 rand(1);300 10 rand(1);1 12 rand(1);300 14 rand(1);1 16 rand(1);300 18 rand(1);1 20 rand(1)];
     A(B(1,1),B(1,2))=B(1,3);
     A(B(2,1),B(2,2))=B(2,3);
@@ -152,10 +153,16 @@ elseif (inp==8)
     A(:,6)=1;
     A(4,:)=1;
     A(6,:)=1;
-    A(4:2:6,4:6)=0.5;
-    B=[1,4,rand(1)];
+    A(4:2:6,4:6)=3;
+    A(4:6,4:2:6)=3;
+    A(:,1)=-1;
+    A(9,:)=-1;
+    A(:,9)=-1;
+    A(1,:)=-1;
+    %cambiato random a 0.3
+    B=[2,4,0.3];
     A(B(1,1),B(1,2))=B(1,3);
-    nIter=9;
+    nIter=100;
     nCars=1;
     movement(1,1)=2;
 end
@@ -168,8 +175,11 @@ for i=2:1:nIter
     for j=1:1:nCars %loop for each car on the map
         [A,B,movement,i,j] = prevmove(A,B,movement,i,j);
     end
+<<<<<<< HEAD
     imshow(A,'InitialMagnification','fit','colormap',hot)
     pause(0.1)
+=======
+>>>>>>> 4-ways crossing working
     random=rand(1);
     
     %random generation car for model 5
@@ -241,7 +251,7 @@ for i=2:1:nIter
         end
     end
     
-    %random generation car for model 1
+    %random generation car for model 6
     if inp==6
         if random<=0.3
             nCars=nCars+1;
@@ -252,6 +262,46 @@ for i=2:1:nIter
             movement(i,nCars)=2;
         end
     end
+    
+    
+    %random generation car for model 8
+    if inp==8
+        if random<=0.3
+            rnd=rand(1);
+            if rnd<=0.25
+                nCars=nCars+1;
+                B(nCars,1)=2;
+                B(nCars,2)=4;
+                B(nCars,3)=0.3;
+                A(B(nCars,1),B(nCars,2))=B(nCars,3);
+                movement(i,nCars)=2;
+            elseif rnd<=0.5
+                nCars=nCars+1;
+                B(nCars,1)=6;
+                B(nCars,2)=2;
+                B(nCars,3)=0.15;
+                A(B(nCars,1),B(nCars,2))=B(nCars,3);
+                movement(i,nCars)=6;
+            elseif rnd<=0.75
+                nCars=nCars+1;
+                B(nCars,1)=8;
+                B(nCars,2)=6;
+                B(nCars,3)=0.5;
+                A(B(nCars,1),B(nCars,2))=B(nCars,3);
+                movement(i,nCars)=8;
+            else
+                nCars=nCars+1;
+                B(nCars,1)=4;
+                B(nCars,2)=8;
+                B(nCars,3)=0.7;
+                A(B(nCars,1),B(nCars,2))=B(nCars,3);
+                movement(i,nCars)=4;
+            end
+        end
+    end
+    
+    imshow(A,'InitialMagnification','fit','colormap',hot)
+    pause(0.1)
     
 end
 toc
