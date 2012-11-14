@@ -1,16 +1,53 @@
-% Modeling and Simulating Social Systems with MATLAB
-% http://www.soms.ethz.ch/matlab
-% Author: Stefano Balietti and Karsten Donnay, 2012
+h=1;
+w=2;
+height=10;
+width=10;
+nIter=10;
+A=-1*ones(10,10)
+A(:,5)=1
+A(5,:)=1
+%starting index for the car
+B=[1,5]
+%starting point for the car using the index
+A(B(1,1),B(1,2))=0.5
+size(A)
 
-function draw_car(x0, y0, w, h);
-% This function is drawing a car
-% INPUT: 
-%   x0, y0: Central point of the car
-%   w: Width of the car
-%   h: Height of the car
-close all
+%loop for movements
+for i=2:nIter
+    
+    %if south block is empty
+if (A(B(1,1)+1,B(1,2))==1)
+    
+    %set next to full
+    A(B(1,1)+1,B(1,2))=0.5;
+    %set current to empty
+    A(B(1,1),B(1,2))=1;
+    %update the index
+    B(1,1)=B(1,1)+1;
+    
+    %if east is empty______process is the same as above
+elseif (A(B(1,1),B(1,2)+1)==1)
+    
+    A(B(1,1),B(1,2)+1)=0.5;
+    A(B(1,1),B(1,2))=1;
+    B(1,2)=B(1,2)+1;
+    
+    %if north is empty______process is the same as above
+elseif (A(B(1,1)-1,B(1,2))==1)
+    A(B(1,1)-1,B(1,2))=0.5;
+    A(B(1,1),B(1,2))=1;
+    B(1,1)=B(1,1)+1;  
+    
+    %if east west is empty______process is the same as above
+elseif (A(B(1,1),B(1,2)-1)==1)
+    A(B(1,1),B(1,2)-1)=0.5;
+    A(B(1,1),B(1,2))=1;
+    B(1,2)=B(1,2)-1;
+end
 
-% Hold the graphics
+% Draw the car!
+x0=B(1,2);
+y0=B(1,1);
 hold on
 
 % Define the coordinates for the car chassi
@@ -46,8 +83,6 @@ window_5_y=[(h)/4 h/4 h*11/60 h*11/60];
 
 A=[rand(1),rand(1),rand(1)];
 
-% Draw the car!
-hold on;
 patch(x0+chassi_x, y0+chassi_y, A)
 patch(x0+wheel_1_x,y0+wheel_1_y,'k')
 patch(x0+wheel_2_x,y0+wheel_2_y,'k')
@@ -58,5 +93,12 @@ patch(x0+window_2_x,y0+window_2_y,A)
 patch(x0+window_3_x,y0+window_3_y,'b')
 patch(x0+window_4_x,y0+window_4_y,'b')
 patch(x0+window_5_x,y0+window_5_y,'b')
+
+
+
+imshow(A,'InitialMagnification','fit')
+
 hold off
+
+pause(0.5)
 end
