@@ -1,3 +1,4 @@
+
 % hight and width def for draw car
 %%
 h=1;
@@ -88,7 +89,7 @@ window_5_y=[(h)/4 h/4 h*11/60 h*11/60];
 imshow(A,'InitialMagnification','fit')
 %%
 % Colour of Car
-C=[rand(1),rand(1),rand(1)];
+C=[0.5 , 0.2,0]%rand(1),rand(1),rand(1)];
 % patching the car
 patch(x0+chassi_x, y0+chassi_y, C)
 patch(x0+wheel_1_x,y0+wheel_1_y,'k')
