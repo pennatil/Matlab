@@ -1,5 +1,8 @@
+% hight and width def for draw car
+%%
 h=1;
 w=2;
+%%
 height=10;
 width=10;
 nIter=10;
@@ -44,12 +47,12 @@ elseif (A(B(1,1),B(1,2)-1)==1)
     A(B(1,1),B(1,2))=1;
     B(1,2)=B(1,2)-1;
 end
-
+%%
 % Draw the car!
 x0=B(1,2);
 y0=B(1,1);
 hold on
-
+%%
 % Define the coordinates for the car chassi
 chassi_x = [w/2 w/2 -w/2 -w/2];
 chassi_y = [-h/2 h/2 h/2 -h/2];
@@ -80,11 +83,13 @@ window_4_y=[(-h)/4 -h/4 -h*11/60 -h*11/60];
 
 window_5_x=[-w/6 5*w/12 w/12+w/6 w/12];
 window_5_y=[(h)/4 h/4 h*11/60 h*11/60];
-
+%%
+%%Show moving grid
 imshow(A,'InitialMagnification','fit')
-
+%%
+% Colour of Car
 C=[rand(1),rand(1),rand(1)];
-
+% patching the car
 patch(x0+chassi_x, y0+chassi_y, C)
 patch(x0+wheel_1_x,y0+wheel_1_y,'k')
 patch(x0+wheel_2_x,y0+wheel_2_y,'k')
@@ -95,7 +100,7 @@ patch(x0+window_2_x,y0+window_2_y,C)
 patch(x0+window_3_x,y0+window_3_y,'b')
 patch(x0+window_4_x,y0+window_4_y,'b')
 patch(x0+window_5_x,y0+window_5_y,'b')
-
+%%
 
 
 
