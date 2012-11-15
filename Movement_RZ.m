@@ -81,22 +81,24 @@ window_4_y=[(-h)/4 -h/4 -h*11/60 -h*11/60];
 window_5_x=[-w/6 5*w/12 w/12+w/6 w/12];
 window_5_y=[(h)/4 h/4 h*11/60 h*11/60];
 
-A=[rand(1),rand(1),rand(1)];
+imshow(A,'InitialMagnification','fit')
 
-patch(x0+chassi_x, y0+chassi_y, A)
+C=[rand(1),rand(1),rand(1)];
+
+patch(x0+chassi_x, y0+chassi_y, C)
 patch(x0+wheel_1_x,y0+wheel_1_y,'k')
 patch(x0+wheel_2_x,y0+wheel_2_y,'k')
 patch(x0+wheel_3_x,y0+wheel_3_y,'k')
 patch(x0+wheel_4_x,y0+wheel_4_y,'k')
 patch(x0+window_1_x,y0+window_1_y,'b')
-patch(x0+window_2_x,y0+window_2_y,A)
+patch(x0+window_2_x,y0+window_2_y,C)
 patch(x0+window_3_x,y0+window_3_y,'b')
 patch(x0+window_4_x,y0+window_4_y,'b')
 patch(x0+window_5_x,y0+window_5_y,'b')
 
 
 
-imshow(A,'InitialMagnification','fit')
+
 
 hold off
 
