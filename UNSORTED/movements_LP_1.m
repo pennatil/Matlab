@@ -148,7 +148,7 @@ end
 inpNCars=0;
 inpNCars=input(sprintf('how many cars: ',inpNCars));
 %nIter=nIter+inpNCars
- B=zeros(inpNCars,2);
+ %B=zeros(inpNCars,2);
 %video
 video=0;
 video = input(sprintf('videofile?? 1 for yes, 2 for no',video));

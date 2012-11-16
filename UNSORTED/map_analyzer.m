@@ -11,9 +11,13 @@ pointn=1;
 if inp==1
     A=-1*ones(50,125);
 end
+
+us_v=0;
+us_v=input(sprintf('edge width?',us_v))
+
 S=size(A);
-width=S(1,2);
-height=S(1,1);
+width=S(1,2)-2*us_v;
+height=S(1,1)-2*us_v;
 if inp==1
     A(:,10)=1;
     A(:,3)=1;
@@ -23,16 +27,16 @@ if inp==1
     A(9,:)=1;
 end
 
-for column=1:1:width
-    if A(1,column)==1;
+for column=us_v:1:width
+    if A(us_v,column)==1;
         a=num2str(column);
-        str=['possible entry/exit point n° ',num2str(pointn),': A(1,',num2str(column),')'];
+        str=['possible entry/exit point n° ',num2str(pointn),': A(',num2str(us_v),',',num2str(column),')'];
         disp(str)
         A(1,column)=0.3;
         pointn=pointn+1;
     end
 end
-for column=1:1:width
+for column=us_v:1:width
     if A(height,column)==1;
         a=num2str(column);
         str=['possible entry/exit point n° ',num2str(pointn),': A(',num2str(height),',',num2str(column),')'];
@@ -41,10 +45,10 @@ for column=1:1:width
         pointn=pointn+1;
     end
 end
-for row=1:1:height
-    if A(row,1)==1;
+for row=us_v:1:height
+    if A(row,us_v)==1;
         a=num2str(column);
-        str=['possible entry/exit point n° ',num2str(pointn),': A(',num2str(row),',1)'];
+        str=['possible entry/exit point n° ',num2str(pointn),': A(',num2str(row),',',num2str(us_v),')'];
         disp(str)
         A(row,1)=0.3;
         pointn=pointn+1;
