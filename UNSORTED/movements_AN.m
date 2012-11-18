@@ -175,11 +175,10 @@ for i=2:1:nIter
     for j=1:1:nCars %loop for each car on the map
         [A,B,movement,i,j] = prevmove(A,B,movement,i,j);
     end
-<<<<<<< HEAD
+    
     imshow(A,'InitialMagnification','fit','colormap',hot)
     pause(0.1)
-=======
->>>>>>> 4-ways crossing working
+    %4-ways crossing working
     random=rand(1);
     
     %random generation car for model 5

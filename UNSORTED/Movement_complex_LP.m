@@ -16,8 +16,8 @@ inp=0;
 inp= input(sprintf('1:top to bottom, 30x3\n2:bottom to top,30X3\n3:twist & turns 30x30\n',inp));
 
 %number of cars on the map
-nCars=0;
-nCars= input(sprintf('how many cars??',nCars));
+nCars=1;
+%nCars= input(sprintf('how many cars??',nCars));
 
 %initialize the index
 B=zeros(nCars,2);
@@ -59,89 +59,89 @@ end
 pause(1)
 %loop for movements
 for i=2:1:nIter
-    for nc=1:1:nCars
-        if (movement(nc,i-1)==2)%if the previous movement was south, next one cannot be north
+    for n=1:1:nCars
+        if (movement(1,i-1)==2)%if the previous movement was south, next one cannot be north
                %south
-            if (A(B(nc,1)+1,B(nc,2))==1)
-                A(B(nc,1)+1,B(nc,2))=0.3;
-                A(B(nc,1),B(nc,2))=1;
-                B(nc,1)=B(nc,1)+1;
-                movement(nc,i)=2;
+            if (A(B(1,1)+1,B(1,2))==1)
+                A(B(1,1)+1,B(1,2))=0.3;
+                A(B(1,1),B(1,2))=1;
+                B(1,1)=B(1,1)+1;
+                movement(1,i)=2;
                
                  %east
-            elseif (A(B(nc,1),B(nc,2)+1)==1)
-                A(B(nc,1),B(nc,2)+1)=0.3;
-                A(B(nc,1),B(nc,2))=1;
-                B(nc,2)=B(nc,2)+1;
-                movement(nc,i)=6;
+            elseif (A(B(1,1),B(1,2)+1)==1)
+                A(B(1,1),B(1,2)+1)=0.3;
+                A(B(1,1),B(1,2))=1;
+                B(1,2)=B(1,2)+1;
+                movement(1,i)=6;
                 %west
-            elseif (A(B(nc,1),B(nc,2)-1)==1)
-                A(B(nc,1),B(nc,2)-1)=0.3;
-                A(B(nc,1),B(nc,2))=1;
-                B(nc,2)=B(nc,2)-1;
-                movement(nc,i)=4;
+            elseif (A(B(1,1),B(1,2)-1)==1)
+                A(B(1,1),B(1,2)-1)=0.3;
+                A(B(1,1),B(1,2))=1;
+                B(1,2)=B(1,2)-1;
+                movement(1,i)=4;
             end
         elseif(movement(i-1)==8)%if the previous movement was north, next one cannot be south
             %north
-            if (A(B(nc,1)-1,B(nc,2))==1)
-                A(B(nc,1)-1,B(nc,2))=0.3;
-                A(B(nc,1),B(nc,2))=1;
-                B(nc,1)=B(nc,1)-1; 
-                movement(nc,i)=8;
+            if (A(B(1,1)-1,B(1,2))==1)
+                A(B(1,1)-1,B(1,2))=0.3;
+                A(B(1,1),B(1,2))=1;
+                B(1,1)=B(1,1)-1; 
+                movement(1,i)=8;
             %east
-            elseif (A(B(nc,1),B(nc,2)+1)==1)
-                A(B(nc,1),B(nc,2)+1)=0.3;
-                A(B(nc,1),B(nc,2))=1;
-                B(nc,2)=B(nc,2)+1;
-                movement(nc,i)=6;
+            elseif (A(B(1,1),B(1,2)+1)==1)
+                A(B(1,1),B(1,2)+1)=0.3;
+                A(B(1,1),B(1,2))=1;
+                B(1,2)=B(1,2)+1;
+                movement(1,i)=6;
                 %west
-            elseif (A(B(nc,1),B(nc,2)-1)==1)
-                A(B(nc,1),B(nc,2)-1)=0.3;
-                A(B(nc,1),B(nc,2))=1;
-                B(nc,2)=B(nc,2)-1;
-                movement(nc,i)=4;
+            elseif (A(B(1,1),B(1,2)-1)==1)
+                A(B(1,1),B(1,2)-1)=0.3;
+                A(B(1,1),B(1,2))=1;
+                B(1,2)=B(1,2)-1;
+                movement(1,i)=4;
 
             end
        elseif(movement(i-1)==6)%if the previous movement was east, next one cannot be west
            %north
-           if (A(B(nc,1)-1,B(nc,2))==1)
-                A(B(nc,1)-1,B(nc,2))=0.3;
-                A(B(nc,1),B(nc,2))=1;
-                B(nc,1)=B(nc,1)-1; 
-                movement(nc,i)=8;    
+           if (A(B(1,1)-1,B(1,2))==1)
+                A(B(1,1)-1,B(1,2))=0.3;
+                A(B(1,1),B(1,2))=1;
+                B(1,1)=B(1,1)-1; 
+                movement(1,i)=8;    
            %south
-           elseif (A(B(nc,1)+1,B(nc,2))==1)
-                A(B(nc,1)+1,B(nc,2))=0.3;
-                A(B(nc,1),B(nc,2))=1;
-                B(nc,1)=B(nc,1)+1;
-                movement(nc,i)=2;
+           elseif (A(B(1,1)+1,B(1,2))==1)
+                A(B(1,1)+1,B(1,2))=0.3;
+                A(B(1,1),B(1,2))=1;
+                B(1,1)=B(1,1)+1;
+                movement(1,i)=2;
                  %east
-            elseif (A(B(nc,1),B(nc,2)+1)==1)
-                A(B(nc,1),B(nc,2)+1)=0.3;
-                A(B(nc,1),B(nc,2))=1;
-                B(nc,2)=B(nc,2)+1;
-                movement(nc,i)=6;
+            elseif (A(B(1,1),B(1,2)+1)==1)
+                A(B(1,1),B(1,2)+1)=0.3;
+                A(B(1,1),B(1,2))=1;
+                B(1,2)=B(1,2)+1;
+                movement(1,i)=6;
 
             end
          elseif(movement(i-1)==4)%if the previous movement was west, next one cannot be east
          %south
-            if (A(B(nc,1)+1,B(nc,2))==1)
-                A(B(nc,1)+1,B(nc,2))=0.3;
-                A(B(nc,1),B(nc,2))=1;
-                B(nc,1)=B(nc,1)+1;
-                movement(nc,i)=2;
+            if (A(B(1,1)+1,B(1,2))==1)
+                A(B(1,1)+1,B(1,2))=0.3;
+                A(B(1,1),B(1,2))=1;
+                B(1,1)=B(1,1)+1;
+                movement(1,i)=2;
                 %west
-            elseif (A(B(nc,1),B(nc,2)-1)==1)
-                A(B(nc,1),B(nc,2)-1)=0.3;
-                A(B(nc,1),B(nc,2))=1;
-                B(nc,2)=B(nc,2)-1;
-                movement(nc,i)=4;
+            elseif (A(B(1,1),B(1,2)-1)==1)
+                A(B(1,1),B(1,2)-1)=0.3;
+                A(B(1,1),B(1,2))=1;
+                B(1,2)=B(1,2)-1;
+                movement(1,i)=4;
                 %north
-            elseif (A(B(nc,1)-1,B(nc,2))==1)
-                A(B(nc,1)-1,B(nc,2))=0.3;
-                A(B(nc,1),B(nc,2))=1;
-                B(nc,1)=B(nc,1)-1; 
-                movement(nc,i)=8;
+            elseif (A(B(1,1)-1,B(1,2))==1)
+                A(B(1,1)-1,B(1,2))=0.3;
+                A(B(1,1),B(1,2))=1;
+                B(1,1)=B(1,1)-1; 
+                movement(1,i)=8;
             end
         end
     end
@@ -158,7 +158,7 @@ for i=2:1:nIter
     B(i,1)=1;
     B(i,2)=2;
     A(B(i,1),B(i,2))=0.3;
-    movement(nc,i)
+    movement(1,i)
     nCars=nCars+1;
     end
     
