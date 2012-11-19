@@ -11,12 +11,19 @@
 %East=6
 %West=4
 %
+
 close all
 clc
 clear all
+n_of_times=0;
+n_of_times=input(sprintf('num of times',n_of_times));
+for z=1:1:n_of_times
+clearvars -except workspace
+
 %cluster --- set the number of maximum core you have!
 %matlabpool open 2
 %init number of times the movement is repeated
+if (z==1)
 nIter=0;
 %input for map
 inp=0;
@@ -29,7 +36,7 @@ color=0;
 color=input(sprintf('color:0 for random, 1 for red\n',color));
 %input for break
 br=0;
-br=input(sprintf('choose speed of the animation:\n1:very slow\n2:slow\n3:medium\n4:fast\n5:very fast\n6:speed=0\nspeed: ',br));
+br=input(sprintf('choose speed of the animation:\n1:very slow\n2:slow\n3:medium\n4:fast\n5:very fast\n6:no animation\nspeed: ',br));
 %init for break time
 p_time=0;
 %if else stetment for animation speed
@@ -108,49 +115,6 @@ elseif (inp==3)
     nCars=1;
     movement(1,1)=2;
     
-    %{
-elseif (inp==4)
-tic
-A=-1*zeros(30,5);
-A(:,2)=1;
-A(:,4)=1;
-B=[30 2 rand(1);1 4 rand(1)];
-A(B(1,1),B(1,2))=B(1,3);
-A(B(2,1),B(2,2))=B(2,3);
-nIter=30;
-nCars=2;
-movement(1,1)=8;
-movement(1,2)=2;
-elseif (inp==5)
-tic
-A=-1*zeros(30,30);
-A(:,15)=1;
-A(15,:)=1;
-B=[1 15 rand(1);15 1 rand(1)];
-A(15,30)=-1;
-A(30,15)=-1;
-A(B(1,1),B(1,2))=B(1,3);
-A(B(2,1),B(2,2))=B(2,3);
-nIter=300;
-nCars=2;
-movement(1,1)=2;
-movement(1,2)=6;
-elseif (inp==6)
-tic
-A=-1*zeros(30,30);
-A(:,15)=1;
-A(15,:)=1;
-A(1,:)=-1;
-A(:,1)=-1;
-A(30,:)=-1;
-A(:,30)=-1;
-A(15,15)=2;
-B=[1 15 rand(1)];
-A(B(1,1),B(1,2))=B(1,3);
-nIter=300;
-nCars=1;
-movement(1,1)=2;
-    %}
 elseif (inp==7)
     tic
     A=-1*zeros(300,300);
@@ -207,10 +171,13 @@ elseif (inp==8)
     movement(1,1)=2;
 end
 nIter=nIter+inpNCars;
+end
+if (br~=6)
 %show first image
 imshow(A,'InitialMagnification','fit','colormap',hot)
 %break
 pause(1)
+end
 %loop for movements
 for i=2:1:nIter
     for j=1:1:nCars %loop for each car on the map
@@ -388,9 +355,22 @@ for i=2:1:nIter
             end
         end
     end
+    if (br~=6)
     imshow(A,'InitialMagnification','fit','colormap',hot)
     pause(p_time)
+    end
     
 end
-toc
-%matlabpool close
+
+timespent=toc;
+timespent
+workspace(z).number_of_iteration=nIter ;
+workspace(z).set_number_of_cars=inpNCars;
+workspace(z).number_of_cars=nCars;
+workspace(z).time_of_execution=timespent;
+end
+disp('done!!')
+
+
+
+

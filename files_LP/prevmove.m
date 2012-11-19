@@ -23,6 +23,8 @@ elseif (movement(i-1,j)==2)%if the previous movement was south, next one cannot 
         [A,B,movement]=move(A,B,i,j,movement,4);
         %dead-end streets control: it just deletes the car
     else A(B(j,1),B(j,2))=1;
+        B(j,3)=-2;
+        B(j,4)=B(j,4)+1;
         movement(i,j)=0;
     end
 elseif(movement(i-1,j)==8)%if the previous movement was north, next one cannot be south
@@ -42,6 +44,8 @@ elseif(movement(i-1,j)==8)%if the previous movement was north, next one cannot b
         [A,B,movement]=move(A,B,i,j,movement,4);
         %dead-end streets control: it just deletes the car
     else A(B(j,1),B(j,2))=1;
+        B(j,3)=-2;
+        B(j,4)=B(j,4)+1;
         movement(i,j)=0;
     end
 elseif(movement(i-1,j)==6)%if the previous movement was east, next one cannot be west
@@ -61,6 +65,8 @@ elseif(movement(i-1,j)==6)%if the previous movement was east, next one cannot be
         [A,B,movement]=move(A,B,i,j,movement,2);
         %dead-end streets control: it just deletes the car
     else A(B(j,1),B(j,2))=1;
+        B(j,3)=-2;
+        B(j,4)=B(j,4)+1;
         movement(i,j)=0;
     end
 elseif(movement(i-1,j)==4)%if the previous movement was west, next one cannot be east
@@ -80,6 +86,8 @@ elseif(movement(i-1,j)==4)%if the previous movement was west, next one cannot be
         [A,B,movement]=move(A,B,i,j,movement,8);
         %dead-end streets control: it just deletes the car
     else A(B(j,1),B(j,2))=1;
+        B(j,3)=-2;
+        B(j,4)=B(j,4)+1;
         movement(i,j)=0;
     end
 end
