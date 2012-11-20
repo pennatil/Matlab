@@ -4,8 +4,8 @@ clc
 clear all
 n_of_times=0;
 n_of_times=input(sprintf('num of times: ',n_of_times));
-br=0;
-br=input(sprintf('choose speed of the animation:\n1:very slow\n2:slow\n3:medium\n4:fast\n5:very fast\n6:no animation\nspeed: ',br));
+br=6;
+%br=input(sprintf('choose speed of the animation:\n1:very slow\n2:slow\n3:medium\n4:fast\n5:very fast\n6:no animation\nspeed: ',br));
 %init for break time
 p_time=0;
 %if else stetment for animation speed
@@ -36,8 +36,7 @@ if br~=6
     color=input(sprintf('color:0 for random, 1 for red\n',color));
 end
 
-
-h = waitbar(1,'Simulation in progress...');
+h = waitbar(0,'Simulation in progress...');
 A=-1*ones(30,30);
 A(1:10,3)=1;
 A(10,3:25)=1;
@@ -47,22 +46,28 @@ A(15:25,2)=1;
 A(25,2:10)=1;
 A(20:25,10)=1;
 A(20,10:29)=1;
-B=zeros(inpNCars,4);
-B(1,1)=1;
-B(1,2)=3;
-B(1,3)=rand(1);
-%number of movements
-B(1,4)=0;
-if color==1
-    B(1,3)=0.3;
-end
-A(B(1,1),B(1,2))=B(1,3);
-
+bar_start=0;
+movement=zeros(inpNCars,inpNCars);
+W=zeros(n_of_times,6);
 for z=1:1:n_of_times
     
+    clearvars nCars B
     nIter=300;
     nCars=1;
+    
+    
+    B=zeros(inpNCars,4);
+    B(1,1)=1;
+    B(1,2)=3;
+    B(1,3)=rand(1);
+    %number of movements
+    B(1,4)=0;
     movement(1,1)=2;
+    if color==1
+        B(1,3)=0.3;
+    end
+    A(B(1,1),B(1,2))=B(1,3);
+    
     nIter=nIter+inpNCars;
     if (br~=6)
         %show first image
@@ -76,7 +81,6 @@ for z=1:1:n_of_times
     i=2;
     
     while (B(nCars,3)~=-2)
-        
         for j=1:1:nCars %loop for each car on the map
             [A,B,movement,i,j] = prevmove(A,B,movement,i,j);
             
@@ -89,7 +93,7 @@ for z=1:1:n_of_times
         
         if nCars<inpNCars
             random=rand(1);
-            if random<=0.3
+            if random<=0.7
                 nCars=nCars+1;
                 B(nCars,1)=1;
                 B(nCars,2)=3;
@@ -107,20 +111,34 @@ for z=1:1:n_of_times
             pause(p_time)
         end
         i=i+1;
+        bar=(bar_start+((nCars)/(n_of_times*inpNCars)));
+        text_bar=['Simulation in Progress...',num2str(floor(1000*bar)/10),'%% completed'];
+        waitbar(bar,h,sprintf(text_bar))
         
     end
+    
     timespent=toc;
-    workspace(z).execution_number=z;
-    workspace(z).set_number_of_cars=inpNCars;
+    bar_start=bar;
+    %save number of run
+    W(z,1)=z;
+    %save set num of cars
+    W(z,2)=inpNCars;
+    %set num of cars on map (just to check if all were generated
+    W(z,3)=nCars;
+    %number of blocks travelled
+    W(z,4)=B(1,4);
+    %time taken
+    W(z,5)=timespent;
+    %speed
+    W(z,6)=W(z,4)/W(z,5);
     
-    workspace(z).number_of_cars=nCars;
     
-    workspace(z).number_of_movements_first_car=B(1,4);
-    workspace(z).time_of_execution=timespent;
-    workspace(z).speed=(workspace(z).number_of_movements_first_car/workspace(z).time_of_execution);
-    
-    waitbar(z/n_of_times)
 end
+
+waitbar(1,h,sprintf('Simulation Completed...saving data'))
+D=clock;
+str_name=['run_',num2str(D(1,3)),'_',num2str(D(1,2)),'_',num2str(D(1,1)),'_',num2str(D(1,4)),'_',num2str(D(1,5)),'_',num2str(floor(D(1,6))),'.csv'];
+csvwrite(str_name,W)
 close(h)
 disp('done!!')
 
