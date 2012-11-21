@@ -68,7 +68,7 @@ for z=1:1:n_of_times
     B(1,3)=rand(1);
     %number of movements LP
     B(1,4)=0;
-   % Time_{nCars}=tic;   %Time slot
+    Time_{nCars}=tic;   %Time slot
     
     movement(1,1)=2;
     if color==1
@@ -96,11 +96,12 @@ for z=1:1:n_of_times
                 timespent=toc;
             end
             %}
-                
-    if (B(nCars,3)==-2)
-        
-        B(nCars,5)=toc(Time{nCars});
-    end
+            % Stop time toc
+       for cr=1:inpNCars         
+             if (B(cr,3)==-2)
+                 B(cr,5)=toc(Time{cr});
+             end
+       end
         end
         
         %%
