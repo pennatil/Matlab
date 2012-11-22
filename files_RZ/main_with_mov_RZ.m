@@ -6,7 +6,7 @@ n_of_times=0;
 %ask user for number of simulations LP
 n_of_times=input(sprintf('num of times: ',n_of_times));
 %speed set to no animation by default LP
-br=6;
+br=6; %change to 5 to show animation
 %br=input(sprintf('choose speed of the animation:\n1:very slow\n2:slow\n3:medium\n4:fast\n5:very fast\n6:no animation\nspeed: ',br));
 %init for break time LP
 p_time=0;
@@ -68,7 +68,7 @@ for z=1:1:n_of_times
     B(1,3)=rand(1);
     %number of movements LP
     B(1,4)=0;
-    Time_{nCars}=tic;   %Time slot
+    Time{nCars}=tic;   %Time slot
     
     movement(1,1)=2;
     if color==1
