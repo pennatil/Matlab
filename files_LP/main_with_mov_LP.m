@@ -2,9 +2,9 @@ close all
 clc
 clear all
 %init number of simulations LP
-n_of_times=0;
+n_of_sims=0;
 %ask user for number of simulations LP
-n_of_times=input(sprintf('num of times: ',n_of_times));
+n_of_sims=input(sprintf('number of simulations to run: ',n_of_sims));
 %speed set to no animation by default LP
 br=6;
 %br=input(sprintf('choose speed of the animation:\n1:very slow\n2:slow\n3:medium\n4:fast\n5:very fast\n6:no animation\nspeed: ',br));
@@ -21,8 +21,8 @@ elseif br==4
     p_time=0.1;
 elseif br==5
     p_time=0.01;
-
 end
+
 %input for map LP
 inp=3;
 %number of cars LP
@@ -54,9 +54,16 @@ bar_start=0;
 %preallocate the matric of the movement LP
 movement=zeros(inpNCars,inpNCars);
 %preallocate the memory for the output matrix LP
-W=zeros(n_of_times,6);
-%loop for the number of situations to run LP
-for z=1:1:n_of_times
+W=zeros(n_of_sims,6);
+%create folder for entire simulation LP
+%generate matrix with date & time parameters for file output LP
+D=clock;
+str_main_folder=['sim_',num2str(D(1,3)),'_',num2str(D(1,2)),'_',num2str(D(1,1)),'_',num2str(D(1,4)),'_',num2str(D(1,5)),'_',num2str(floor(D(1,6)))];
+mkdir(str_main_folder);
+%start performance measuring
+tic
+%loop for the number of simulations to run LP
+for z=1:1:n_of_sims
     %clear variables to repeat the movement LP
     clearvars nCars B
     nCars=1;
@@ -124,15 +131,16 @@ for z=1:1:n_of_times
         %manuallyLP
         i=i+1;
         %update the percentage for the progress bar LP
-        bar=(bar_start+((nCars)/(n_of_times*inpNCars)));
+        bar=(bar_start+((nCars)/(n_of_sims*inpNCars)));
         %string for the progress bar LP
         text_bar=['Simulation in Progress...',num2str(floor(1000*bar)/10),'%% completed'];
         %update for the bar based on the percentage LP
         waitbar(bar,h,sprintf(text_bar))
+        clearvars bar
     end
     
     %set base value on which the percentage is updated LP
-    bar_start=bar;
+    bar_start=(bar_start+((nCars)/(n_of_sims*inpNCars)));
     %save number of run LP
     W(z,1)=z;
     %save set num of cars LP
@@ -141,22 +149,24 @@ for z=1:1:n_of_times
     W(z,3)=nCars;
     %number of blocks travelled LP
     W(z,4)=B(1,4);
-    %time taken LP
-    %W(z,5)=timespent;
-    %speed LP
-    W(z,6)=W(z,4)/W(z,5);
     
+    
+    %uses function to create a folder for the simulation LP
+    foldersave(z,B,str_main_folder);
 end
 %set progressbar to complete LP
 waitbar(1,h,sprintf('Simulation Completed...saving data'))
 %generate matrix with date & time parameters for file output LP
 D=clock;
 %set all data to a string LP
-str_name=['run_',num2str(D(1,3)),'_',num2str(D(1,2)),'_',num2str(D(1,1)),'_',num2str(D(1,4)),'_',num2str(D(1,5)),'_',num2str(floor(D(1,6))),'.csv'];
+str_name=['summary.csv'];
 %write file to working matlab folder LP
+cd(str_main_folder);
 csvwrite(str_name,W)
+cd ../
 %close progress bar LP
 close(h)
+toc
 %display done on the console LP
 disp('done!!')
 %if profiling is on, activate to see performance LP
