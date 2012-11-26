@@ -391,6 +391,13 @@ for i=2:1:nIter
                 B(nCars,3)=0.3;
                 A(B(nCars,1),B(nCars,2))=B(nCars,3);
                 movement(i,nCars)=2;
+                %
+                nCars=nCars+1;
+                B(nCars,1)=2;
+                B(nCars,2)=74;
+                B(nCars,3)=0.3;
+                A(B(nCars,1),B(nCars,2))=B(nCars,3);
+                movement(i,nCars)=2;
             elseif rnd<=0.5
                 nCars=nCars+1;
                 B(nCars,1)=12;
@@ -398,31 +405,53 @@ for i=2:1:nIter
                 B(nCars,3)=0.15;
                 A(B(nCars,1),B(nCars,2))=B(nCars,3);
                 movement(i,nCars)=6;
-            elseif rnd<=0.75
+                %
                 nCars=nCars+1;
                 B(nCars,1)=14;
                 B(nCars,2)=66;
-                B(nCars,3)=0.5;
+                B(nCars,3)=0.15;
                 A(B(nCars,1),B(nCars,2))=B(nCars,3);
                 movement(i,nCars)=6;
+            elseif rnd<=0.75
+                nCars=nCars+1;
+                B(nCars,1)=16;
+                B(nCars,2)=106;
+                B(nCars,3)=0.5;
+                A(B(nCars,1),B(nCars,2))=B(nCars,3);
+                movement(i,nCars)=8;
+                %
+                nCars=nCars+1;
+                B(nCars,1)=16;
+                B(nCars,2)=108;
+                B(nCars,3)=0.5;
+                A(B(nCars,1),B(nCars,2))=B(nCars,3);
+                movement(i,nCars)=8;
             else
                 nCars=nCars+1;
                 B(nCars,1)=10;
                 B(nCars,2)=80;
-                B(nCars,3)=0.7;
+                B(nCars,3)=0.6;
                 A(B(nCars,1),B(nCars,2))=B(nCars,3);
                 movement(i,nCars)=4;
+                %
                 nCars=nCars+1;
-                B(nCars,1)=2;
-                B(nCars,2)=74;
-                B(nCars,3)=0.3;
+                B(nCars,1)=10;
+                B(nCars,2)=115;
+                B(nCars,3)=0.6;
                 A(B(nCars,1),B(nCars,2))=B(nCars,3);
-                movement(i,nCars)=2;
+                movement(i,nCars)=4;
+                %
+                nCars=nCars+1;
+                B(nCars,1)=10;
+                B(nCars,2)=150;
+                B(nCars,3)=0.6;
+                A(B(nCars,1),B(nCars,2))=B(nCars,3);
+                movement(i,nCars)=4;
             end
         end
     
     imshow(A,'InitialMagnification',10000,'colormap',hot)
-    pause(0.01)
+    pause(0.1)
     
 end
 %matlabpool close

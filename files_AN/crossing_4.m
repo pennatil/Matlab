@@ -1,5 +1,4 @@
 function [A,B,movement,i,j] = crossing_4(A,B,movement,i,j)
-rdn=rand(1);
 %if the last movement was from north
 if movement(i-1,j)==2
     %if the next empty space is in [4,4], go south
