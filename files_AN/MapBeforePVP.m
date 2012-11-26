@@ -371,7 +371,7 @@ nIter=300;
 nCars=1;
 movement(1,1)=2;
 
-imshow(A,'InitialMagnification','fit','colormap',hot)
+imshow(A,'InitialMagnification',200,'colormap',hot)
 
 pause(1)
 %loop for movements
@@ -450,7 +450,7 @@ for i=2:1:nIter
             end
         end
     
-    imshow(A,'InitialMagnification',10000,'colormap',hot)
+    imshow(A,'InitialMagnification',200,'colormap',hot)
     pause(0.1)
     
 end
