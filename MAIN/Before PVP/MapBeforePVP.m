@@ -311,6 +311,7 @@ P5.2(200,279) 3210 vc/g
 P6.1(315,279) 5500 vc/g
 P7.2(412,2) 18265 vc/g
 P8.3(315,2) 14423 vc/g
+Total entrance veicles: 72243
 Exits Points
 P2.1(2,106) 5300 vc/g
 P2.2(2,108) 5300 vc/g
@@ -321,6 +322,7 @@ P6.2(317,279) 5500 vc/g
 P7.1(410,2) 18265 vc/g
 P8.1(311,2) 14423 vc/g
 P8.2(313,2) 14423 vc/g
+Total exit veicles: 82396
 %}
 
 imshow(A,'InitialMagnification','fit','colormap',hot)
