@@ -40,6 +40,8 @@ end
 %initialising the progress bar LP
 h = waitbar(0,'Simulation in progress...');
 %creating the map LP
+run MapDefAfterPVP.m
+%{
 A=-1*ones(30,30);
 A(1:10,3)=1;
 A(10,3:25)=1;
@@ -49,6 +51,7 @@ A(15:25,2)=1;
 A(25,2:10)=1;
 A(20:25,10)=1;
 A(20,10:29)=1;
+%}
 %set sterting value of bar to 0 LP
 bar_start=0;
 %preallocate the matric of the movement LP
