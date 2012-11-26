@@ -1,7 +1,9 @@
 %map
+
 clc
 clear all
 %close all
+
 pointn=1;
 width=280;
 height=420;
@@ -312,6 +314,7 @@ P6.1(315,279) 5500 vc/g
 P7.2(412,2) 18265 vc/g
 P8.3(315,2) 14423 vc/g
 Total entrance veicles: 72243
+
 Exits Points
 P2.1(2,106) 5300 vc/g
 P2.2(2,108) 5300 vc/g
