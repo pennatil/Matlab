@@ -6,7 +6,7 @@ n_of_sims=0;
 %ask user for number of simulations LP
 n_of_sims=input(sprintf('number of simulations to run: ',n_of_sims));
 %speed set to no animation by default LP
-br=6;
+br=5;
 %br=input(sprintf('choose speed of the animation:\n1:very slow\n2:slow\n3:medium\n4:fast\n5:very fast\n6:no animation\nspeed: ',br));
 %init for break time LP
 p_time=0;
@@ -106,6 +106,8 @@ for z=1:1:n_of_sims
             %random generator for the probability LP
             random=rand(1);
             if random<=0.7
+                [nCars,A,B,i,movement,color]=generate_car(nCars,A,B,i,movement,color);
+                %{
                 %update count of the cars on the map LP
                 nCars=nCars+1;
                 %set starting position LP
@@ -119,6 +121,7 @@ for z=1:1:n_of_sims
                 A(B(nCars,1),B(nCars,2))=B(nCars,3);
                 %set first move for the newly generated car LP
                 movement(i,nCars)=2;
+                %}
             end
         end
         
