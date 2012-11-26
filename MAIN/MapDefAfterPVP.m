@@ -151,7 +151,7 @@ A(317,280)=0.3;
 
 
 %highlighting crossings LP
-set_color=1;
+set_color=0.3;
 %cross 1
 A(10:12,74)=set_color;
 %cross 2

@@ -6,7 +6,7 @@ n_of_sims=0;
 %ask user for number of simulations LP
 n_of_sims=input(sprintf('number of simulations to run: ',n_of_sims));
 %speed set to no animation by default LP
-br=5;
+br=6;
 %br=input(sprintf('choose speed of the animation:\n1:very slow\n2:slow\n3:medium\n4:fast\n5:very fast\n6:no animation\nspeed: ',br));
 %init for break time LP
 p_time=0;
