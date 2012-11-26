@@ -9,7 +9,7 @@ function [z,B] = foldersave(z,B,str_main_folder)
     %navigate to the folder of the urrent simulation LP
     cd(str_folder);
     %write the matrix b as a csv file LP
-    csvwrite('matrix_B',B)
+    csvwrite('matrix_B.csv',B)
     %navigate to ROOT LP
     cd ../
     cd ../
