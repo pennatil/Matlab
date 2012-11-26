@@ -451,7 +451,7 @@ for i=2:1:nIter
         end
     
     imshow(A,'InitialMagnification',200,'colormap',hot)
-    pause(0.1)
+    pause(0.01)
     
 end
 %matlabpool close

@@ -53,10 +53,13 @@ if movement(i-1,j)==2
         %if the next empty space is in [7,4], probability to keep going
         %south or turning east
     elseif (B(j,1)+1==15 && B(j,2)==72)
-        %if the car came from east, it can't do a U turn so it must go
-        %south at this point
         A(B(j,1)+1,B(j,2))=B(j,3);
         A(B(j,1),B(j,2))=4;
+        B(j,1)=B(j,1)+1;
+        movement(i,j)=2;
+    elseif (B(j,1)+1==16 && B(j,2)==72)
+        A(B(j,1)+1,B(j,2))=B(j,3);
+        A(B(j,1),B(j,2))=1;
         B(j,1)=B(j,1)+1;
         movement(i,j)=2;
     elseif (B(j,1)+1==10 && B(j,2)==74)
@@ -102,10 +105,13 @@ if movement(i-1,j)==2
         %if the next empty space is in [7,4], probability to keep going
         %south or turning east
     elseif (B(j,1)+1==15 && B(j,2)==74)
-        %if the car came from east, it can't do a U turn so it must go
-        %south at this point
         A(B(j,1)+1,B(j,2))=B(j,3);
         A(B(j,1),B(j,2))=4;
+        B(j,1)=B(j,1)+1;
+        movement(i,j)=2;
+    elseif (B(j,1)+1==16 && B(j,2)==74)
+        A(B(j,1)+1,B(j,2))=B(j,3);
+        A(B(j,1),B(j,2))=1;
         B(j,1)=B(j,1)+1;
         movement(i,j)=2;
     end
@@ -128,6 +134,11 @@ elseif movement(i-1,j)==6
     elseif (B(j,1)==12 && B(j,2)+1==75)
         A(B(j,1),B(j,2)+1)=B(j,3);
         A(B(j,1),B(j,2))=4;
+        B(j,2)=B(j,2)+1;
+        movement(i,j)=6;
+    elseif (B(j,1)==12 && B(j,2)+1==76)
+        A(B(j,1),B(j,2)+1)=B(j,3);
+        A(B(j,1),B(j,2))=1;
         B(j,2)=B(j,2)+1;
         movement(i,j)=6;
     elseif (B(j,1)==14 && B(j,2)+1==72)
@@ -166,20 +177,25 @@ elseif movement(i-1,j)==4
         B(j,2)=B(j,2)-1;
         movement(i,j)=4;
     elseif (B(j,1)==10 && B(j,2)-1==73)
-            A(B(j,1),B(j,2)-1)=B(j,3);
-            A(B(j,1),B(j,2))=4;
-            B(j,2)=B(j,2)-1;
-            movement(i,j)=4;
+        A(B(j,1),B(j,2)-1)=B(j,3);
+        A(B(j,1),B(j,2))=4;
+        B(j,2)=B(j,2)-1;
+        movement(i,j)=4;
     elseif (B(j,1)==10 && B(j,2)-1==72)
         A(B(j,1),B(j,2)-1)=B(j,3);
         A(B(j,1),B(j,2))=4;
         B(j,2)=B(j,2)-1;
         movement(i,j)=4;
     elseif (B(j,1)==10 && B(j,2)-1==71)
-            A(B(j,1),B(j,2)-1)=B(j,3);
-            A(B(j,1),B(j,2))=4;
-            B(j,2)=B(j,2)-1;
-            movement(i,j)=4;
+        A(B(j,1),B(j,2)-1)=B(j,3);
+        A(B(j,1),B(j,2))=4;
+        B(j,2)=B(j,2)-1;
+        movement(i,j)=4;
+    elseif (B(j,1)==10 && B(j,2)-1==70)
+        A(B(j,1),B(j,2)-1)=B(j,3);
+        A(B(j,1),B(j,2))=1;
+        B(j,2)=B(j,2)-1;
+        movement(i,j)=4;
     end
     
 end
