@@ -1,12 +1,12 @@
 %map
 clc
 clear all
-close all
+%close all
 pointn=1;
 width=280;
 height=420;
 A=-1*ones(height,width);
- 
+ figure(2)
 %vertical, Start from intersection 3
 A(10:315,10)=1;
 A(40:50,10)=-1;
