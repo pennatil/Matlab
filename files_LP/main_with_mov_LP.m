@@ -10,7 +10,7 @@ br=6;
 %br=input(sprintf('choose speed of the animation:\n1:very slow\n2:slow\n3:medium\n4:fast\n5:very fast\n6:no animation\nspeed: ',br));
 %init for break time LP
 p_time=0;
-%if else stetment for animation speed LP
+%if else statement for animation speed LP
 if br==1
     p_time=2;
 elseif br==2
