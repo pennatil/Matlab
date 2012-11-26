@@ -364,4 +364,65 @@ A(104:119,221:230)=1;
 A(98:105,221:225)=1;
 A(105:114,216:221)=1;
 
+%prova incroci andrea
+B=[2,72,0.3];
+A(B(1,1),B(1,2))=B(1,3);
+nIter=300;
+nCars=1;
+movement(1,1)=2;
+
 imshow(A,'InitialMagnification','fit','colormap',hot)
+
+pause(1)
+%loop for movements
+for i=2:1:nIter
+    for j=1:1:nCars %loop for each car on the map
+        [A,B,movement,i,j] = prevmove(A,B,movement,i,j);
+    end
+    random=rand(1);
+    
+    %random generation car for model 8
+        if random<=0.6
+            rnd=rand(1);
+            if rnd<=0.25
+                nCars=nCars+1;
+                B(nCars,1)=2;
+                B(nCars,2)=72;
+                B(nCars,3)=0.3;
+                A(B(nCars,1),B(nCars,2))=B(nCars,3);
+                movement(i,nCars)=2;
+            elseif rnd<=0.5
+                nCars=nCars+1;
+                B(nCars,1)=12;
+                B(nCars,2)=66;
+                B(nCars,3)=0.15;
+                A(B(nCars,1),B(nCars,2))=B(nCars,3);
+                movement(i,nCars)=6;
+            elseif rnd<=0.75
+                nCars=nCars+1;
+                B(nCars,1)=14;
+                B(nCars,2)=66;
+                B(nCars,3)=0.5;
+                A(B(nCars,1),B(nCars,2))=B(nCars,3);
+                movement(i,nCars)=6;
+            else
+                nCars=nCars+1;
+                B(nCars,1)=10;
+                B(nCars,2)=80;
+                B(nCars,3)=0.7;
+                A(B(nCars,1),B(nCars,2))=B(nCars,3);
+                movement(i,nCars)=4;
+                nCars=nCars+1;
+                B(nCars,1)=2;
+                B(nCars,2)=74;
+                B(nCars,3)=0.3;
+                A(B(nCars,1),B(nCars,2))=B(nCars,3);
+                movement(i,nCars)=2;
+            end
+        end
+    
+    imshow(A,'InitialMagnification',10000,'colormap',hot)
+    pause(0.01)
+    
+end
+%matlabpool close
