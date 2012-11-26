@@ -1,0 +1,30 @@
+function [nCars,A,B,i,movement,color] = generate_car(nCars,A,B,i,movement,color)
+%update count of the cars on the map LP
+nCars=nCars+1;
+
+%starting coordinates for after map
+%{
+P1.1(2,72)
+P1.2(2,74)
+P3.1(2,250)
+P4.1(10,279)
+P5.1(198,279)
+P5.2(200,279)
+P6.1(315,279)
+P7.2(412,2)
+P8.3(315,2)
+%}
+
+%set starting position LP
+B(nCars,1)=1;
+B(nCars,2)=3;
+B(nCars,3)=rand(1);
+B(nCars,4)=0;
+if color==1
+    B(nCars,3)=0.3;
+end
+A(B(nCars,1),B(nCars,2))=B(nCars,3);
+%set first move for the newly generated car LP
+movement(i,nCars)=2;
+end
+
