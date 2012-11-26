@@ -1,4 +1,4 @@
-function [A,B,movement,i,j] = crossing_4(A,B,movement,i,j)
+function [A,B,movement,i,j] = crossing_3(A,B,movement,i,j)
 rdn=rand(1);
 %if the last movement was from north
 if movement(i-1,j)==2
