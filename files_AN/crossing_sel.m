@@ -1,6 +1,9 @@
 function [A,B,movement,i,j] = crossing_sel(A,B,movement,i,j)
+    %3
+if (A(B(j,1)+1,B(j,2))==3 || A(B(j,1),B(j,2)+1)==3 || A(B(j,1),B(j,2)-1)==3 || A(B(j,1)-1,B(j,2))==3)
+    [A,B,movement,i,j]=crossing_3(A,B,movement,i,j);
     %4
-if (A(B(j,1)+1,B(j,2))==4 || A(B(j,1),B(j,2)+1)==4 || A(B(j,1),B(j,2)-1)==4 || A(B(j,1)-1,B(j,2))==4)
+elseif (A(B(j,1)+1,B(j,2))==4 || A(B(j,1),B(j,2)+1)==4 || A(B(j,1),B(j,2)-1)==4 || A(B(j,1)-1,B(j,2))==4)
     [A,B,movement,i,j]=crossing_4(A,B,movement,i,j);
     %5
 elseif (A(B(j,1)+1,B(j,2))==5 || A(B(j,1),B(j,2)+1)==5 || A(B(j,1),B(j,2)-1)==5 || A(B(j,1)-1,B(j,2))==5)
