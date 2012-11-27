@@ -38,7 +38,13 @@ A(12,12:150)=1;
 % %orizzontal, Start from intersection 3 (3°)
 A(14,14:42)=1;
 % %orizzontal, Start from intersection 9
+A(55,42:50)=1;
+A(65,50:58)=1;
+A(55:65,50)=1;
 % %orizzontal, Start from intersection 10
+A(65,58:68)=1;
+A(72,68:77)=1;
+A(65:72,68)=1;
 % %orizzontal, Start from intersection 12
 % %orizzontal, Start from intersection 12
 A(105,10:66)=1;
@@ -48,6 +54,7 @@ A(105:107,68)=1;
 % %orizzontal, Start from intersection 13
 % %orizzontal, Start from intersection 13 (2°)
 % %orizzontal, Start from intersection 13 (3°)
+A(109,40:58)=1;
 % %orizzontal, Start from intersection 15 
 A(105,68:150)=1;
 % %orizzontal, Start from intersection 15 (2°)
@@ -62,19 +69,10 @@ A(164,77:150)=1;
 % %orizzontal, Start from intersection 18 (3°)
 A(158,1:14)=1;
 % %orizzontal, Start from intersection 24
+A(205,47:58)=1;
+A(205:210,47)=1;
 % %orizzontal, last one (Lungolago)
 A(210,1:77)=1; 
-% %entrances
-% 
-% 
-% 
-% 
-% 
-% 
-% 
-% 
-% 
-% 
 % %highlighting crossings LP
 % 
 % %cross 4
