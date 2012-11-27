@@ -10,9 +10,9 @@ A=-1*ones(height,width);
 %vertical, Start from intersection 3
 A(10:162,10)=1;
 %vertical, Start from intersection 3 (2°)
-A(12:162,12)=1;
+A(10:162,12)=1;
 %vertical, Start from intersection 3 (3°)
-A(14:162,14)=1;
+A(12:162,14)=1;
 %vertical, Start from intersection 4
 A(1:210,42)=1;
 %vertical, Start from intersection 4 (2°)
@@ -34,7 +34,7 @@ A(103:163,140)=1;
 %orizzontal, Start from intersection 3
 A(10,10:150)=1;
 %orizzontal, Start from intersection 3 (2°)
-A(12,12:150)=1;
+A(12,14:150)=1;
 %orizzontal, Start from intersection 3 (3°)
 A(14,14:42)=1;
 %orizzontal, Start from intersection 9
