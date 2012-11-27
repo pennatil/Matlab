@@ -6,7 +6,6 @@ pointn=1;
 width=150;
 height=220;
 A=-1*ones(height,width);
- figure(2)
 %vertical, Start from intersection 3
 A(10:162,10)=1;
 % A(25:30,10)=-1;
@@ -22,7 +21,7 @@ A(1:162,40)=1;
 % %vertical, Start from intersection 5
 A(1:205,58)=1;
 % %vertical, Start from intersection 5 (2°)
-A(1:205,56)=1;
+A(105:205,56)=1;
 % %vertical, Start from intersection 6
 A(10:210,77)=1;
 % %vertical, Start form intersection 7
@@ -73,6 +72,7 @@ A(205,47:58)=1;
 A(205:210,47)=1;
 % %orizzontal, last one (Lungolago)
 A(210,1:77)=1; 
+
 % %highlighting crossings LP
 % 
 % %cross 4
@@ -138,11 +138,6 @@ A(210,1:77)=1;
 % %cross 27
 % A(410:412,74:76)=27;
 % A(411,75)=-1;
-% %borders
-% A(:,1)=-1;
-% A(1,:)=-1;
-% A(:,280)=-1;
-% A(420,:)=-1;
 
 %{
 Entrance Points
