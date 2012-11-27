@@ -20,11 +20,11 @@ A(1:162,40)=1;
 %vertical, Start from intersection 5
 A(1:205,58)=1;
 %vertical, Start from intersection 5 (2°)
-A(105:205,56)=1;
+A(1:205,56)=1;
 %vertical, Start from intersection 6
 A(10:210,77)=1;
 %vertical, Start from intersection 6 (2°)
-A(10:210,75)=1;
+A(10:208,75)=1;
 %vertical, Start form intersection 7
 A(1:164,130)=1;
 %vertical, Start form intersection 7 (2°)
@@ -62,7 +62,7 @@ A(107,77:140)=1;
 A(162,1:150)=1;
 %orizzontal, Start from intersection 18 (2°)
 A(160,1:58)=1;
-A(164,77:150)=1;
+A(164,75:150)=1;
 %orizzontal, Start from intersection 18 (3°)
 A(158,1:14)=1;
 %orizzontal, Start from intersection 24
@@ -70,7 +70,13 @@ A(205,47:58)=1;
 A(205:210,47)=1;
 %orizzontal, last one (Lungolago)
 A(210,1:77)=1; 
-A(208,1:77)=1; 
+A(208,1:75)=1; 
+%Border
+A(:,1)=-1;
+A(1,:)=-1;
+A(:,150)=-1;
+A(220,:)=-1;
+
 
 %{
 highlighting crossings LP
@@ -141,25 +147,25 @@ A(411,75)=-1;
 
 %{
 Entrance Points
-P1.1(2,72) 7850 vc/g
-P1.2(2,74) 7850 vc/g
-P4.1(10,279) 11935 vc/g
-P5.1(198,279) 3210 vc/g
-P5.2(200,279) 3210 vc/g
-P6.1(315,279) 5500 vc/g
-P7.2(412,2) 18265 vc/g
-P8.3(315,2) 14423 vc/g
+P1.1(2,42) 7850 vc/g
+P1.2(2,42) 7850 vc/g
+P4.1(10,149) 11935 vc/g
+P5.1(103,179) 3210 vc/g
+P5.2(105,179) 3210 vc/g
+P6.1(162,149) 5500 vc/g
+P7.2(208,2) 18265 vc/g
+P8.3(158,2) 14423 vc/g
 Total entrance veicles: 72243
 Exits Points
-P2.1(2,106) 5300 vc/g
-P2.2(2,108) 5300 vc/g
-P3.1(2,250) 3625 vc/g
-P3.2(2,252) 3625 vc/g
-P4.2(12,279) 11935 vc/g
-P6.2(317,279) 5500 vc/g
-P7.1(410,2) 18265 vc/g
-P8.1(311,2) 14423 vc/g
-P8.2(313,2) 14423 vc/g
+P2.1(2,58) 5300 vc/g
+P2.2(2,60) 5300 vc/g
+P3.1(2,130) 3625 vc/g
+P3.2(2,132) 3625 vc/g
+P4.2(12,179) 11935 vc/g
+P6.2(164,149) 5500 vc/g
+P7.1(206,2) 18265 vc/g
+P8.1(162,2) 14423 vc/g
+P8.2(160,2) 14423 vc/g
 Total exit veicles: 82396
 %}
 
