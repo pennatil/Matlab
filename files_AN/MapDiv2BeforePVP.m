@@ -173,7 +173,7 @@ Total exit veicles: 82396
 %prova incroci andrea
 B=[2,40,0.3];
 A(B(1,1),B(1,2))=B(1,3);
-nIter=300;
+nIter=1000;
 nCars=1;
 movement(1,1)=2;
 
@@ -183,7 +183,11 @@ pause(1)
 %loop for movements
 for i=2:1:nIter
     for j=1:1:nCars %loop for each car on the map
-        [A,B,movement,i,j] = prevmove(A,B,movement,i,j);
+        if (movement(i-1,j)==0)
+            movement(i,j)=0;
+        else
+            [A,B,movement,i,j] = prevmove(A,B,movement,i,j);
+        end
     end
     random=rand(1);
     

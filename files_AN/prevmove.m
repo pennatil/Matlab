@@ -1,7 +1,5 @@
 function [A,B,movement,i,j] = prevmove(A,B,movement,i,j)
-if (movement(i-1,j)==0)
-    movement(i,j)=0;
-elseif (movement(i-1,j)==5)
+if (movement(i-1,j)==5)
     movement(i,j)=movement(i-2,j);
 elseif (movement(i-1,j)==2)%if the previous movement was south, next one cannot be north
     %control for another car
