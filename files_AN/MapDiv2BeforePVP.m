@@ -31,7 +31,8 @@ A(1:164,130)=1;
 %vertical, Start form intersection 7 (2°)
 A(1:164,128)=1;
 %vertical, Start from intersection 17
-A(103:163,140)=1;
+A(105:161,140)=1;
+A(105:161,138)=1;
 %orizzontal, Start from intersection 3
 A(10,10:150)=1;
 %orizzontal, Start from intersection 3 (2°)
@@ -48,7 +49,7 @@ A(109,40:58)=1;
 %orizzontal, Start from intersection 15 
 A(105,68:150)=1;
 %orizzontal, Start from intersection 15 (2°)
-A(103,66:150)=1;
+A(103,66:103)=1;
 %orizzontal, Start from intersection 15 (3°)
 A(107,75:140)=1;
 %orizzontal, Start from intersection 18
@@ -144,6 +145,10 @@ A(11:29,10)=-1;
 A(72:75,74)=1;
 A(75,74:73)=1;
 A(73:74,75)=-1;
+A(162,131:137)=-1;
+A(102:103,103)=1;
+A(102,103:106)=1;
+A(102:104,106)=1;
 % 
 % 
 % 
@@ -169,8 +174,8 @@ A(10:12,77)=6;
 %cross 7
 A(10:12,128:130)=7;
 A(11,129)=-1;
-% %cross 9
-% A(100,74)=9;
+%cross 9
+A(104:105,105:106)=9;
 %cross 10
 A(72:73,76:77)=10;
 % %cross 11
@@ -191,12 +196,12 @@ A(108,57)=-1;
 A(103:107,75:77)=15;
 A(104,76)=-1;
 A(106,76)=-1;
-% %cross 16
-% A(198:202,250:252)=16;
-% A(199,251)=-1;
-% A(201,251)=-1;
-% %cross 17
-% A(198:202,270)=17;
+%cross 16
+A(105:107,128:130)=16;
+A(106,129)=-1;
+%cross 17
+A(105:107,138:140)=17;
+A(106,139)=-1;
 % %cross 18
 % A(311:315,10:14)=18;
 % A(312,11)=-1;
@@ -384,6 +389,40 @@ for i=2:1:nIter
                 A(B(nCars,1),B(nCars,2))=B(nCars,3);
                 movement(i,nCars)=8;
             end
+            %
+            if A(130,128)==1
+                nCars=nCars+1;
+                B(nCars,1)=130;
+                B(nCars,2)=128;
+                B(nCars,3)=0.5;
+                A(B(nCars,1),B(nCars,2))=B(nCars,3);
+                movement(i,nCars)=8;
+            end
+            if A(130,130)==1
+                nCars=nCars+1;
+                B(nCars,1)=130;
+                B(nCars,2)=130;
+                B(nCars,3)=0.5;
+                A(B(nCars,1),B(nCars,2))=B(nCars,3);
+                movement(i,nCars)=8;
+            end
+            %
+            if A(130,138)==1
+                nCars=nCars+1;
+                B(nCars,1)=130;
+                B(nCars,2)=138;
+                B(nCars,3)=0.5;
+                A(B(nCars,1),B(nCars,2))=B(nCars,3);
+                movement(i,nCars)=8;
+            end
+            if A(130,140)==1
+                nCars=nCars+1;
+                B(nCars,1)=130;
+                B(nCars,2)=140;
+                B(nCars,3)=0.5;
+                A(B(nCars,1),B(nCars,2))=B(nCars,3);
+                movement(i,nCars)=8;
+            end
         else
             if A(10,47)==1
                 nCars=nCars+1;
@@ -470,6 +509,15 @@ for i=2:1:nIter
                 nCars=nCars+1;
                 B(nCars,1)=107;
                 B(nCars,2)=100;
+                B(nCars,3)=0.6;
+                A(B(nCars,1),B(nCars,2))=B(nCars,3);
+                movement(i,nCars)=4;
+            end
+            %
+            if A(105,148)==1
+                nCars=nCars+1;
+                B(nCars,1)=105;
+                B(nCars,2)=148;
                 B(nCars,3)=0.6;
                 A(B(nCars,1),B(nCars,2))=B(nCars,3);
                 movement(i,nCars)=4;
