@@ -136,9 +136,6 @@ A(162,35:39)=-1;
 A(163:209,42)=-1;
 A(208,42)=1;
 A(163:209,40)=1;
-A(50,14:16)=1;
-A(14:50,16)=1;
-A(14,15)=-1;
 % 
 % 
 % 
@@ -152,8 +149,8 @@ A(14,15)=-1;
 %cross 3
 A(10,11:12)=3;
 A(11,12)=3;
-A(50,14:15)=3;
-A(49,14)=3;
+A(13:14,14)=3;
+A(14,15)=3;
 %cross 4
 A(10:14,40:42)=4;
 A(11,41)=-1;
@@ -183,7 +180,7 @@ A(108,41)=-1;
 %cross 14
 A(105:109,56:58)=14;
 A(106,57)=-1;
-A(108,57)=-1;
+A(108,107)=-1;
 % %cross 15
 % A(198:202,144:146)=15;
 % A(199,145)=-1;
@@ -363,24 +360,6 @@ for i=2:1:nIter
                 A(B(nCars,1),B(nCars,2))=B(nCars,3);
                 movement(i,nCars)=8;
             end
-            %
-            if A(180,56)==1
-                nCars=nCars+1;
-                B(nCars,1)=180;
-                B(nCars,2)=56;
-                B(nCars,3)=0.5;
-                A(B(nCars,1),B(nCars,2))=B(nCars,3);
-                movement(i,nCars)=8;
-            end
-            %
-            if A(180,58)==1
-                nCars=nCars+1;
-                B(nCars,1)=180;
-                B(nCars,2)=58;
-                B(nCars,3)=0.5;
-                A(B(nCars,1),B(nCars,2))=B(nCars,3);
-                movement(i,nCars)=8;
-            end
         else
             if A(10,47)==1
                 nCars=nCars+1;
@@ -440,24 +419,6 @@ for i=2:1:nIter
                 nCars=nCars+1;
                 B(nCars,1)=109;
                 B(nCars,2)=50;
-                B(nCars,3)=0.6;
-                A(B(nCars,1),B(nCars,2))=B(nCars,3);
-                movement(i,nCars)=4;
-            end
-            %
-            if A(103,100)==1
-                nCars=nCars+1;
-                B(nCars,1)=103;
-                B(nCars,2)=100;
-                B(nCars,3)=0.6;
-                A(B(nCars,1),B(nCars,2))=B(nCars,3);
-                movement(i,nCars)=4;
-            end
-            %
-            if A(105,100)==1
-                nCars=nCars+1;
-                B(nCars,1)=105;
-                B(nCars,2)=100;
                 B(nCars,3)=0.6;
                 A(B(nCars,1),B(nCars,2))=B(nCars,3);
                 movement(i,nCars)=4;
