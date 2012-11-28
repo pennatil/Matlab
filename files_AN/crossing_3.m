@@ -18,10 +18,10 @@ elseif movement(i-1,j)==6
         B(j,2)=B(j,2)+1;
         movement(i,j)=6;
     elseif (B(j,1)==50 && B(j,2)+1==17)
-        A(B(j,1)-1,B(j,2))=B(j,3);
+        A(B(j,1),B(j,2)+1)=B(j,3);
         A(B(j,1),B(j,2))=1;
-        B(j,1)=B(j,1)-1;
-        movement(i,j)=8;
+        B(j,2)=B(j,2)+1;
+        movement(i,j)=6;
     end
 elseif movement(i-1,j)==8
     if (B(j,1)-1==50 && B(j,2)==14)
@@ -78,10 +78,10 @@ elseif movement(i-1,j)==4
         B(j,2)=B(j,2)-1;
         movement(i,j)=4;
     elseif (B(j,1)==10 && B(j,2)-1==9)
-        A(B(j,1)+1,B(j,2))=B(j,3);
+        A(B(j,1),B(j,2)-1)=B(j,3);
         A(B(j,1),B(j,2))=1;
-        B(j,1)=B(j,1)+1;
-        movement(i,j)=2;
+        B(j,2)=B(j,2)-1;
+        movement(i,j)=4;
     end
     
 end

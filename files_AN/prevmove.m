@@ -25,6 +25,7 @@ elseif (movement(i-1,j)==2)%if the previous movement was south, next one cannot 
     elseif (A(B(j,1)+1,B(j,2))==-1 && A(B(j,1),B(j,2)-1)==-1 && A(B(j,1),B(j,2)+1)==-1) 
         A(B(j,1),B(j,2))=1;
         movement(i,j)=0;
+    else movement(i,j)=2;
     end
 elseif(movement(i-1,j)==8)%if the previous movement was north, next one cannot be south
     %control for another car
@@ -47,6 +48,7 @@ elseif(movement(i-1,j)==8)%if the previous movement was north, next one cannot b
     elseif (A(B(j,1)-1,B(j,2))==-1 && A(B(j,1),B(j,2)+1)==-1 && A(B(j,1),B(j,2)-1)==-1)
         A(B(j,1),B(j,2))=1;
         movement(i,j)=0;
+    else movement(i,j)=8;
     end
 elseif(movement(i-1,j)==6)%if the previous movement was east, next one cannot be west
     %control for another car
@@ -69,6 +71,7 @@ elseif(movement(i-1,j)==6)%if the previous movement was east, next one cannot be
     elseif (A(B(j,1),B(j,2)+1)==-1 && A(B(j,1)+1,B(j,2))==-1 && A(B(j,1)-1,B(j,2))==-1)
         A(B(j,1),B(j,2))=1;
         movement(i,j)=0;
+    else movement(i,j)=6;
     end
 elseif(movement(i-1,j)==4)%if the previous movement was west, next one cannot be east
     %control for another car
@@ -91,6 +94,7 @@ elseif(movement(i-1,j)==4)%if the previous movement was west, next one cannot be
     elseif (A(B(j,1),B(j,2)-1)==-1 && A(B(j,1)-1,B(j,2))==-1 && A(B(j,1)+1,B(j,2))==-1)
         A(B(j,1),B(j,2))=1;
         movement(i,j)=0;
+    else movement(i,j)=4;
     end
 end
 end
