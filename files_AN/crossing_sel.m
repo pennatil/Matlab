@@ -14,6 +14,9 @@ elseif (A(B(j,1)+1,B(j,2))==6 || A(B(j,1),B(j,2)+1)==6 || A(B(j,1),B(j,2)-1)==6 
     %7
 elseif (A(B(j,1)+1,B(j,2))==7 || A(B(j,1),B(j,2)+1)==7 || A(B(j,1),B(j,2)-1)==7 || A(B(j,1)-1,B(j,2))==7)
     [A,B,movement,i,j]=crossing_7(A,B,movement,i,j);
+    %8
+elseif (A(B(j,1)+1,B(j,2))==8 || A(B(j,1),B(j,2)+1)==8 || A(B(j,1),B(j,2)-1)==8 || A(B(j,1)-1,B(j,2))==8)
+    [A,B,movement,i,j]=crossing_8(A,B,movement,i,j);
     %9
 elseif (A(B(j,1)+1,B(j,2))==9 || A(B(j,1),B(j,2)+1)==9 || A(B(j,1),B(j,2)-1)==9 || A(B(j,1)-1,B(j,2))==9)
     [A,B,movement,i,j]=crossing_9(A,B,movement,i,j);
