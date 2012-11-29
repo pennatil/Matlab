@@ -23,6 +23,9 @@ elseif (A(B(j,1)+1,B(j,2))==9 || A(B(j,1),B(j,2)+1)==9 || A(B(j,1),B(j,2)-1)==9 
     %10
 elseif (A(B(j,1)+1,B(j,2))==10 || A(B(j,1),B(j,2)+1)==10 || A(B(j,1),B(j,2)-1)==10 || A(B(j,1)-1,B(j,2))==10)
     [A,B,movement,i,j]=crossing_10(A,B,movement,i,j);
+    %11
+elseif (A(B(j,1)+1,B(j,2))==11 || A(B(j,1),B(j,2)+1)==11 || A(B(j,1),B(j,2)-1)==11 || A(B(j,1)-1,B(j,2))==11)
+    [A,B,movement,i,j]=crossing_11(A,B,movement,i,j);
     %12
 elseif (A(B(j,1)+1,B(j,2))==12 || A(B(j,1),B(j,2)+1)==12 || A(B(j,1),B(j,2)-1)==12 || A(B(j,1)-1,B(j,2))==12)
     [A,B,movement,i,j]=crossing_12(A,B,movement,i,j);
@@ -60,8 +63,11 @@ elseif (A(B(j,1)+1,B(j,2))==22 || A(B(j,1),B(j,2)+1)==22 || A(B(j,1),B(j,2)-1)==
 elseif (A(B(j,1)+1,B(j,2))==23 || A(B(j,1),B(j,2)+1)==23 || A(B(j,1),B(j,2)-1)==23 || A(B(j,1)-1,B(j,2))==23)
     [A,B,movement,i,j]=crossing_23(A,B,movement,i,j);
     %27
-elseif (A(B(j,1)+1,B(j,2))==27 || A(B(j,1),B(j,2)+1)==27 || A(B(j,1),B(j,2)-1)==27 || A(B(j,1)-1,B(j,2))==27)
-    [A,B,movement,i,j]=crossing_27(A,B,movement,i,j);
+elseif (A(B(j,1)+1,B(j,2))==24 || A(B(j,1),B(j,2)+1)==24 || A(B(j,1),B(j,2)-1)==24 || A(B(j,1)-1,B(j,2))==24)
+    [A,B,movement,i,j]=crossing_24(A,B,movement,i,j);
+    %27
+elseif (A(B(j,1)+1,B(j,2))==25 || A(B(j,1),B(j,2)+1)==25 || A(B(j,1),B(j,2)-1)==25 || A(B(j,1)-1,B(j,2))==25)
+    [A,B,movement,i,j]=crossing_25(A,B,movement,i,j);
 end
 end
 

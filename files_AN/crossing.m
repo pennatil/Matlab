@@ -1,15 +1,10 @@
 function [A,B,movement,i,j] = crossing(A,B,movement,i,j)
-rdn=rand(1);
-%if the last movement was from north
 if movement(i-1,j)==2
-    %if the next empty space is in [4,4], go south
     if (B(j,1)+1==4 && B(j,2)==4)
         A(B(j,1)+1,B(j,2))=B(j,3);
         A(B(j,1),B(j,2))=1;
         B(j,1)=B(j,1)+1;
         movement(i,j)=2;
-        %if the next empty space is in [5,4], probability of turning west
-        %or keep going south
     elseif (B(j,1)+1==5 && B(j,2)==4)
         rnd=rand(1);
         if rnd<=0.3
@@ -23,18 +18,13 @@ if movement(i-1,j)==2
             B(j,1)=B(j,1)+1;
             movement(i,j)=2;
         end
-        %if the next empty space is in [6,4], go south
     elseif (B(j,1)+1==6 && B(j,2)==4)
         A(B(j,1)+1,B(j,2))=B(j,3);
         A(B(j,1),B(j,2))=3;
         B(j,1)=B(j,1)+1;
         movement(i,j)=2;
-        %if the next empty space is in [7,4], probability to keep going
-        %south or turning east
     elseif (B(j,1)+1==7 && B(j,2)==4)
         rnd=rand(1);
-        %if the car came from east, it can't do a U turn so it must go
-        %south at this point
         if movement(i-3,j)==4
             A(B(j,1)+1,B(j,2))=B(j,3);
             A(B(j,1),B(j,2))=3;
