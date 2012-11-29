@@ -297,272 +297,100 @@ for i=2:1:nIter
             [A,B,movement,i,j] = prevmove(A,B,movement,i,j);
         end
     end
-    random=rand(1);
     
-    %random generation car for model 8
-    if random<=0.6
-        rnd=rand(1);
-        if rnd<=0.25
-            if A(3,40)==1
-                nCars=nCars+1;
-                B(nCars,1)=3;
-                B(nCars,2)=40;
-                B(nCars,3)=0.3;
-                A(B(nCars,1),B(nCars,2))=B(nCars,3);
-                movement(i,nCars)=2;
-            end
-            %
-            if A(3,42)==1
-                nCars=nCars+1;
-                B(nCars,1)=3;
-                B(nCars,2)=42;
-                B(nCars,3)=0.3;
-                A(B(nCars,1),B(nCars,2))=B(nCars,3);
-                movement(i,nCars)=2;
-            end
-        elseif rnd<=0.5
-            if A(12,34)==1
-                nCars=nCars+1;
-                B(nCars,1)=12;
-                B(nCars,2)=34;
-                B(nCars,3)=0.15;
-                A(B(nCars,1),B(nCars,2))=B(nCars,3);
-                movement(i,nCars)=6;
-            end
-            %
-            if A(22,25)==1
-                nCars=nCars+1;
-                B(nCars,1)=22;
-                B(nCars,2)=25;
-                B(nCars,3)=0.15;
-                A(B(nCars,1),B(nCars,2))=B(nCars,3);
-                movement(i,nCars)=6;
-            end
-            %
-            if A(210,3)==1
-                nCars=nCars+1;
-                B(nCars,1)=210;
-                B(nCars,2)=3;
-                B(nCars,3)=0.15;
-                A(B(nCars,1),B(nCars,2))=B(nCars,3);
-                movement(i,nCars)=6;
-            end
-            %
-            if A(162,3)==1
-                nCars=nCars+1;
-                B(nCars,1)=162;
-                B(nCars,2)=3;
-                B(nCars,3)=0.15;
-                A(B(nCars,1),B(nCars,2))=B(nCars,3);
-                movement(i,nCars)=6;
-            end
-        elseif rnd<=0.75
-            if A(50,56)==1
-                nCars=nCars+1;
-                B(nCars,1)=50;
-                B(nCars,2)=56;
-                B(nCars,3)=0.5;
-                A(B(nCars,1),B(nCars,2))=B(nCars,3);
-                movement(i,nCars)=8;
-            end
-            %
-            if A(50,58)==1
-                nCars=nCars+1;
-                B(nCars,1)=50;
-                B(nCars,2)=58;
-                B(nCars,3)=0.5;
-                A(B(nCars,1),B(nCars,2))=B(nCars,3);
-                movement(i,nCars)=8;
-            end
-            %
-            if A(20,128)==1
-                nCars=nCars+1;
-                B(nCars,1)=20;
-                B(nCars,2)=128;
-                B(nCars,3)=0.5;
-                A(B(nCars,1),B(nCars,2))=B(nCars,3);
-                movement(i,nCars)=8;
-            end
-            %
-            if A(35,14)==1
-                nCars=nCars+1;
-                B(nCars,1)=35;
-                B(nCars,2)=14;
-                B(nCars,3)=0.5;
-                A(B(nCars,1),B(nCars,2))=B(nCars,3);
-                movement(i,nCars)=8;
-            end
-            %
-            if A(20,130)==1
-                nCars=nCars+1;
-                B(nCars,1)=20;
-                B(nCars,2)=130;
-                B(nCars,3)=0.5;
-                A(B(nCars,1),B(nCars,2))=B(nCars,3);
-                movement(i,nCars)=8;
-            end
-            %
-            if A(180,56)==1
-                nCars=nCars+1;
-                B(nCars,1)=180;
-                B(nCars,2)=56;
-                B(nCars,3)=0.5;
-                A(B(nCars,1),B(nCars,2))=B(nCars,3);
-                movement(i,nCars)=8;
-            end
-            %
-            if A(180,58)==1
-                nCars=nCars+1;
-                B(nCars,1)=180;
-                B(nCars,2)=58;
-                B(nCars,3)=0.5;
-                A(B(nCars,1),B(nCars,2))=B(nCars,3);
-                movement(i,nCars)=8;
-            end
-            %
-            if A(130,128)==1
-                nCars=nCars+1;
-                B(nCars,1)=130;
-                B(nCars,2)=128;
-                B(nCars,3)=0.5;
-                A(B(nCars,1),B(nCars,2))=B(nCars,3);
-                movement(i,nCars)=8;
-            end
-            if A(130,130)==1
-                nCars=nCars+1;
-                B(nCars,1)=130;
-                B(nCars,2)=130;
-                B(nCars,3)=0.5;
-                A(B(nCars,1),B(nCars,2))=B(nCars,3);
-                movement(i,nCars)=8;
-            end
-            %
-            if A(130,138)==1
-                nCars=nCars+1;
-                B(nCars,1)=130;
-                B(nCars,2)=138;
-                B(nCars,3)=0.5;
-                A(B(nCars,1),B(nCars,2))=B(nCars,3);
-                movement(i,nCars)=8;
-            end
-            if A(130,140)==1
-                nCars=nCars+1;
-                B(nCars,1)=130;
-                B(nCars,2)=140;
-                B(nCars,3)=0.5;
-                A(B(nCars,1),B(nCars,2))=B(nCars,3);
-                movement(i,nCars)=8;
-            end
-        else
-            if A(10,47)==1
-                nCars=nCars+1;
-                B(nCars,1)=10;
-                B(nCars,2)=47;
-                B(nCars,3)=0.6;
-                A(B(nCars,1),B(nCars,2))=B(nCars,3);
-                movement(i,nCars)=4;
-            end
-            %
-            if A(10,148)==1
-                nCars=nCars+1;
-                B(nCars,1)=10;
-                B(nCars,2)=148;
-                B(nCars,3)=0.6;
-                A(B(nCars,1),B(nCars,2))=B(nCars,3);
-                movement(i,nCars)=4;
-            end
-            %
-            if A(10,83)==1
-                nCars=nCars+1;
-                B(nCars,1)=10;
-                B(nCars,2)=83;
-                B(nCars,3)=0.6;
-                A(B(nCars,1),B(nCars,2))=B(nCars,3);
-                movement(i,nCars)=4;
-            end
-            %
-            if A(105,35)==1
-                nCars=nCars+1;
-                B(nCars,1)=105;
-                B(nCars,2)=35;
-                B(nCars,3)=0.6;
-                A(B(nCars,1),B(nCars,2))=B(nCars,3);
-                movement(i,nCars)=4;
-            end
-            %
-            if A(107,35)==1
-                nCars=nCars+1;
-                B(nCars,1)=107;
-                B(nCars,2)=35;
-                B(nCars,3)=0.6;
-                A(B(nCars,1),B(nCars,2))=B(nCars,3);
-                movement(i,nCars)=4;
-            end
-            %
-            if A(105,50)==1
-                nCars=nCars+1;
-                B(nCars,1)=105;
-                B(nCars,2)=50;
-                B(nCars,3)=0.6;
-                A(B(nCars,1),B(nCars,2))=B(nCars,3);
-                movement(i,nCars)=4;
-            end
-            %
-            if A(109,50)==1
-                nCars=nCars+1;
-                B(nCars,1)=109;
-                B(nCars,2)=50;
-                B(nCars,3)=0.6;
-                A(B(nCars,1),B(nCars,2))=B(nCars,3);
-                movement(i,nCars)=4;
-            end
-            %
-            if A(103,100)==1
-                nCars=nCars+1;
-                B(nCars,1)=103;
-                B(nCars,2)=100;
-                B(nCars,3)=0.6;
-                A(B(nCars,1),B(nCars,2))=B(nCars,3);
-                movement(i,nCars)=4;
-            end
-            %
-            if A(105,100)==1
-                nCars=nCars+1;
-                B(nCars,1)=105;
-                B(nCars,2)=100;
-                B(nCars,3)=0.6;
-                A(B(nCars,1),B(nCars,2))=B(nCars,3);
-                movement(i,nCars)=4;
-            end
-            %
-            if A(107,100)==1
-                nCars=nCars+1;
-                B(nCars,1)=107;
-                B(nCars,2)=100;
-                B(nCars,3)=0.6;
-                A(B(nCars,1),B(nCars,2))=B(nCars,3);
-                movement(i,nCars)=4;
-            end
-            %
-            if A(105,148)==1
-                nCars=nCars+1;
-                B(nCars,1)=105;
-                B(nCars,2)=148;
-                B(nCars,3)=0.6;
-                A(B(nCars,1),B(nCars,2))=B(nCars,3);
-                movement(i,nCars)=4;
-            end
-            %
-            if A(162,148)==1
-                nCars=nCars+1;
-                B(nCars,1)=162;
-                B(nCars,2)=148;
-                B(nCars,3)=0.6;
-                A(B(nCars,1),B(nCars,2))=B(nCars,3);
-                movement(i,nCars)=4;
-            end
-            end
+    
+    %Random cars generation
+    
+    %North 1
+    rdn1=rand(1);
+    if rdn1<=0.3
+        if A(3,40)==1
+            nCars=nCars+1;
+            B(nCars,1)=3;
+            B(nCars,2)=40;
+            B(nCars,3)=0.3;
+            A(B(nCars,1),B(nCars,2))=B(nCars,3);
+            movement(i,nCars)=2;
         end
+    end
+    
+    %North 2
+    rdn2=rand(1);
+    if rdn2<=0.3
+        if A(3,42)==1
+            nCars=nCars+1;
+            B(nCars,1)=3;
+            B(nCars,2)=42;
+            B(nCars,3)=0.3;
+            A(B(nCars,1),B(nCars,2))=B(nCars,3);
+            movement(i,nCars)=2;
+        end
+    end
+    
+    %South
+    rdn3=rand(1);
+    if rdn3<=0.7
+        if A(210,3)==1
+            nCars=nCars+1;
+            B(nCars,1)=210;
+            B(nCars,2)=3;
+            B(nCars,3)=0.15;
+            A(B(nCars,1),B(nCars,2))=B(nCars,3);
+            movement(i,nCars)=6;
+        end
+    end
+    
+    %West
+    rdn4=rand(1);
+    if rdn4<=0.8
+        if A(162,3)==1
+            nCars=nCars+1;
+            B(nCars,1)=162;
+            B(nCars,2)=3;
+            B(nCars,3)=0.15;
+            A(B(nCars,1),B(nCars,2))=B(nCars,3);
+            movement(i,nCars)=6;
+        end
+    end
+    
+    %North-East
+    rdn5=rand(1);
+    if rdn5<=0.4
+        if A(10,148)==1
+            nCars=nCars+1;
+            B(nCars,1)=10;
+            B(nCars,2)=148;
+            B(nCars,3)=0.6;
+            A(B(nCars,1),B(nCars,2))=B(nCars,3);
+            movement(i,nCars)=4;
+        end
+    end
+    
+    %East 1
+    rdn6=rand(1);
+    if rdn6<=0.1
+        if A(105,148)==1
+            nCars=nCars+1;
+            B(nCars,1)=105;
+            B(nCars,2)=148;
+            B(nCars,3)=0.6;
+            A(B(nCars,1),B(nCars,2))=B(nCars,3);
+            movement(i,nCars)=4;
+        end
+    end
+    
+    %East 2
+    rdn7=rand(1);
+    if rdn7<=0.3
+        if A(162,148)==1
+            nCars=nCars+1;
+            B(nCars,1)=162;
+            B(nCars,2)=148;
+            B(nCars,3)=0.6;
+            A(B(nCars,1),B(nCars,2))=B(nCars,3);
+            movement(i,nCars)=4;
+        end
+    end
     
     imshow(A,'InitialMagnification',390,'colormap',hot)
     pause(0.01)
