@@ -1,4 +1,5 @@
 function [A,B,movement] = move(A,B,i,j,movement,dir)
+B(j,4)=B(j,4)+1;
 %south
 if dir==2
     A(B(j,1)+1,B(j,2))=B(j,3);
