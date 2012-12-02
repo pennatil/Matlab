@@ -1,6 +1,4 @@
-clc
-clear all
-close all
+
 pointn=1;
 width=150;
 height=220;

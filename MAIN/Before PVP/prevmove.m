@@ -5,6 +5,7 @@ elseif (movement(i-1,j)==2)%if the previous movement was south, next one cannot 
     %control for another car
     if (A(B(j,1)+1,B(j,2))>0 && A(B(j,1)+1,B(j,2))<1)
         movement(i,j)=5;
+        B(j,5)=B(j,5)+1;
 %     elseif (A(B(j,1)+2,B(j,2))>0 && A(B(j,1)+2,B(j,2))<1)
 %         movement(i,j)=2;
         %casual crossing (only working in a 4-ways crossing. to improve
@@ -33,6 +34,7 @@ elseif(movement(i-1,j)==8)%if the previous movement was north, next one cannot b
     %control for another car
     if (A(B(j,1)-1,B(j,2))>0 && A(B(j,1)-1,B(j,2))<1)
         movement(i,j)=5;
+        B(j,5)=B(j,5)+1;
 %     elseif (A(B(j,1)-2,B(j,2))>0 && A(B(j,1)-2,B(j,2))<1)
 %         movement(i,j)=8;
     elseif (A(B(j,1)+1,B(j,2))>1 || A(B(j,1),B(j,2)+1)>1 || A(B(j,1),B(j,2)-1)>1 || A(B(j,1)-1,B(j,2))>1)
@@ -58,6 +60,7 @@ elseif(movement(i-1,j)==6)%if the previous movement was east, next one cannot be
     %control for another car
     if (A(B(j,1),B(j,2)+1)>0 && A(B(j,1),B(j,2)+1)<1)
         movement(i,j)=5;
+        B(j,5)=B(j,5)+1;
 %     elseif (A(B(j,1),B(j,2)+2)>0 && A(B(j,1),B(j,2)+2)<1)
 %         movement(i,j)=6;
     elseif (A(B(j,1)+1,B(j,2))>1 || A(B(j,1),B(j,2)+1)>1 || A(B(j,1),B(j,2)-1)>1 || A(B(j,1)-1,B(j,2))>1)
@@ -83,6 +86,7 @@ elseif(movement(i-1,j)==4)%if the previous movement was west, next one cannot be
     %control for another car
     if (A(B(j,1),B(j,2)-1)>0 && A(B(j,1),B(j,2)-1)<1)
         movement(i,j)=5;
+        B(j,5)=B(j,5)+1;
 %     elseif (A(B(j,1),B(j,2)-2)>0 && A(B(j,1),B(j,2)-2)<1)
 %         movement(i,j)=4;
     elseif (A(B(j,1)+1,B(j,2))>1 || A(B(j,1),B(j,2)+1)>1 || A(B(j,1),B(j,2)-1)>1 || A(B(j,1)-1,B(j,2))>1)
