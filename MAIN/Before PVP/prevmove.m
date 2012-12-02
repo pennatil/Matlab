@@ -13,6 +13,8 @@ elseif (movement(i-1,j)==2)%if the previous movement was south, next one cannot 
         %elseif (A(B(j,1)+1,B(j,2))==1 && A(B(j,1),B(j,2)+1)==1 && A(B(j,1),B(j,2)-1)==1)
     elseif (A(B(j,1)+1,B(j,2))>1 || A(B(j,1),B(j,2)+1)>1 || A(B(j,1),B(j,2)-1)>1 || A(B(j,1)-1,B(j,2))>1)
         [A,B,movement,i,j]=crossing_sel(A,B,movement,i,j);
+        B(j,4)=B(j,4)+1;
+        B(j,5)=B(j,5)+1;
         %south
     elseif (A(B(j,1)+1,B(j,2))==1)
         [A,B,movement]=move(A,B,i,j,movement,2);
@@ -39,6 +41,8 @@ elseif(movement(i-1,j)==8)%if the previous movement was north, next one cannot b
 %         movement(i,j)=8;
     elseif (A(B(j,1)+1,B(j,2))>1 || A(B(j,1),B(j,2)+1)>1 || A(B(j,1),B(j,2)-1)>1 || A(B(j,1)-1,B(j,2))>1)
         [A,B,movement,i,j]=crossing_sel(A,B,movement,i,j);
+        B(j,4)=B(j,4)+1;
+        B(j,5)=B(j,5)+1;
         %north
     elseif (A(B(j,1)-1,B(j,2))==1)
         [A,B,movement]=move(A,B,i,j,movement,8);
@@ -65,6 +69,8 @@ elseif(movement(i-1,j)==6)%if the previous movement was east, next one cannot be
 %         movement(i,j)=6;
     elseif (A(B(j,1)+1,B(j,2))>1 || A(B(j,1),B(j,2)+1)>1 || A(B(j,1),B(j,2)-1)>1 || A(B(j,1)-1,B(j,2))>1)
         [A,B,movement,i,j]=crossing_sel(A,B,movement,i,j);
+        B(j,4)=B(j,4)+1;
+        B(j,5)=B(j,5)+1;
         %east
     elseif (A(B(j,1),B(j,2)+1)==1)
         [A,B,movement]=move(A,B,i,j,movement,6);
@@ -91,6 +97,8 @@ elseif(movement(i-1,j)==4)%if the previous movement was west, next one cannot be
 %         movement(i,j)=4;
     elseif (A(B(j,1)+1,B(j,2))>1 || A(B(j,1),B(j,2)+1)>1 || A(B(j,1),B(j,2)-1)>1 || A(B(j,1)-1,B(j,2))>1)
         [A,B,movement,i,j]=crossing_sel(A,B,movement,i,j);
+        B(j,4)=B(j,4)+1;
+        B(j,5)=B(j,5)+1;
         %west
     elseif (A(B(j,1),B(j,2)-1)==1)
         [A,B,movement]=move(A,B,i,j,movement,4);
