@@ -27,7 +27,7 @@ elseif (movement(i-1,j)==2)%if the previous movement was south, next one cannot 
         %dead-end streets control: it just deletes the car
     elseif (A(B(j,1)+1,B(j,2))==-1 && A(B(j,1),B(j,2)-1)==-1 && A(B(j,1),B(j,2)+1)==-1) 
         del=rand(1);
-        if del<0.3
+        if del<0.4
             A(B(j,1),B(j,2))=1;
             movement(i,j)=0;
             B(j,3)=-2;
@@ -59,7 +59,7 @@ elseif(movement(i-1,j)==8)%if the previous movement was north, next one cannot b
         %dead-end streets control: it just deletes the car
     elseif (A(B(j,1)-1,B(j,2))==-1 && A(B(j,1),B(j,2)+1)==-1 && A(B(j,1),B(j,2)-1)==-1)
         del=rand(1);
-        if del<0.3
+        if del<0.4
             A(B(j,1),B(j,2))=1;
             movement(i,j)=0;
             B(j,3)=-2;
@@ -91,7 +91,7 @@ elseif(movement(i-1,j)==6)%if the previous movement was east, next one cannot be
         %dead-end streets control: it just deletes the car
     elseif (A(B(j,1),B(j,2)+1)==-1 && A(B(j,1)+1,B(j,2))==-1 && A(B(j,1)-1,B(j,2))==-1)
         del=rand(1);
-        if del<0.3
+        if del<0.4
             A(B(j,1),B(j,2))=1;
             movement(i,j)=0;
             B(j,3)=-2;
@@ -123,7 +123,7 @@ elseif(movement(i-1,j)==4)%if the previous movement was west, next one cannot be
         %dead-end streets control: it just deletes the car
     elseif (A(B(j,1),B(j,2)-1)==-1 && A(B(j,1)-1,B(j,2))==-1 && A(B(j,1)+1,B(j,2))==-1)
         del=rand(1);
-        if del<0.3
+        if del<0.4
             A(B(j,1),B(j,2))=1;
             movement(i,j)=0;
             B(j,3)=-2;
