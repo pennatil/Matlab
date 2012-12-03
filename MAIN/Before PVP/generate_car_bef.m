@@ -6,7 +6,7 @@ if rdn1<=0.3
         nCars=nCars+1;
         B(nCars,1)=3;
         B(nCars,2)=40;
-        B(nCars,3)=0.3;
+        B(nCars,3)=rand(1);
         B(nCars,6)=nCars;
         A(B(nCars,1),B(nCars,2))=B(nCars,3);
         movement(i,nCars)=2;
@@ -21,7 +21,7 @@ if (nCars<inpNCars)
             nCars=nCars+1;
             B(nCars,1)=3;
             B(nCars,2)=42;
-            B(nCars,3)=0.3;
+            B(nCars,3)=rand(1);
             B(nCars,6)=nCars;
             A(B(nCars,1),B(nCars,2))=B(nCars,3);
             movement(i,nCars)=2;
@@ -37,7 +37,7 @@ if (nCars<inpNCars)
             nCars=nCars+1;
             B(nCars,1)=210;
             B(nCars,2)=3;
-            B(nCars,3)=0.15;
+            B(nCars,3)=rand(1);
             B(nCars,6)=nCars;
             A(B(nCars,1),B(nCars,2))=B(nCars,3);
             movement(i,nCars)=6;
@@ -53,7 +53,7 @@ if (nCars<inpNCars)
             nCars=nCars+1;
             B(nCars,1)=162;
             B(nCars,2)=3;
-            B(nCars,3)=0.15;
+            B(nCars,3)=rand(1);
             B(nCars,6)=nCars;
             A(B(nCars,1),B(nCars,2))=B(nCars,3);
             movement(i,nCars)=6;
@@ -69,7 +69,7 @@ if (nCars<inpNCars)
             nCars=nCars+1;
             B(nCars,1)=10;
             B(nCars,2)=148;
-            B(nCars,3)=0.6;
+            B(nCars,3)=rand(1);
             B(nCars,6)=nCars;
             A(B(nCars,1),B(nCars,2))=B(nCars,3);
             movement(i,nCars)=4;
@@ -85,7 +85,7 @@ if (nCars<inpNCars)
             nCars=nCars+1;
             B(nCars,1)=105;
             B(nCars,2)=148;
-            B(nCars,3)=0.6;
+            B(nCars,3)=rand(1);
             B(nCars,6)=nCars;
             A(B(nCars,1),B(nCars,2))=B(nCars,3);
             movement(i,nCars)=4;
@@ -101,7 +101,7 @@ if (nCars<inpNCars)
             nCars=nCars+1;
             B(nCars,1)=162;
             B(nCars,2)=148;
-            B(nCars,3)=0.6;
+            B(nCars,3)=rand(1);
             B(nCars,6)=nCars;
             A(B(nCars,1),B(nCars,2))=B(nCars,3);
             movement(i,nCars)=4;

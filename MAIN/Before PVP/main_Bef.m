@@ -12,7 +12,7 @@ str_main_folder=['sim_',num2str(D(1,3)),'_',num2str(D(1,2)),'_',num2str(D(1,1)),
 mkdir(str_main_folder);
 
 %number of cars to be generated
-inpNCars=1000;
+inpNCars=100;
 
 %preallocating matrix B LP
 B=zeros(inpNCars,6);
@@ -24,7 +24,7 @@ movement=zeros(inpNCars,inpNCars);
 nCarsOut=0;
 
 %initialising video LP
-video=0; %if video is wanted, change value to 1, otherwise 0 for no video LP
+video=1; %if video is wanted, change value to 1, otherwise 0 for no video LP
 if (video==1)
     writerObj = VideoWriter('prova.avi');
     open(writerObj);
@@ -48,9 +48,11 @@ movement(1,1)=2;
 %Initialize nCars
 nCars=1;
 
-
+figure=0; %if image is wanted, change value to 1, otherwise 0 for no image LP
 %initialising figure for the animation
-figure=1; %if image is wanted, change value to 1, otherwise 0 for no image LP
+if video==1
+    figure=1; %if the video is activated, figure is automatically updated LP
+end
 if (figure==1)
     a=figure(1);
     imshow(A,'InitialMagnification','fit','colormap',hot)
@@ -97,7 +99,6 @@ while (nCarsOut~=inpNCars)
     end
     %for loop changed to while, i has to be updated manually LP
     i=i+1;
-    
     %update the percentage for the progress bar LP
     bar=(bar_start+(nCarsOut/inpNCars));
     %string for the progress bar LP
