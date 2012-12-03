@@ -32,7 +32,7 @@ end
 if (nCars<inpNCars)
     %South
     rdn3=rand(1);
-    if rdn3<=0.7
+    if rdn3<=0.6
         if A(210,3)==1
             nCars=nCars+1;
             B(nCars,1)=210;
@@ -48,7 +48,7 @@ end
 if (nCars<inpNCars)
     %West
     rdn4=rand(1);
-    if rdn4<=0.8
+    if rdn4<=0.7
         if A(162,3)==1
             nCars=nCars+1;
             B(nCars,1)=162;
