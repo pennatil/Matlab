@@ -50,7 +50,7 @@ nCars=1;
 
 
 %initialising figure for the animation
-figure=0; %if image is wanted, change value to 1, otherwise 0 for no image LP
+figure=1; %if image is wanted, change value to 1, otherwise 0 for no image LP
 if (figure==1)
     a=figure(1);
     imshow(A,'InitialMagnification','fit','colormap',hot)
@@ -105,7 +105,6 @@ while (nCarsOut~=inpNCars)
     %update for the bar based on the percentage LP
     waitbar(bar,h,sprintf(text_bar))
     clearvars bar
-    
 end
 
 %closing bar containing cars out LP
@@ -119,5 +118,3 @@ if (video==1)
 end
 %data gets saved into the folder of the simulation LP
 foldersave(B,str_main_folder);
-
-
