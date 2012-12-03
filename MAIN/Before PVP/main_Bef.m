@@ -1,3 +1,4 @@
+tic
 %clear all data
 clc
 clear all
@@ -16,7 +17,7 @@ str_main_folder=['sim_',num2str(D(1,3)),'_',num2str(D(1,2)),'_',num2str(D(1,1)),
 mkdir(str_main_folder);
 
 %number of cars to be generated
-inpNCars=200;
+inpNCars=5000;
 
 %preallocating matrix B LP
 B=zeros(inpNCars,6);
@@ -28,7 +29,7 @@ movement=zeros(inpNCars,inpNCars);
 nCarsOut=0;
 
 %initialising video LP
-video=0; %if video is wanted, change value to 1, otherwise 0 for no video LP
+video=1; %if video is wanted, change value to 1, otherwise 0 for no video LP
 if (video==1)
     writerObj = VideoWriter('prova.avi');
     open(writerObj);
@@ -52,14 +53,14 @@ movement(1,1)=2;
 %Initialize nCars
 nCars=1;
 
-figure=1; %if image is wanted, change value to 1, otherwise 0 for no image LP
+figure=0; %if image is wanted, change value to 1, otherwise 0 for no image LP
 %initialising figure for the animation
 if video==1
     figure=1; %if the video is activated, figure is automatically updated LP
 end
 if (figure==1)
     a=figure(1);
-    imshow(A,'InitialMagnification','fit','colormap',hot)
+    imshow(A,'InitialMagnification',350,'colormap',hot)
     pause(1)
 end
 %main loop, i has to be initialised manually since the loop has been changed from a
@@ -95,7 +96,7 @@ while (nCarsOut~=inpNCars)
     [C,A] = check_points(C,A);
     
     if (figure==1)
-        imshow(A,'InitialMagnification','fit','colormap',hot)
+        imshow(A,'InitialMagnification',350,'colormap',hot)
         pause(0.01)
     end
     if (video==1)
@@ -124,3 +125,4 @@ if (video==1)
 end
 %data gets saved into the folder of the simulation LP
 foldersave(B,C,str_main_folder,movement);
+profile viewer
