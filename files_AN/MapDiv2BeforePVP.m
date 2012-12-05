@@ -228,9 +228,11 @@ A(160:162,12:14)=18;
 A(161,13)=-1;
 %cross 19
 A(160:162,40:42)=19;
+A(163,42)=19;
 A(161,41)=-1;
 %cross 20
 A(160:162,56:58)=20;
+A(160,59)=20;
 A(161,57)=-1;
 %cross 21
 A(162:164,75:77)=21;
@@ -303,10 +305,10 @@ for i=2:1:nIter
     
     %North 1
     rdn1=rand(1);
-    if rdn1<=0.3
-        if A(3,40)==1
+    if rdn1<=0.4
+        if A(80,40)==1
             nCars=nCars+1;
-            B(nCars,1)=3;
+            B(nCars,1)=80;
             B(nCars,2)=40;
             B(nCars,3)=0.3;
             A(B(nCars,1),B(nCars,2))=B(nCars,3);
@@ -316,10 +318,10 @@ for i=2:1:nIter
     
     %North 2
     rdn2=rand(1);
-    if rdn2<=0.3
-        if A(3,42)==1
+    if rdn2<=0.4
+        if A(80,42)==1
             nCars=nCars+1;
-            B(nCars,1)=3;
+            B(nCars,1)=80;
             B(nCars,2)=42;
             B(nCars,3)=0.3;
             A(B(nCars,1),B(nCars,2))=B(nCars,3);
@@ -368,11 +370,11 @@ for i=2:1:nIter
     
     %East 1
     rdn6=rand(1);
-    if rdn6<=0.1
-        if A(105,148)==1
+    if rdn6<=0.5
+        if A(105,120)==1
             nCars=nCars+1;
             B(nCars,1)=105;
-            B(nCars,2)=148;
+            B(nCars,2)=120;
             B(nCars,3)=0.6;
             A(B(nCars,1),B(nCars,2))=B(nCars,3);
             movement(i,nCars)=4;
@@ -381,11 +383,11 @@ for i=2:1:nIter
     
     %East 2
     rdn7=rand(1);
-    if rdn7<=0.3
-        if A(162,148)==1
+    if rdn7<=0.5
+        if A(107,120)==1
             nCars=nCars+1;
-            B(nCars,1)=162;
-            B(nCars,2)=148;
+            B(nCars,1)=107;
+            B(nCars,2)=120;
             B(nCars,3)=0.6;
             A(B(nCars,1),B(nCars,2))=B(nCars,3);
             movement(i,nCars)=4;
