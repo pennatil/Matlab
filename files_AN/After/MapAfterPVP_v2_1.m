@@ -31,9 +31,9 @@ A(1:164,130)=1;
 A(1:164,128)=1;
 % %vertical, Start from intersection 17
 A(105:161,140)=1;
-A(105:158,138)=1;
-A(158,137:138)=1;
-A(158:161,137)=1;
+A(105:161,138)=1;
+% A(158,137:138)=1;
+% A(158:161,137)=1;
 %orizzontal, Start from intersection 3
 A(10,10:150)=1;
 %orizzontal, Start from intersection 3 (2°)
@@ -121,6 +121,9 @@ A(107,70:74)=1;
 A(107,131:137)=-1;
 A(107,139)=-1;
 A(110:161,42)=-1;
+A(105,141:148)=-1;
+A(165,77)=-1;
+A(166,77:84)=1;
 
 % %highlighting crossings AN
 %
@@ -177,20 +180,21 @@ A(104,139)=-1;
 %cross 18
 A(160:162,12:14)=18;
 A(161,13)=-1;
-% %cross 19
-% A(160:162,40:42)=19;
-% A(161,41)=-1;
-% %cross 20
-% A(160:162,56:58)=20;
-% A(161,57)=-1;
+%cross 19
+A(162:163,40)=19;
+%cross 20
+A(162,56:58)=20;
 %cross 21
 A(162:164,75:77)=21;
 A(163,76)=-1;
 %cross 22
 A(162:164,128:130)=22;
+A(165,130)=22;
 A(163,129)=-1;
 %cross 23
-A(161:162,139:140)=23;
+A(162:164,138:140)=23;
+A(162,137)=23;
+A(163,139)=-1;
 % %cross 24
 % A(208:210,40:42)=24;
 % A(209,41)=-1;
@@ -239,3 +243,138 @@ A(161:162,139:140)=23;
 % A(61:64,98:110)=1;
 
 imshow(A,'InitialMagnification',390,'colormap',hot)
+
+%prova incroci andrea
+B=[3,40,0.3];
+A(B(1,1),B(1,2))=B(1,3);
+nIter=1000;
+nCars=1;
+movement(1,1)=2;
+
+imshow(A,'InitialMagnification',390,'colormap',hot)
+
+pause(1)
+%loop for movements
+for i=2:1:nIter
+    for j=1:1:nCars %loop for each car on the map
+        if (movement(i-1,j)==0)
+            movement(i,j)=0;
+        elseif (B(j,1)+1==12 && B(j,2)==77) || (B(j,1)+1==13 && B(j,2)==77)
+            [A,B,movement,i,j]=crossing_6(A,B,movement,i,j);
+        else
+            [A,B,movement,i,j] = prevmove(A,B,movement,i,j);
+        end
+    end
+    
+    
+    %Random cars generation
+    
+    %North 1
+    rdn1=rand(1);
+    if rdn1<=0.3
+        if A(3,40)==1
+            nCars=nCars+1;
+            B(nCars,1)=3;
+            B(nCars,2)=40;
+            B(nCars,3)=0.3;
+            A(B(nCars,1),B(nCars,2))=B(nCars,3);
+            movement(i,nCars)=2;
+        end
+    end
+    
+    %North 2
+    rdn2=rand(1);
+    if rdn2<=0.3
+        if A(3,42)==1
+            nCars=nCars+1;
+            B(nCars,1)=3;
+            B(nCars,2)=42;
+            B(nCars,3)=0.3;
+            A(B(nCars,1),B(nCars,2))=B(nCars,3);
+            movement(i,nCars)=2;
+        end
+    end
+    
+    %South
+    rdn3=rand(1);
+    if rdn3<=0.6
+        if A(210,3)==1
+            nCars=nCars+1;
+            B(nCars,1)=210;
+            B(nCars,2)=3;
+            B(nCars,3)=0.15;
+            A(B(nCars,1),B(nCars,2))=B(nCars,3);
+            movement(i,nCars)=6;
+        end
+    end
+    
+    %West
+    rdn4=rand(1);
+    if rdn4<=0.7
+        if A(162,3)==1
+            nCars=nCars+1;
+            B(nCars,1)=162;
+            B(nCars,2)=3;
+            B(nCars,3)=0.15;
+            A(B(nCars,1),B(nCars,2))=B(nCars,3);
+            movement(i,nCars)=6;
+        end
+    end
+    
+    %North-East 1
+    rdn5=rand(1);
+    if rdn5<=0.4
+        if A(10,148)==1
+            nCars=nCars+1;
+            B(nCars,1)=10;
+            B(nCars,2)=148;
+            B(nCars,3)=0.6;
+            A(B(nCars,1),B(nCars,2))=B(nCars,3);
+            movement(i,nCars)=4;
+        end
+    end
+    
+    %North-East 2
+    rdn8=rand(1);
+    if rdn8<=0.4
+        if A(3,128)==1
+            nCars=nCars+1;
+            B(nCars,1)=3;
+            B(nCars,2)=128;
+            B(nCars,3)=0.6;
+            A(B(nCars,1),B(nCars,2))=B(nCars,3);
+            movement(i,nCars)=2;
+        end
+    end
+    
+    %East 1
+    rdn6=rand(1);
+    if rdn6<=0.2
+        if A(103,148)==1
+            nCars=nCars+1;
+            B(nCars,1)=103;
+            B(nCars,2)=148;
+            B(nCars,3)=0.6;
+            A(B(nCars,1),B(nCars,2))=B(nCars,3);
+            movement(i,nCars)=4;
+        end
+    end
+    
+    %East 2
+    rdn7=rand(1);
+    if rdn7<=0.3
+        if A(162,148)==1
+            nCars=nCars+1;
+            B(nCars,1)=162;
+            B(nCars,2)=148;
+            B(nCars,3)=0.6;
+            A(B(nCars,1),B(nCars,2))=B(nCars,3);
+            movement(i,nCars)=4;
+        end
+    end
+    
+    imshow(A,'InitialMagnification',390,'colormap',hot)
+    pause(0.01)
+    
+end
+%matlabpool close
