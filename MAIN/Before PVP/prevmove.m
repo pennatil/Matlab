@@ -1,6 +1,7 @@
 function [A,B,movement,i,j,nCarsOut] = prevmove(A,B,movement,i,j,nCarsOut)
 if (movement(i-1,j)==5)
     movement(i,j)=movement(i-2,j);
+    B(j,5)=B(j,5)+1;
 elseif (movement(i-1,j)==2)%if the previous movement was south, next one cannot be north
     %control for another car
     if (A(B(j,1)+1,B(j,2))>0 && A(B(j,1)+1,B(j,2))<1)
@@ -32,9 +33,13 @@ elseif (movement(i-1,j)==2)%if the previous movement was south, next one cannot 
             movement(i,j)=0;
             B(j,3)=-2;
             nCarsOut=nCarsOut+1;
-        else movement(i,j)=2;
+        else
+            movement(i,j)=2;
+            B(j,5)=B(j,5)+1;
         end
-    else movement(i,j)=2;
+    else
+        movement(i,j)=2;
+        B(j,5)=B(j,5)+1;
     end
 elseif(movement(i-1,j)==8)%if the previous movement was north, next one cannot be south
     %control for another car
@@ -64,9 +69,13 @@ elseif(movement(i-1,j)==8)%if the previous movement was north, next one cannot b
             movement(i,j)=0;
             B(j,3)=-2;
             nCarsOut=nCarsOut+1;
-        else movement(i,j)=8;
+        else
+            movement(i,j)=8;
+B(j,5)=B(j,5)+1;        
         end
-    else movement(i,j)=8;
+    else
+        movement(i,j)=8;
+        B(j,5)=B(j,5)+1;
     end
 elseif(movement(i-1,j)==6)%if the previous movement was east, next one cannot be west
     %control for another car
@@ -96,9 +105,13 @@ elseif(movement(i-1,j)==6)%if the previous movement was east, next one cannot be
             movement(i,j)=0;
             B(j,3)=-2;
             nCarsOut=nCarsOut+1;
-        else movement(i,j)=6;
+        else
+            movement(i,j)=6;
+            B(j,5)=B(j,5)+1;
         end
-    else movement(i,j)=6;
+    else
+        movement(i,j)=6;
+    B(j,5)=B(j,5)+1;
     end
 elseif(movement(i-1,j)==4)%if the previous movement was west, next one cannot be east
     %control for another car
@@ -128,9 +141,13 @@ elseif(movement(i-1,j)==4)%if the previous movement was west, next one cannot be
             movement(i,j)=0;
             B(j,3)=-2;
             nCarsOut=nCarsOut+1;
-        else movement(i,j)=4;
+        else
+            movement(i,j)=4;
+        B(j,5)=B(j,5)+1;
         end
-    else movement(i,j)=4;
+    else
+        movement(i,j)=4;
+        B(j,5)=B(j,5)+1;
     end
 end
 end

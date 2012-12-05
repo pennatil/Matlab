@@ -17,52 +17,55 @@ str_main_folder=['sim_',num2str(D(1,3)),'_',num2str(D(1,2)),'_',num2str(D(1,1)),
 mkdir(str_main_folder);
 
 %number of cars to be generated
-inpNCars=5000;
+inpNCars=2500;
 
 %preallocating matrix B LP
-B=zeros(inpNCars,6);
+%B=zeros(inpNCars,6);
 
 %preallocate the matrix of the movement LP
-movement=zeros(inpNCars,inpNCars);
+%movement=zeros(inpNCars,inpNCars);
 
 %Initialising counter for cars out LP
 nCarsOut=0;
 
 %initialising video LP
-video=1; %if video is wanted, change value to 1, otherwise 0 for no video LP
-if (video==1)
-    writerObj = VideoWriter('prova.avi');
-    open(writerObj);
-end
+%video=1; %if video is wanted, change value to 1, otherwise 0 for no video LP
+%if (video==1)
+ %   writerObj = VideoWriter('prova.avi');
+  %  open(writerObj);
+%end
 
 %initialising the two progress bars LP
 
-h = waitbar(0,'Starting simulation');
-m = waitbar(0,'generating start cars...');
-closed_fig_m=0;
-bar_start=0;
+%h = waitbar(0,'Starting simulation');
+%m = waitbar(0,'generating start cars...');
+%closed_fig_m=0;
+%bar_start=0;
 
 %generating first car
 B(1,1)=3;
 B(1,2)=40;
 B(1,3)=0.3;
 A(B(1,1),B(1,2))=B(1,3);
-B(1,6)=1;
+B(1,8)=1;
 movement(1,1)=2;
+B(1,6)=3;
+B(1,7)=40;
 
 %Initialize nCars
 nCars=1;
+nIterDone=0;
 
-figure=0; %if image is wanted, change value to 1, otherwise 0 for no image LP
+%figure=0; %if image is wanted, change value to 1, otherwise 0 for no image LP
 %initialising figure for the animation
-if video==1
-    figure=1; %if the video is activated, figure is automatically updated LP
-end
-if (figure==1)
-    a=figure(1);
-    imshow(A,'InitialMagnification',350,'colormap',hot)
-    pause(1)
-end
+%if video==1
+ %   figure=1; %if the video is activated, figure is automatically updated LP
+%end
+%if (figure==1)
+ %   a=figure(1);
+  %  imshow(A,'InitialMagnification',350,'colormap',hot)
+   % pause(1)
+%end
 %main loop, i has to be initialised manually since the loop has been changed from a
 %for loop to a while loop
 i=2;
@@ -83,7 +86,7 @@ while (nCarsOut~=inpNCars)
     if (nCars<inpNCars)
         [A,B,nCars,inpNCars,movement,i] = generate_car_bef(A,B,nCars,inpNCars,movement,i);
     end
-    
+    %{
     if (nCars<inpNCars)
         gen_cars_bar=nCars/inpNCars;
         string_gen=[num2str(nCars),' cars out of ',num2str(inpNCars),' have been generated'];
@@ -92,9 +95,10 @@ while (nCarsOut~=inpNCars)
         close(m)
         closed_fig_m=1;
     end
+    %}
     %check for passage on points
     [C,A] = check_points(C,A);
-    
+    %{
     if (figure==1)
         imshow(A,'InitialMagnification',350,'colormap',hot)
         pause(0.01)
@@ -103,8 +107,11 @@ while (nCarsOut~=inpNCars)
         frame = getframe;
         writeVideo(writerObj,frame);
     end
+    %}
     %for loop changed to while, i has to be updated manually LP
     i=i+1;
+    nIterDone=nIterDone+1;
+    %{
     %update the percentage for the progress bar LP
     bar=(bar_start+(nCarsOut/inpNCars));
     %string for the progress bar LP
@@ -112,8 +119,9 @@ while (nCarsOut~=inpNCars)
     %update for the bar based on the percentage LP
     waitbar(bar,h,sprintf(text_bar))
     clearvars bar
+    %}
 end
-
+%{
 %closing bar containing cars out LP
 close(h)
 %closing main figure window LP
@@ -123,6 +131,7 @@ end
 if (video==1)
     close(writerObj);
 end
+%}
 %data gets saved into the folder of the simulation LP
-foldersave(B,C,str_main_folder,movement);
+foldersave(A,B,C,movement,nIterDone,nCars,str_main_folder);
 profile viewer
