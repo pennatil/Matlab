@@ -1,4 +1,3 @@
-
 %clear all data
 clc
 clear all
@@ -17,7 +16,7 @@ str_main_folder=['sim_',num2str(D(1,3)),'_',num2str(D(1,2)),'_',num2str(D(1,1)),
 mkdir(str_main_folder);
 
 %number of cars to be generated
-inpNCars=2000;
+inpNCars=2500;
 
 %preallocating matrix B LP
 %B=zeros(inpNCars,6);
@@ -59,13 +58,13 @@ nIterDone=0;
 figure=0; %if image is wanted, change value to 1, otherwise 0 for no image LP
 %initialising figure for the animation
 if video==1
-   figure=1; %if the video is activated, figure is automatically updated LP
+   figure=1;
+   %if the video is activated, figure is automatically updated LP
 end
-pause(10)
 if (figure==1)
    a=figure(1);
    imshow(A,'InitialMagnification',350,'colormap',hot)
-   pause(1)
+   pause(10)
 end
 %main loop, i has to be initialised manually since the loop has been changed from a
 %for loop to a while loop
