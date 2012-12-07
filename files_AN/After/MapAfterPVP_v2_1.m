@@ -243,16 +243,16 @@ A(163,139)=-1;
 % A(61:64,98:110)=1;
 
 imshow(A,'InitialMagnification',390,'colormap',hot)
-
+%{
 %prova incroci andrea
 B=[3,40,0.3];
 A(B(1,1),B(1,2))=B(1,3);
 nIter=1000;
 nCars=1;
 movement(1,1)=2;
-
+%}
 imshow(A,'InitialMagnification',390,'colormap',hot)
-
+%{
 pause(1)
 %loop for movements
 for i=2:1:nIter
@@ -378,3 +378,4 @@ for i=2:1:nIter
     
 end
 %matlabpool close
+%}
