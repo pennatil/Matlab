@@ -7,7 +7,7 @@ if movement(i-1,j)==2
         movement(i,j)=2;
     elseif (B(j,1)+1==161 && B(j,2)==42)
         rnd=rand(1);
-        if rnd<=0.6
+        if rnd<=0.4
             A(B(j,1),B(j,2)+1)=B(j,3);
             A(B(j,1),B(j,2))=19;
             B(j,2)=B(j,2)+1;

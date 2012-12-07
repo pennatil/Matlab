@@ -7,7 +7,7 @@ if movement(i-1,j)==2
         movement(i,j)=2;
     elseif (B(j,1)+1==106 && B(j,2)==40)
         rnd=rand(1);
-        if rnd<=0.3
+        if rnd<=0.4
             A(B(j,1),B(j,2)-1)=B(j,3);
             A(B(j,1),B(j,2))=13;
             B(j,2)=B(j,2)-1;
@@ -25,7 +25,7 @@ if movement(i-1,j)==2
         movement(i,j)=2;
     elseif (B(j,1)+1==108 && B(j,2)==40)
         rnd=rand(1);
-        if rnd <=0.25
+        if rnd <=0.4
             A(B(j,1),B(j,2)-1)=B(j,3);
             A(B(j,1),B(j,2))=13;
             B(j,2)=B(j,2)-1;

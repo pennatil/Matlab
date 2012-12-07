@@ -53,10 +53,22 @@ if movement(i-1,j)==2
     end
 elseif movement(i-1,j)==8
     if (B(j,1)-1==107 && B(j,2)==14)
-        A(B(j,1)-1,B(j,2))=B(j,3);
-        A(B(j,1),B(j,2))=1;
-        B(j,1)=B(j,1)-1;
-        movement(i,j)=8;
+        if A(107,15)==1
+            A(B(j,1)-1,B(j,2))=B(j,3);
+            A(B(j,1),B(j,2))=1;
+            B(j,1)=B(j,1)-1;
+            movement(i,j)=8;
+        else rdn=rand(1);
+            if rdn<0.85
+                A(B(j,1)-1,B(j,2))=B(j,3);
+                A(B(j,1),B(j,2))=1;
+                B(j,1)=B(j,1)-1;
+                movement(i,j)=8;
+            else
+                movement(i,j)=8;
+                B(j,5)=B(j,5)+1;
+            end
+        end
     elseif (B(j,1)-1==106 && B(j,2)==14)
         A(B(j,1)-1,B(j,2))=B(j,3);
         A(B(j,1),B(j,2))=12;

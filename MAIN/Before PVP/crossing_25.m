@@ -7,7 +7,7 @@ if movement(i-1,j)==6
         movement(i,j)=6;
     elseif (B(j,1)==205 && B(j,2)+1==57)
         rnd=rand(1);
-        if rnd<=0.5
+        if rnd<=0.35
             A(B(j,1)-1,B(j,2))=B(j,3);
             A(B(j,1),B(j,2))=25;
             B(j,1)=B(j,1)-1;
