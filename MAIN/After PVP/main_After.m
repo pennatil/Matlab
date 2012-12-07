@@ -18,7 +18,7 @@ str_main_folder=['sim_',num2str(D(1,3)),'_',num2str(D(1,2)),'_',num2str(D(1,1)),
 mkdir(str_main_folder);
 
 %number of cars to be generated
-inpNCars=100;
+inpNCars=1000;
 
 %preallocating matrix B LP
 %B=zeros(inpNCars,6);
