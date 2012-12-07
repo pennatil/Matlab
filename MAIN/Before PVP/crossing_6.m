@@ -1,14 +1,10 @@
 function [A,B,movement,i,j] = crossing_6(A,B,movement,i,j)
-%if the last movement was from north
 if movement(i-1,j)==2
-    %if the next empty space is in [4,4], go south
     if (B(j,1)+1==12 && B(j,2)==77)
         A(B(j,1)+1,B(j,2))=B(j,3);
         A(B(j,1),B(j,2))=6;
         B(j,1)=B(j,1)+1;
         movement(i,j)=2;
-        %if the next empty space is in [5,4], probability of turning west
-        %or keep going south
     elseif (B(j,1)+1==13 && B(j,2)==77)
         A(B(j,1)+1,B(j,2))=B(j,3);
         A(B(j,1),B(j,2))=6;
