@@ -16,7 +16,7 @@ str_main_folder=['sim_',num2str(D(1,3)),'_',num2str(D(1,2)),'_',num2str(D(1,1)),
 mkdir(str_main_folder);
 
 %number of cars to be generated
-inpNCars=2500;
+inpNCars=1000;
 
 %preallocating matrix B LP
 %B=zeros(inpNCars,6);
@@ -30,8 +30,8 @@ nCarsOut=0;
 %initialising video LP
 video=1; %if video is wanted, change value to 1, otherwise 0 for no video LP
 if (video==1)
-   writerObj = VideoWriter('prova.avi');
-   open(writerObj);
+    writerObj = VideoWriter('prova.avi');
+    open(writerObj);
 end
 
 %initialising the two progress bars LP
@@ -58,13 +58,14 @@ nIterDone=0;
 figure=0; %if image is wanted, change value to 1, otherwise 0 for no image LP
 %initialising figure for the animation
 if video==1
-   figure=1;
-   %if the video is activated, figure is automatically updated LP
+    figure=1;
+    %if the video is activated, figure is automatically updated LP
 end
 if (figure==1)
-   a=figure(1);
-   imshow(A,'InitialMagnification',350,'colormap',hot)
-   pause(10)
+    a=figure(1);
+    pause(10)
+    imshow(A,'InitialMagnification',350,'colormap',hot)
+
 end
 %main loop, i has to be initialised manually since the loop has been changed from a
 %for loop to a while loop
@@ -76,6 +77,8 @@ while (nCarsOut~=inpNCars)
                 movement(i,j)=0;
             elseif (B(j,1)+1==12 && B(j,2)==77) || (B(j,1)+1==13 && B(j,2)==77)
                 [A,B,movement,i,j]=crossing_6(A,B,movement,i,j);
+                B(j,4)=B(j,4)+1;
+                B(j,5)=B(j,5)+1;
             else
                 [A,B,movement,i,j,nCarsOut] = prevmove(A,B,movement,i,j,nCarsOut);
             end
@@ -103,7 +106,7 @@ while (nCarsOut~=inpNCars)
         imshow(A,'InitialMagnification',350,'colormap',hot)
         pause(0.01)
     end
-  
+    
     if (video==1)
         frame = getframe;
         writeVideo(writerObj,frame);
