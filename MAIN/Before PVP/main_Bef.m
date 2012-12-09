@@ -1,7 +1,9 @@
-
+%inpNCars=2500;
+%for z=1:1:4
 %clear all data
 clc
 clear all
+%clearvars -except inpNCars
 close all
 
 %map
@@ -43,7 +45,7 @@ end
 %initialising the two progress bars LP
 
 h = waitbar(0,'Starting simulation');
-m = waitbar(0,'generating start cars...');
+l = waitbar(0,'generating start cars...');
 closed_fig_m=0;
 bar_start=0;
 
@@ -99,9 +101,9 @@ while (nCarsOut~=inpNCars)
     if (nCars<inpNCars)
         gen_cars_bar=nCars/inpNCars;
         string_gen=[num2str(nCars),' cars out of ',num2str(inpNCars),' have been generated'];
-        waitbar(gen_cars_bar,m,sprintf(string_gen));
+        waitbar(gen_cars_bar,l,sprintf(string_gen));
     elseif (nCars==inpNCars && closed_fig_m==0)
-        close(m)
+        close(l)
         closed_fig_m=1;
     end
     
@@ -145,3 +147,5 @@ end
 
 %data gets saved into the folder of the simulation LP
 foldersave(A,B,C,movement,nIterDone,nCars,str_main_folder);
+inpNCars=inpNCars+1;
+%end
