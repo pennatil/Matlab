@@ -1,9 +1,7 @@
-%inpNCars=2500;
-%for z=1:1:4
-%clear all data
+  
 clc
+%clear all
 clear all
-%clearvars -except inpNCars
 close all
 
 %map
@@ -33,7 +31,7 @@ inpNCars=2500;
 nCarsOut=0;
 
 %initialising video LP
-video=1; %if video is wanted, change value to 1, otherwise 0 for no video LP
+video=0; %if video is wanted, change value to 1, otherwise 0 for no video LP
 if (video==1)
     str_video=['Bef_',num2str(inpNCars),'_',num2str(m),'x_',num2str(D(1,3)),'_',num2str(D(1,2)),'_',num2str(D(1,1)),'_',num2str(D(1,4)),'_',num2str(D(1,5)),'_',num2str(floor(D(1,6)))];
     cd(str_main_folder);
@@ -63,7 +61,7 @@ B(1,7)=40;
 nCars=1;
 nIterDone=0;
 
-figure=0; %if image is wanted, change value to 1, otherwise 0 for no image LP
+figure=1; %if image is wanted, change value to 1, otherwise 0 for no image LP
 %initialising figure for the animation
 if video==1
     figure=1;
@@ -78,8 +76,19 @@ end
 %main loop, i has to be initialised manually since the loop has been changed from a
 %for loop to a while loop
 i=2;
-while (nCarsOut~=inpNCars)
+while (nCarsOut~=(inpNCars-(0.02*inpNCars)))
+   
     for j=1:1:nCars %loop for each car on the map
+        if (movement(i-1,j)==0 && B(j,3)~=-2)
+            p=1;
+            while (movement(i-1,j)==0)
+                movement(i-1,j)=movement(i-p,j)
+                p=p+1;
+                disp('funzione 1')
+            end
+        end
+
+            
         if (B(j,3)~=-2)%if car is still on map, perform operation LP
             %if (movement(i-1,j)==0)
               %  movement(i,j)=0;
@@ -147,5 +156,3 @@ end
 
 %data gets saved into the folder of the simulation LP
 foldersave(A,B,C,movement,nIterDone,nCars,str_main_folder);
-inpNCars=inpNCars+1;
-%end

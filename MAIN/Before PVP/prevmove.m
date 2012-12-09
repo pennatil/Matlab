@@ -2,7 +2,8 @@ function [A,B,movement,i,j,nCarsOut] = prevmove(A,B,movement,i,j,nCarsOut)
 if (movement(i-1,j)==5)
     movement(i,j)=movement(i-2,j);
     B(j,5)=B(j,5)+1;
-elseif (movement(i-1,j)==2)%if the previous movement was south, next one cannot be north
+end
+if (movement(i-1,j)==2)%if the previous movement was south, next one cannot be north
     %control for another car
     %if (A(B(j,1)+1,B(j,2))<1 && A(B(j,1)+1,B(j,2))>0 && A(B(j,1),B(j,2)+1)==-1 && A(B(j,1),B(j,2)-1)==-1 && A(B(j,1)+1,B(j,2)-1)<1 && A(B(j,1)+1,B(j,2)-1)>0 && A(B(j,1)+1,B(j,2)+1)<1 && A(B(j,1)+1,B(j,2)+1)>0 && A(B(j,1)+2,B(j,2))==1)
         %[A,B,j,i,movement] = jump(A,B,j,i,movement);
