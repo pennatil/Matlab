@@ -1,6 +1,4 @@
-function [A,B,nCars,inpNCars,movement,i] = generate_car_bef(A,B,nCars,inpNCars,movement,i)
-%North 1
-m=2;
+function [A,B,nCars,inpNCars,movement,i,m] = generate_car_bef(A,B,nCars,inpNCars,movement,i,m)
 rdn1=rand(1);
 if rdn1<=m*(7850/69033)
     if A(3,40)==1

@@ -4,9 +4,9 @@ if (movement(i-1,j)==5)
     B(j,5)=B(j,5)+1;
 elseif (movement(i-1,j)==2)%if the previous movement was south, next one cannot be north
     %control for another car
-    if (A(B(j,1)+1,B(j,2))<1 && A(B(j,1)+1,B(j,2))>0 && A(B(j,1),B(j,2)+1)==-1 && A(B(j,1),B(j,2)-1)==-1 && A(B(j,1)+1,B(j,2)-1)<1 && A(B(j,1)+1,B(j,2)-1)>0 && A(B(j,1)+1,B(j,2)+1)<1 && A(B(j,1)+1,B(j,2)+1)>0 && A(B(j,1)+2,B(j,2))==1)
-        [A,B,j,i,movement] = jump(A,B,j,i,movement);
-    elseif (A(B(j,1)+1,B(j,2))>0 && A(B(j,1)+1,B(j,2))<1)
+    %if (A(B(j,1)+1,B(j,2))<1 && A(B(j,1)+1,B(j,2))>0 && A(B(j,1),B(j,2)+1)==-1 && A(B(j,1),B(j,2)-1)==-1 && A(B(j,1)+1,B(j,2)-1)<1 && A(B(j,1)+1,B(j,2)-1)>0 && A(B(j,1)+1,B(j,2)+1)<1 && A(B(j,1)+1,B(j,2)+1)>0 && A(B(j,1)+2,B(j,2))==1)
+        %[A,B,j,i,movement] = jump(A,B,j,i,movement);
+    if (A(B(j,1)+1,B(j,2))>0 && A(B(j,1)+1,B(j,2))<1)
         movement(i,j)=5;
         B(j,5)=B(j,5)+1;
         %     elseif (A(B(j,1)+2,B(j,2))>0 && A(B(j,1)+2,B(j,2))<1)
@@ -44,10 +44,10 @@ elseif (movement(i-1,j)==2)%if the previous movement was south, next one cannot 
         B(j,5)=B(j,5)+1;
     end
 elseif(movement(i-1,j)==8)%if the previous movement was north, next one cannot be south
-    if (A(B(j,1)-1,B(j,2))<1 && A(B(j,1)-1,B(j,2))>0 && A(B(j,1),B(j,2)+1)==-1 && A(B(j,1),B(j,2)-1)==-1 && A(B(j,1)-1,B(j,2)-1)<1 && A(B(j,1)-1,B(j,2)-1)>0 && A(B(j,1)-1,B(j,2)+1)<1 && A(B(j,1)-1,B(j,2)+1)>0 && A(B(j,1)-2,B(j,2))==1)
-        [A,B,j,i,movement] = jump(A,B,j,i,movement);
+    %if (A(B(j,1)-1,B(j,2))<1 && A(B(j,1)-1,B(j,2))>0 && A(B(j,1),B(j,2)+1)==-1 && A(B(j,1),B(j,2)-1)==-1 && A(B(j,1)-1,B(j,2)-1)<1 && A(B(j,1)-1,B(j,2)-1)>0 && A(B(j,1)-1,B(j,2)+1)<1 && A(B(j,1)-1,B(j,2)+1)>0 && A(B(j,1)-2,B(j,2))==1)
+       % [A,B,j,i,movement] = jump(A,B,j,i,movement);
         %control for another car
-    elseif (A(B(j,1)-1,B(j,2))>0 && A(B(j,1)-1,B(j,2))<1)
+    if (A(B(j,1)-1,B(j,2))>0 && A(B(j,1)-1,B(j,2))<1)
         movement(i,j)=5;
         B(j,5)=B(j,5)+1;
         %     elseif (A(B(j,1)-2,B(j,2))>0 && A(B(j,1)-2,B(j,2))<1)
@@ -82,10 +82,10 @@ elseif(movement(i-1,j)==8)%if the previous movement was north, next one cannot b
         B(j,5)=B(j,5)+1;
     end
 elseif(movement(i-1,j)==6)%if the previous movement was east, next one cannot be west
-    if (A(B(j,1),B(j,2)+1)<1 && A(B(j,1),B(j,2)+1)>0 && A(B(j,1)-1,B(j,2))==-1 && A(B(j,1)+1,B(j,2))==-1 && A(B(j,1)+1,B(j,2)-1)<1 && A(B(j,1)+1,B(j,2)-1)>0 && A(B(j,1)+1,B(j,2)+1)<1 && A(B(j,1)+1,B(j,2)+1)>0 && A(B(j,1),B(j,2)+2)==1)
-        [A,B,j,i,movement] = jump(A,B,j,i,movement);
+    %if (A(B(j,1),B(j,2)+1)<1 && A(B(j,1),B(j,2)+1)>0 && A(B(j,1)-1,B(j,2))==-1 && A(B(j,1)+1,B(j,2))==-1 && A(B(j,1)+1,B(j,2)-1)<1 && A(B(j,1)+1,B(j,2)-1)>0 && A(B(j,1)+1,B(j,2)+1)<1 && A(B(j,1)+1,B(j,2)+1)>0 && A(B(j,1),B(j,2)+2)==1)
+       % [A,B,j,i,movement] = jump(A,B,j,i,movement);
         %control for another car
-    elseif (A(B(j,1),B(j,2)+1)>0 && A(B(j,1),B(j,2)+1)<1)
+    if (A(B(j,1),B(j,2)+1)>0 && A(B(j,1),B(j,2)+1)<1)
         movement(i,j)=5;
         B(j,5)=B(j,5)+1;
         %     elseif (A(B(j,1),B(j,2)+2)>0 && A(B(j,1),B(j,2)+2)<1)
@@ -120,10 +120,10 @@ elseif(movement(i-1,j)==6)%if the previous movement was east, next one cannot be
         B(j,5)=B(j,5)+1;
     end
 elseif(movement(i-1,j)==4)%if the previous movement was west, next one cannot be east
-    if (A(B(j,1),B(j,2)-1)<1 && A(B(j,1),B(j,2)-1)>0 && A(B(j,1)-1,B(j,2))==-1 && A(B(j,1)+1,B(j,2))==-1 && A(B(j,1)-1,B(j,2)-1)<1 && A(B(j,1)-1,B(j,2)-1)>0 && A(B(j,1)-1,B(j,2)+1)<1 && A(B(j,1)-1,B(j,2)+1)>0 && A(B(j,1),B(j,2)-2)==1)
-        [A,B,j,i,movement] = jump(A,B,j,i,movement);
+    %if (A(B(j,1),B(j,2)-1)<1 && A(B(j,1),B(j,2)-1)>0 && A(B(j,1)-1,B(j,2))==-1 && A(B(j,1)+1,B(j,2))==-1 && A(B(j,1)-1,B(j,2)-1)<1 && A(B(j,1)-1,B(j,2)-1)>0 && A(B(j,1)-1,B(j,2)+1)<1 && A(B(j,1)-1,B(j,2)+1)>0 && A(B(j,1),B(j,2)-2)==1)
+      %  [A,B,j,i,movement] = jump(A,B,j,i,movement);
         %control for another car
-    elseif (A(B(j,1),B(j,2)-1)>0 && A(B(j,1),B(j,2)-1)<1)
+    if (A(B(j,1),B(j,2)-1)>0 && A(B(j,1),B(j,2)-1)<1)
         movement(i,j)=5;
         B(j,5)=B(j,5)+1;
         %     elseif (A(B(j,1),B(j,2)-2)>0 && A(B(j,1),B(j,2)-2)<1)

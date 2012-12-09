@@ -1,3 +1,4 @@
+
 %clear all data
 clc
 clear all
@@ -14,9 +15,11 @@ C(:,4)=0;
 D=clock;
 str_main_folder=['sim_',num2str(D(1,3)),'_',num2str(D(1,2)),'_',num2str(D(1,1)),'_',num2str(D(1,4)),'_',num2str(D(1,5)),'_',num2str(floor(D(1,6)))];
 mkdir(str_main_folder);
+%multiplicating factor for the prob of generating a car
+m=2;
 
 %number of cars to be generated
-inpNCars=1000;
+inpNCars=2500;
 
 %preallocating matrix B LP
 %B=zeros(inpNCars,6);
@@ -30,8 +33,11 @@ nCarsOut=0;
 %initialising video LP
 video=1; %if video is wanted, change value to 1, otherwise 0 for no video LP
 if (video==1)
-    writerObj = VideoWriter('prova.avi');
+    str_video=['Bef_',num2str(inpNCars),'_',num2str(m),'x_',num2str(D(1,3)),'_',num2str(D(1,2)),'_',num2str(D(1,1)),'_',num2str(D(1,4)),'_',num2str(D(1,5)),'_',num2str(floor(D(1,6)))];
+    cd(str_main_folder);
+    writerObj = VideoWriter(str_video);
     open(writerObj);
+    cd ../
 end
 
 %initialising the two progress bars LP
@@ -73,21 +79,21 @@ i=2;
 while (nCarsOut~=inpNCars)
     for j=1:1:nCars %loop for each car on the map
         if (B(j,3)~=-2)%if car is still on map, perform operation LP
-            if (movement(i-1,j)==0)
-                movement(i,j)=0;
-            elseif (B(j,1)+1==12 && B(j,2)==77) || (B(j,1)+1==13 && B(j,2)==77)
+            %if (movement(i-1,j)==0)
+              %  movement(i,j)=0;
+            if (B(j,1)+1==12 && B(j,2)==77) || (B(j,1)+1==13 && B(j,2)==77)
                 [A,B,movement,i,j]=crossing_6(A,B,movement,i,j);
                 B(j,4)=B(j,4)+1;
                 B(j,5)=B(j,5)+1;
             else
                 [A,B,movement,i,j,nCarsOut] = prevmove(A,B,movement,i,j,nCarsOut);
             end
-        end
+       end
     end
     
     
     if (nCars<inpNCars)
-        [A,B,nCars,inpNCars,movement,i] = generate_car_bef(A,B,nCars,inpNCars,movement,i);
+        [A,B,nCars,inpNCars,movement,i,m] = generate_car_bef(A,B,nCars,inpNCars,movement,i,m);
     end
     
     if (nCars<inpNCars)
