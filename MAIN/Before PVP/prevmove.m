@@ -1,6 +1,6 @@
 function [A,B,movement,i,j,nCarsOut] = prevmove(A,B,movement,i,j,nCarsOut)
 %Probability of making movement 5 AN
-m=0.75;
+m=0.6;
 
 if (movement(i-1,j)==5)
     movement(i,j)=movement(i-2,j);
