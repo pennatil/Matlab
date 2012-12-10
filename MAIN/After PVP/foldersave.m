@@ -1,4 +1,4 @@
-function [A,B,C,movement,nIterDone,nCars] = foldersave(A,B,C,movement,nIterDone,nCars,str_main_folder)
+function [A,B,C,D,movement,nIterDone,nCars] = foldersave(A,B,C,D,movement,nIterDone,nCars,str_main_folder)
 %creates a folder to save the data from the simulation
 
 %navigate to folder for entire simulation LP
@@ -14,6 +14,7 @@ function [A,B,C,movement,nIterDone,nCars] = foldersave(A,B,C,movement,nIterDone,
     csvwrite('matrix_A.csv',A)
     csvwrite('matrix_B.csv',B)
     csvwrite('matrix_C.csv',C)
+    csvwrite('matrix_D.csv',D)
     csvwrite('movement.csv',movement)
     csvwrite('nIterDone.csv',nIterDone)
     %navigate to ROOT LP

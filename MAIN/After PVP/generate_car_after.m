@@ -1,110 +1,107 @@
-function [A,B,nCars,inpNCars,movement,i] = generate_car_after(A,B,nCars,inpNCars,movement,i)
-%multiplicatore per le prob
-m=2;
-%North 1
-    rdn1=rand(1);
-    if rdn1<=m*(7850/69033)
-        if A(3,40)==1
-            nCars=nCars+1;
-            B(nCars,1)=3;
-            B(nCars,2)=40;
-            B(nCars,3)=0.2 + (0.6-0.2).*rand(1);
-            A(B(nCars,1),B(nCars,2))=B(nCars,3);
-            movement(i,nCars)=2;
-        end
+function [A,B,nCars,inpNCars,movement,i,m] = generate_car_after(A,B,nCars,inpNCars,movement,i,m)
+rdn1=rand(1);
+if rdn1<=m*(7850/69033)
+    if A(3,40)==1
+        nCars=nCars+1;
+        B(nCars,1)=3;
+        B(nCars,2)=40;
+        B(nCars,3)=0.2 + (0.6-0.2).*rand(1);
+        A(B(nCars,1),B(nCars,2))=B(nCars,3);
+        movement(i,nCars)=2;
     end
-    
-    %North 2
-    rdn2=rand(1);
-    if rdn2<=m*(7850/69033)
-        if A(3,42)==1
-            nCars=nCars+1;
-            B(nCars,1)=3;
-            B(nCars,2)=42;
-            B(nCars,3)=0.2 + (0.6-0.2).*rand(1);
-            A(B(nCars,1),B(nCars,2))=B(nCars,3);
-            movement(i,nCars)=2;
-        end
+end
+
+%North 2
+rdn2=rand(1);
+if rdn2<=m*(7850/69033)
+    if A(3,42)==1
+        nCars=nCars+1;
+        B(nCars,1)=3;
+        B(nCars,2)=42;
+        B(nCars,3)=0.2 + (0.6-0.2).*rand(1);
+        A(B(nCars,1),B(nCars,2))=B(nCars,3);
+        movement(i,nCars)=2;
     end
-    
-    %South
-    rdn3=rand(1);
-    if rdn3<=m*(18265/69033)
-        if A(210,3)==1
-            nCars=nCars+1;
-            B(nCars,1)=210;
-            B(nCars,2)=3;
-            B(nCars,3)=0.2 + (0.6-0.2).*rand(1);
-            A(B(nCars,1),B(nCars,2))=B(nCars,3);
-            movement(i,nCars)=6;
-        end
+end
+
+%South
+rdn3=rand(1);
+if rdn3<=m*(18265/69033)
+    if A(210,3)==1
+        nCars=nCars+1;
+        B(nCars,1)=210;
+        B(nCars,2)=3;
+        B(nCars,3)=0.2 + (0.6-0.2).*rand(1);
+        A(B(nCars,1),B(nCars,2))=B(nCars,3);
+        movement(i,nCars)=6;
     end
-    
-    %West
-    rdn4=rand(1);
-    if rdn4<=m*(14423/69033)
-        if A(162,3)==1
-            nCars=nCars+1;
-            B(nCars,1)=162;
-            B(nCars,2)=3;
-            B(nCars,3)=0.2 + (0.6-0.2).*rand(1);
-            A(B(nCars,1),B(nCars,2))=B(nCars,3);
-            movement(i,nCars)=6;
-        end
+end
+
+%West
+rdn4=rand(1);
+if rdn4<=m*(14423/69033)
+    if A(162,3)==1
+        nCars=nCars+1;
+        B(nCars,1)=162;
+        B(nCars,2)=3;
+        B(nCars,3)=0.2 + (0.6-0.2).*rand(1);
+        A(B(nCars,1),B(nCars,2))=B(nCars,3);
+        movement(i,nCars)=6;
     end
-    
-    %North-East 1
-    rdn5=rand(1);
-    if rdn5<=m*(11935/69033)
-        if A(10,148)==1
-            nCars=nCars+1;
-            B(nCars,1)=10;
-            B(nCars,2)=148;
-            B(nCars,3)=0.2 + (0.6-0.2).*rand(1);
-            A(B(nCars,1),B(nCars,2))=B(nCars,3);
-            movement(i,nCars)=4;
-        end
+end
+
+%North-East 1
+rdn5=rand(1);
+if rdn5<=m*(11935/69033)
+    if A(10,148)==1
+        nCars=nCars+1;
+        B(nCars,1)=10;
+        B(nCars,2)=148;
+        B(nCars,3)=0.2 + (0.6-0.2).*rand(1);
+        A(B(nCars,1),B(nCars,2))=B(nCars,3);
+        movement(i,nCars)=4;
     end
-    
-    %North-East 2
-    rdn8=rand(1);
-    if rdn8<=0.4 %%%%%%%%%%%%%%%%%%%%%%%%%missing prob
-        if A(3,128)==1
-            nCars=nCars+1;
-            B(nCars,1)=3;
-            B(nCars,2)=128;
-            B(nCars,3)=0.2 + (0.6-0.2).*rand(1);
-            A(B(nCars,1),B(nCars,2))=B(nCars,3);
-            movement(i,nCars)=2;
-        end
+end
+
+%North-East 2
+rdn8=rand(1);
+if rdn8<=0.4 %%%%%%%%%%%%%%%%%%%%%%%%%missing prob
+    if A(3,128)==1
+        nCars=nCars+1;
+        B(nCars,1)=3;
+        B(nCars,2)=128;
+        B(nCars,3)=0.2 + (0.6-0.2).*rand(1);
+        A(B(nCars,1),B(nCars,2))=B(nCars,3);
+        movement(i,nCars)=2;
     end
-    
-    %East 1
-    rdn6=rand(1);
-    if rdn6<=m*(3210/69033)
-        if A(103,148)==1
-            nCars=nCars+1;
-            B(nCars,1)=103;
-            B(nCars,2)=148;
-            B(nCars,3)=0.2 + (0.6-0.2).*rand(1);
-            A(B(nCars,1),B(nCars,2))=B(nCars,3);
-            movement(i,nCars)=4;
-        end
+end
+
+%East 1
+rdn6=rand(1);
+if rdn6<=m*(3210/69033)
+    if A(103,148)==1
+        nCars=nCars+1;
+        B(nCars,1)=103;
+        B(nCars,2)=148;
+        B(nCars,3)=0.2 + (0.6-0.2).*rand(1);
+        A(B(nCars,1),B(nCars,2))=B(nCars,3);
+        movement(i,nCars)=4;
     end
-    
-    %East 2
-    rdn7=rand(1);
-    if rdn7<=m*(5500/69033)
-        if A(162,148)==1
-            nCars=nCars+1;
-            B(nCars,1)=162;
-            B(nCars,2)=148;
-            B(nCars,3)=0.2 + (0.6-0.2).*rand(1);
-            A(B(nCars,1),B(nCars,2))=B(nCars,3);
-            movement(i,nCars)=4;
-        end
+end
+
+%East 2
+rdn7=rand(1);
+if rdn7<=m*(5500/69033)
+    if A(162,148)==1
+        nCars=nCars+1;
+        B(nCars,1)=162;
+        B(nCars,2)=148;
+        B(nCars,3)=0.2 + (0.6-0.2).*rand(1);
+        A(B(nCars,1),B(nCars,2))=B(nCars,3);
+        movement(i,nCars)=4;
     end
-    
+end
+
 %{
 %North 1
 
@@ -250,6 +247,6 @@ if (nCars<inpNCars)
         end
     end
 end
-    %}
+%}
 end
 
