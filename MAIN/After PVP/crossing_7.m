@@ -25,12 +25,7 @@ if movement(i-1,j)==2
         movement(i,j)=2;
     elseif (B(j,1)+1==13 && B(j,2)==128)
         rnd=rand(1);
-        if movement(i-3,j)==4
-            A(B(j,1)+1,B(j,2))=B(j,3);
-            A(B(j,1),B(j,2))=7;
-            B(j,1)=B(j,1)+1;
-            movement(i,j)=2;
-        elseif rnd <=0.5
+        if rnd <=0.5
             A(B(j,1)+1,B(j,2))=B(j,3);
             A(B(j,1),B(j,2))=7;
             B(j,1)=B(j,1)+1;
@@ -73,12 +68,7 @@ elseif movement(i-1,j)==6
         movement(i,j)=6;
     elseif (B(j,1)==12 && B(j,2)+1==131)
         rnd=rand(1);
-        if movement(i-3,j)==2
-            A(B(j,1),B(j,2)+1)=B(j,3);
-            A(B(j,1),B(j,2))=7;
-            B(j,2)=B(j,2)+1;
-            movement(i,j)=6;
-        elseif rnd <=0.5
+        if rnd <=0.5
             A(B(j,1),B(j,2)+1)=B(j,3);
             A(B(j,1),B(j,2))=7;
             B(j,2)=B(j,2)+1;
@@ -121,12 +111,7 @@ elseif movement(i-1,j)==8
         movement(i,j)=8;
     elseif (B(j,1)-1==9 && B(j,2)==130)
         rnd=rand(1);
-        if movement(i-3,j)==6
-            A(B(j,1)-1,B(j,2))=B(j,3);
-            A(B(j,1),B(j,2))=7;
-            B(j,1)=B(j,1)-1;
-            movement(i,j)=8;
-        elseif rnd <=0.5
+        if rnd <=0.5
             A(B(j,1)-1,B(j,2))=B(j,3);
             A(B(j,1),B(j,2))=7;
             B(j,1)=B(j,1)-1;
@@ -169,12 +154,7 @@ elseif movement(i-1,j)==4
         movement(i,j)=4;
     elseif (B(j,1)==10 && B(j,2)-1==127)
         rnd=rand(1);
-        if movement(i-3,j)==8
-            A(B(j,1),B(j,2)-1)=B(j,3);
-            A(B(j,1),B(j,2))=7;
-            B(j,2)=B(j,2)-1;
-            movement(i,j)=4;
-        elseif rnd <=0.5
+        if rnd <=0.5
             A(B(j,1),B(j,2)-1)=B(j,3);
             A(B(j,1),B(j,2))=7;
             B(j,2)=B(j,2)-1;
