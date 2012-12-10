@@ -17,7 +17,7 @@ C(:,4)=0;
 %multiplicating factor for the prob of gernerating a car
 m=2;
 %number of cars to be generated
-inpNCars=2500;
+inpNCars=200;
 %Initialising counter for cars out LP
 nCarsOut=0;
 %creating folder for the simulation LP
