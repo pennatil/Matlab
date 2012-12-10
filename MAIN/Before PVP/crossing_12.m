@@ -59,7 +59,7 @@ elseif movement(i-1,j)==8
             B(j,1)=B(j,1)-1;
             movement(i,j)=8;
         else rdn=rand(1);
-            if rdn<0.85
+            if rdn<0.95
                 A(B(j,1)-1,B(j,2))=B(j,3);
                 A(B(j,1),B(j,2))=1;
                 B(j,1)=B(j,1)-1;
