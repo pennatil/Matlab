@@ -1,8 +1,7 @@
-  
+
 clc
-%clear all
-clear all
 close all
+clear all
 
 %map
 %run('Map_Before.m')
@@ -11,21 +10,15 @@ A=[-1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
 C=[6 58;6 128;6 130;20 9;20 12;20 14;20 17;60 14;60 40;60 42;60 56;60 58;60 77;60 128;60 130;90 75;90 77;130 10;130 12;130 14;130 40;130 42;130 56;130 58;130 75;130 77;130 128;130 130;130 138;130 140;180 77;180 75;180 58;180 56;180 40;158 6;160 6;162 6;208 6;210 6;160 20;162 33;160 33;107 33;105 33;14 33;12 33;10 33;10 50;12 50;105 50;107 50;109 50;160 50;162 50;205 50;208 50;210 50;210 70;208 70;164 70;162 70;105 70;103 70;12 70;10 70;162 60;10 90;12 90;103 90;105 90;107 90;182 90;184 90;105 120;10 134;12 134;105 134;107 134;164 134;164 145;162 145;105 145;6 40;6 42;6 56];
 C(:,3)=0;
 C(:,4)=0;
-%creating folder for the simulation LP
-D=clock;
-str_main_folder=['sim_',num2str(D(1,3)),'_',num2str(D(1,2)),'_',num2str(D(1,1)),'_',num2str(D(1,4)),'_',num2str(D(1,5)),'_',num2str(floor(D(1,6)))];
-mkdir(str_main_folder);
 %multiplicating factor for the prob of generating a car
 m=2;
-
 %number of cars to be generated
-inpNCars=2500;
+inpNCars=200;
 
-%preallocating matrix B LP
-%B=zeros(inpNCars,6);
-
-%preallocate the matrix of the movement LP
-%movement=zeros(inpNCars,inpNCars);
+%creating folder for the simulation LP
+D=clock;
+str_main_folder=['Before_',num2str(inpNCars),'_',num2str(m),'x_',num2str(D(1,3)),'_',num2str(D(1,2)),'_',num2str(D(1,1)),'_',num2str(D(1,4)),'_',num2str(D(1,5)),'_',num2str(floor(D(1,6)))];
+mkdir(str_main_folder);
 
 %Initialising counter for cars out LP
 nCarsOut=0;
@@ -76,15 +69,15 @@ end
 %main loop, i has to be initialised manually since the loop has been changed from a
 %for loop to a while loop
 i=2;
-while (nCarsOut~=(inpNCars-(0.02*inpNCars)))
+while (nCarsOut<inpNCars && nIterDone<3000)
    
     for j=1:1:nCars %loop for each car on the map
-        if (movement(i-1,j)==0 && B(j,3)~=-2)
+        ms=size(movement);
+        if (j>1 && B(j,3)~=-2 && movement(i-1,j)==0 )
             p=1;
             while (movement(i-1,j)==0)
-                movement(i-1,j)=movement(i-p,j)
+                movement(i-1,j)=movement(i-p,j);
                 p=p+1;
-                disp('funzione 1')
             end
         end
 
@@ -155,4 +148,4 @@ if (video==1)
 end
 
 %data gets saved into the folder of the simulation LP
-foldersave(A,B,C,movement,nIterDone,nCars,str_main_folder);
+foldersave(A,B,C,D,movement,nIterDone,nCars,str_main_folder);
