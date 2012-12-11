@@ -62,12 +62,15 @@ elseif (A(B(j,1)+1,B(j,2))==22 || A(B(j,1),B(j,2)+1)==22 || A(B(j,1),B(j,2)-1)==
     %23
 elseif (A(B(j,1)+1,B(j,2))==23 || A(B(j,1),B(j,2)+1)==23 || A(B(j,1),B(j,2)-1)==23 || A(B(j,1)-1,B(j,2))==23)
     [A,B,movement,i,j]=crossing_23(A,B,movement,i,j);
-    %27
+    %24
 elseif (A(B(j,1)+1,B(j,2))==24 || A(B(j,1),B(j,2)+1)==24 || A(B(j,1),B(j,2)-1)==24 || A(B(j,1)-1,B(j,2))==24)
     [A,B,movement,i,j]=crossing_24(A,B,movement,i,j);
-    %27
+    %25
 elseif (A(B(j,1)+1,B(j,2))==25 || A(B(j,1),B(j,2)+1)==25 || A(B(j,1),B(j,2)-1)==25 || A(B(j,1)-1,B(j,2))==25)
     [A,B,movement,i,j]=crossing_25(A,B,movement,i,j);
+    %26
+elseif (A(B(j,1)+1,B(j,2))==26 || A(B(j,1),B(j,2)+1)==26 || A(B(j,1),B(j,2)-1)==26 || A(B(j,1)-1,B(j,2))==26)
+    [A,B,movement,i,j]=crossing_26(A,B,movement,i,j);
 end
 end
 
