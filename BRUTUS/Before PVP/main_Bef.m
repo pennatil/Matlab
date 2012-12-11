@@ -10,7 +10,7 @@ C(:,4)=0;
 %multiplicating factor for the prob of generating a car
 m=2;
 %number of cars to be generated
-inpNCars=200;
+inpNCars=2500;
 %creating folder for the simulation LP
 D=clock;
 str_main_folder=['Before_',num2str(inpNCars),'_',num2str(m),'x_',num2str(D(1,3)),'_',num2str(D(1,2)),'_',num2str(D(1,1)),'_',num2str(D(1,4)),'_',num2str(D(1,5)),'_',num2str(floor(D(1,6)))];
