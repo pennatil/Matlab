@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Chicken</key>
+	<false/>
+	<key>Ignore Invisible Files</key>
+	<true/>
+	<key>Ignore Trailing Gibberish</key>
+	<true/>
+	<key>List Files</key>
+	<true/>
+	<key>List Folder Contents</key>
+	<true/>
+	<key>List Folders</key>
+	<false/>
+	<key>List Style</key>
+	<integer>1</integer>
+	<key>Preview Pop-Up Condition</key>
+	<integer>0</integer>
+	<key>Quit When Closed</key>
+	<false/>
+	<key>Quit When Done</key>
+	<false/>
+	<key>Rename: Advanced: Prototpye</key>
+	<string>[concatenate 
+        [insert 
+                [concatenate &lt;parent&gt; . "_"] 
+                at index "1" of &lt;name&gt; 
+        ] 
+        [if 
+                &lt;extension&gt; 
+        then 
+                [concatenate ".", &lt;extension&gt;] 
+        else 
+                "" 
+        ] 
+] </string>
+	<key>Rename: Change Case: Extension</key>
+	<integer>0</integer>
+	<key>Rename: Change Case: Name</key>
+	<integer>2</integer>
+	<key>Rename: Change Case: Title Case Exception</key>
+	<true/>
+	<key>Rename: Change Case: Title Case Exception: Cut-Off</key>
+	<integer>2</integer>
+	<key>Rename: Find/Replace: Ignore Case</key>
+	<true/>
+	<key>Rename: Find/Replace: Preserve Extensions</key>
+	<true/>
+	<key>Rename: Find/Replace: Query is RegEx</key>
+	<false/>
+	<key>Rename: Find/Replace: Replacement</key>
+	<string></string>
+	<key>Rename: Find/Replace: Target</key>
+	<string>.</string>
+	<key>Rename: Insert: Direction</key>
+	<integer>0</integer>
+	<key>Rename: Insert: Start</key>
+	<integer>1</integer>
+	<key>Rename: Insert: String</key>
+	<string></string>
+	<key>Rename: Prefix/Suffix: Append Extension</key>
+	<true/>
+	<key>Rename: Prefix/Suffix: Prefix</key>
+	<string>Serie </string>
+	<key>Rename: Prefix/Suffix: Suffix</key>
+	<string> - Lösung - Übung - WuF 2</string>
+	<key>Rename: Remove: Direction</key>
+	<integer>0</integer>
+	<key>Rename: Remove: Length</key>
+	<integer>32</integer>
+	<key>Rename: Remove: Start</key>
+	<integer>5</integer>
+	<key>Rename: Sequence: Append Extension</key>
+	<true/>
+	<key>Rename: Sequence: First Number</key>
+	<integer>1</integer>
+	<key>Rename: Sequence: Minimum Number of Digits</key>
+	<integer>0</integer>
+	<key>Rename: Sequence: Prefix</key>
+	<string></string>
+	<key>Rename: Sequence: Step Value</key>
+	<integer>1</integer>
+	<key>Rename: Sequence: Suffix</key>
+	<string></string>
+	<key>Rename: Sequence: Terms</key>
+	<string></string>
+	<key>Rename: Sequence: Terms: Cap</key>
+	<integer>0</integer>
+	<key>Rename: Sequence: Use Common Prefix</key>
+	<false/>
+	<key>Rename: Sequence: Use Original Name as Prefix</key>
+	<false/>
+	<key>Rename: Sequence: Use Original Name as Suffix</key>
+	<false/>
+	<key>Rename: Set Extension: Change Only</key>
+	<true/>
+	<key>Rename: Set Extension: Extension</key>
+	<string>VOB</string>
+	<key>Repopulate</key>
+	<true/>
+	<key>Semi-Amnesia: Numeric</key>
+	<false/>
+	<key>Semi-Amnesia: Textual</key>
+	<false/>
+	<key>Show Icon Previews</key>
+	<true/>
+	<key>Sorting Priorities</key>
+	<array>
+		<dict>
+			<key>Invert</key>
+			<false/>
+			<key>Strategy</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Invert</key>
+			<false/>
+			<key>Strategy</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>Invert</key>
+			<false/>
+			<key>Strategy</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>Invert</key>
+			<false/>
+			<key>Strategy</key>
+			<integer>3</integer>
+		</dict>
+		<dict>
+			<key>Invert</key>
+			<false/>
+			<key>Strategy</key>
+			<integer>4</integer>
+		</dict>
+		<dict>
+			<key>Invert</key>
+			<false/>
+			<key>Strategy</key>
+			<integer>5</integer>
+		</dict>
+		<dict>
+			<key>Invert</key>
+			<false/>
+			<key>Strategy</key>
+			<integer>6</integer>
+		</dict>
+		<dict>
+			<key>Invert</key>
+			<false/>
+			<key>Strategy</key>
+			<integer>99</integer>
+		</dict>
+		<dict>
+			<key>Invert</key>
+			<false/>
+			<key>Strategy</key>
+			<integer>-1</integer>
+		</dict>
+	</array>
+	<key>Task</key>
+	<integer>9</integer>
+</dict>
+</plist>
