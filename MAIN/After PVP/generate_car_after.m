@@ -8,6 +8,11 @@ if rdn1<=m*(7850/72934)
         B(nCars,3)=0.2 + (0.6-0.2).*rand(1);
         A(B(nCars,1),B(nCars,2))=B(nCars,3);
         movement(i,nCars)=2;
+        B(nCars,8)=nCars;
+        B(nCars,6)=B(nCars,1);
+        B(nCars,7)=B(nCars,2);
+        B(nCars,4)=1;
+        B(nCars,5)=1;
     end
 end
 
@@ -21,6 +26,11 @@ if rdn2<=m*(7850/72934)
         B(nCars,3)=0.2 + (0.6-0.2).*rand(1);
         A(B(nCars,1),B(nCars,2))=B(nCars,3);
         movement(i,nCars)=2;
+         B(nCars,8)=nCars;
+        B(nCars,6)=B(nCars,1);
+        B(nCars,7)=B(nCars,2);
+        B(nCars,4)=1;
+        B(nCars,5)=1;
     end
 end
 
@@ -34,6 +44,11 @@ if rdn3<=m*(16865/72934)
         B(nCars,3)=0.2 + (0.6-0.2).*rand(1);
         A(B(nCars,1),B(nCars,2))=B(nCars,3);
         movement(i,nCars)=6;
+         B(nCars,8)=nCars;
+        B(nCars,6)=B(nCars,1);
+        B(nCars,7)=B(nCars,2);
+        B(nCars,4)=1;
+        B(nCars,5)=1;
     end
 end
 
@@ -47,6 +62,11 @@ if rdn4<=m*(12889/72934)
         B(nCars,3)=0.2 + (0.6-0.2).*rand(1);
         A(B(nCars,1),B(nCars,2))=B(nCars,3);
         movement(i,nCars)=6;
+         B(nCars,8)=nCars;
+        B(nCars,6)=B(nCars,1);
+        B(nCars,7)=B(nCars,2);
+        B(nCars,4)=1;
+        B(nCars,5)=1;
     end
 end
 
@@ -60,6 +80,11 @@ if rdn5<=m*(11935/72934)
         B(nCars,3)=0.2 + (0.6-0.2).*rand(1);
         A(B(nCars,1),B(nCars,2))=B(nCars,3);
         movement(i,nCars)=4;
+         B(nCars,8)=nCars;
+        B(nCars,6)=B(nCars,1);
+        B(nCars,7)=B(nCars,2);
+        B(nCars,4)=1;
+        B(nCars,5)=1;
     end
 end
 
@@ -73,6 +98,11 @@ if rdn8<=m*(3625/72934)%%%%%%%%%%%%%%%%%%%%%%%%%missing prob
         B(nCars,3)=0.2 + (0.6-0.2).*rand(1);
         A(B(nCars,1),B(nCars,2))=B(nCars,3);
         movement(i,nCars)=2;
+         B(nCars,8)=nCars;
+        B(nCars,6)=B(nCars,1);
+        B(nCars,7)=B(nCars,2);
+        B(nCars,4)=1;
+        B(nCars,5)=1;
     end
 end
 %}
@@ -86,6 +116,11 @@ if rdn6<=m*(3210/72934)
         B(nCars,3)=0.2 + (0.6-0.2).*rand(1);
         A(B(nCars,1),B(nCars,2))=B(nCars,3);
         movement(i,nCars)=4;
+         B(nCars,8)=nCars;
+        B(nCars,6)=B(nCars,1);
+        B(nCars,7)=B(nCars,2);
+        B(nCars,4)=1;
+        B(nCars,5)=1;
     end
 end
 
@@ -99,6 +134,11 @@ if rdn7<=m*(5500/72934)
         B(nCars,3)=0.2 + (0.6-0.2).*rand(1);
         A(B(nCars,1),B(nCars,2))=B(nCars,3);
         movement(i,nCars)=4;
+         B(nCars,8)=nCars;
+        B(nCars,6)=B(nCars,1);
+        B(nCars,7)=B(nCars,2);
+        B(nCars,4)=1;
+        B(nCars,5)=1;
     end
 end
 
