@@ -101,7 +101,7 @@ elseif movement(i-1,j)==4
         movement(i,j)=4;
     elseif (B(j,1)==162 && B(j,2)-1==74)
         rnd=rand(1);
-        if rnd <=0.5
+        if rnd <=0.35
             A(B(j,1),B(j,2)-1)=B(j,3);
             A(B(j,1),B(j,2))=21;
             B(j,2)=B(j,2)-1;
