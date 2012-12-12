@@ -3,6 +3,7 @@ clc
 %asks for number of simulations LP
 inpNFolder=0;
 inpNFolder=input(sprintf('Number of simulations that were run: ',inpNFolder));
+h=waitbar(0,'Starting')
 %loop for the main program
 for i=1:1:inpNFolder
     %name of the folder containing the sim
@@ -39,6 +40,7 @@ for i=1:1:inpNFolder
     cd ../
     %clear vars /as a double check)
     clearvars T row column
+    waitbar(i/inpNFolder,h,'working')
 end
 %clear everything except for the two needed matrices
 clearvars -except BR CR
