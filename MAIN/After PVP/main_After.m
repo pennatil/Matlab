@@ -38,7 +38,7 @@ C=[6 58;6 128;6 130;20 9;20 12;20 14;20 17;60 14;60 40;60 42;60 56;60 58;60 77;6
 C(:,3)=0;
 C(:,4)=0;
 %multiplicating factor for the prob of gernerating a car
-m=2;
+m=1.8;
 %number of cars to be generated
 inpNCars=2500;
 %Initialising counter for cars out LP
