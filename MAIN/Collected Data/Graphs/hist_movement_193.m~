@@ -1,0 +1,16 @@
+load('B_b_193');
+
+load('B_a_193');
+s(1,1)=size(B_
+
+
+Y_b_193=B_b_193(2:3216,5);
+Y_a_193=B_a_193(2:3216,5);
+
+figure(1);
+hist(Y_a_193,130:260)
+h = findobj(gca,'Type','patch');
+set(h,'FaceColor','r')
+
+figure(2)
+hist(Y_b_193,130:260)
